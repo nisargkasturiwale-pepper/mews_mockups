@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mews · Camping &amp; Glamping Management Software · Interactive Mockup</title>
+<style>
+  :root{
+    --navy:#16213E; --coral:#FF6B6B; --coral-light:#FFF0F0; --green:#2ECC71;
+    --grey:#6B7280; --light-grey:#F8F9FA; --mid-grey:#E5E7EB; --blue:#4F8EF7;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--navy);background:#fff;line-height:1.55;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  section{padding:60px 0;border-bottom:1px solid var(--mid-grey);scroll-margin-top:64px;}
+  section h2:first-child, section h3:first-child{margin-top:0;}
+  h1{font-size:34px;margin:0 0 14px;line-height:1.15;}
+  h2{font-size:26px;margin:0 0 14px;}
+  .kicker{font-size:12.5px;letter-spacing:.02em;color:var(--coral);font-style:italic;text-transform:lowercase;margin:0 0 8px;font-weight:600;}
+  p{color:var(--grey);margin:0 0 16px;font-size:14px;}
+  .bug-note{font-size:12.5px;color:var(--coral);font-style:italic;margin:-6px 0 18px;}
+  h3{font-size:16px;margin:0 0 8px;}
+
+  /* HERO */
+  .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hero h1{color:#fff;max-width:700px;margin:0 auto 14px;}
+  .hero p.lead{color:#C7CCDA;max-width:560px;margin:0 auto 20px;font-size:17px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
+  .btn-primary{background:var(--coral);color:#fff;}
+  .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
+  .img-placeholder{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#C7CCDA;padding:20px;}
+  .img-placeholder .icon{font-size:24px;margin-bottom:6px;}
+  .img-placeholder .caption{font-size:12px;max-width:260px;}
+  .img-placeholder .note{font-size:10.5px;color:var(--coral);margin-top:6px;font-style:italic;}
+  .hero-image{margin:0 auto 32px;max-width:640px;height:200px;}
+  .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
+  .stat{text-align:center;}
+  .stat .num{font-size:22px;font-weight:700;color:var(--coral);}
+  .stat .lbl{font-size:13px;color:#C7CCDA;margin-top:4px;}
+
+  /* JUMP NAV */
+  .jump-nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--mid-grey);box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .jump-nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+  .jump-nav-inner::-webkit-scrollbar{display:none;}
+  .jump-nav a{flex-shrink:0;font-size:13px;font-weight:600;color:var(--grey);text-decoration:none;padding:14px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
+  .jump-nav a:hover{color:var(--navy);}
+  .jump-nav a.active{color:var(--coral);border-bottom-color:var(--coral);}
+
+  /* SCROLL PROGRESS + BACK TO TOP */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:100;transition:width .05s linear;}
+  .back-to-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);z-index:60;font-size:18px;}
+  .back-to-top.visible{display:flex;}
+  .back-to-top:hover{background:var(--coral);}
+
+  /* VIDEO */
+  .video-card{position:relative;max-width:760px;margin:0 auto;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--navy),#233158);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.1);}
+  .video-card:hover .play-button{transform:scale(1.08);}
+  .play-button{width:70px;height:70px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 8px 24px rgba(255,107,107,.4);}
+  .play-button svg{margin-left:4px;}
+  .video-caption{text-align:center;max-width:560px;margin:16px auto 0;font-size:13.5px;color:var(--grey);}
+  .video-duration{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;padding:3px 8px;border-radius:4px;}
+  .video-playing-note{text-align:center;font-size:12px;color:var(--coral);margin-top:10px;display:none;}
+
+  /* TAKEAWAYS */
+  ul.takeaways{list-style:none;padding:0;margin:0;}
+  ul.takeaways li{padding-left:26px;position:relative;margin-bottom:14px;color:var(--navy);font-size:14px;}
+  ul.takeaways li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);position:absolute;left:0;top:6px;}
+
+  /* NUMBERED STEPPER */
+  .stepper-nav{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+  .stepper-btn{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:10px 16px;font-family:inherit;font-size:13px;font-weight:700;color:var(--grey);cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+  .stepper-btn .n{color:var(--coral);margin-right:6px;}
+  .stepper-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .stepper-btn.active .n{color:#fff;}
+  .stepper-panels{position:relative;min-height:100px;}
+  .stepper-panel{display:none;animation:fadeIn .3s ease;}
+  .stepper-panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  .stepper-panel h3{font-size:18px;margin-bottom:8px;}
+  .stepper-panel p{font-size:14.5px;margin-bottom:0;}
+  .stepper-progress{height:3px;background:var(--mid-grey);border-radius:2px;margin-top:18px;overflow:hidden;}
+  .stepper-progress-fill{height:100%;background:var(--coral);width:0%;transition:width .05s linear;}
+
+  /* LOGO STRIP */
+  .logo-strip{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
+  .logo-chip{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:20px;padding:8px 16px;font-size:12.5px;color:var(--navy);font-weight:600;}
+
+  /* FEATURE LIST */
+  .feat-list{list-style:none;padding:0;margin:0;}
+  .feat-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .feat-item:last-child{border-bottom:none;}
+  .feat-item h3{font-size:15.5px;margin-bottom:4px;}
+  .feat-item p{margin:0;font-size:14px;}
+
+  /* TABS (operations detail) */
+  .tab-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;border-bottom:1px solid var(--mid-grey);}
+  .tab-btn{background:none;border:none;padding:10px 4px;margin-right:20px;font-size:14px;font-weight:600;color:var(--grey);cursor:pointer;border-bottom:2px solid transparent;font-family:inherit;}
+  .tab-btn:hover{color:var(--navy);}
+  .tab-btn.active{color:var(--coral);border-bottom-color:var(--coral);}
+  .tab-panel{display:none;animation:fadeIn .25s ease;}
+  .tab-panel.active{display:block;}
+  .tab-body{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center;}
+  .tab-image{background:linear-gradient(135deg,var(--light-grey),var(--mid-grey));border:1px dashed var(--grey);border-radius:10px;height:170px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--grey);padding:16px;}
+  .tab-image .icon{font-size:26px;margin-bottom:6px;}
+  .tab-image .caption{font-size:11.5px;max-width:220px;}
+  .tab-panel h3{font-size:16px;margin-bottom:8px;}
+  .tab-panel ul{list-style:none;padding:0;margin:0;}
+  .tab-panel li{font-size:13px;color:var(--navy);padding-left:16px;position:relative;margin-bottom:6px;}
+  .tab-panel li:before{content:"–";position:absolute;left:0;color:var(--coral);}
+
+  /* SECONDARY-KEYWORD QUESTION SECTIONS */
+  .kw-question{padding-top:44px;padding-bottom:44px;}
+
+  /* RELATED PRODUCTS — CLICK TO REVEAL */
+  .def-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .def-card{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px;cursor:pointer;}
+  .def-toggle{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0;font-size:14.5px;user-select:none;}
+  .def-mark{color:var(--coral);font-weight:700;font-size:15px;flex-shrink:0;transition:transform .2s;}
+  .def-card.open .def-mark{transform:rotate(45deg);}
+  .def-card p{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;margin-top:0;font-size:12.5px;}
+  .def-card.open p{max-height:120px;margin-top:8px;}
+
+  /* CUSTOMER PROOF */
+  blockquote{background:var(--coral-light);border-left:4px solid var(--coral);padding:18px 22px;margin:0;font-size:15px;color:var(--navy);font-style:italic;}
+  blockquote cite{display:block;margin-top:10px;font-size:13px;color:var(--grey);font-style:normal;}
+
+  /* FAQ ACCORDION */
+  .faq-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .faq-item h3{font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;cursor:pointer;user-select:none;}
+  .faq-item p{font-size:14px;margin:8px 0 0;max-height:0;overflow:hidden;transition:max-height .25s ease,margin .25s ease;}
+  .faq-item.open p{max-height:220px;}
+  .faq-mark{color:var(--coral);font-size:18px;flex-shrink:0;transition:transform .2s;display:inline-block;}
+  .faq-item.open .faq-mark{transform:rotate(45deg);}
+
+  /* CTA BLOCK */
+  .cta-block{background:var(--navy);color:#fff;text-align:center;padding:60px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .cta-block h2{color:#fff;}
+  .cta-block p{color:#C7CCDA;max-width:480px;margin:0 auto 28px;}
+
+  /* PALETTE */
+  .palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .swatch{border:1px solid var(--mid-grey);border-radius:8px;overflow:hidden;}
+  .swatch-color{height:56px;}
+  .swatch-info{padding:10px 12px;background:#fff;}
+  .swatch-info b{font-size:13px;display:block;}
+  .swatch-info span{font-size:11.5px;color:var(--grey);}
+
+  @media (max-width:800px){
+    .def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
+    .tab-body{grid-template-columns:1fr;}
+    h1{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Camping &amp; glamping management software for the next generation of glampers</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing — make managing your outdoor accommodation easy with a cloud-native, mobile-friendly PMS.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">See pricing</a>
+    </div>
+    <div class="img-placeholder hero-image">
+      <span class="icon">🖼️</span>
+      <span class="caption">Hero product shot — a glamping guest checking in from a dome tent via mobile</span>
+      <span class="note">Placeholder — swap in real product photography</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" data-count="10" data-suffix=" hrs">0</div><div class="lbl">Saved per week with automation</div></div>
+      <div class="stat"><div class="num" data-count="99" data-suffix="%">0</div><div class="lbl">Uptime</div></div>
+      <div class="stat"><div class="num" data-count="1000" data-suffix="+">0</div><div class="lbl">Integrations</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="jump-nav">
+  <div class="jump-nav-inner">
+    <a href="#video">Overview video</a>
+    <a href="#overview">Overview</a>
+    <a href="#whychoose">Why Choose Mews</a>
+    <a href="#operations">Streamlined Operations</a>
+    <a href="#revenue">Revenue Beyond Pitches</a>
+    <a href="#related">Related Products</a>
+    <a href="#proof">Customer Proof</a>
+    <a href="#choose">How to Choose</a>
+    <a href="#faqs">FAQs</a>
+  </div>
+</nav>
+
+<section class="wrap" id="video">
+  <h2>See Mews for camping &amp; glamping in 90 seconds</h2>
+  <div class="video-card" id="videoCard" role="button" tabindex="0" aria-label="Play overview video">
+    <span class="video-duration">1:15</span>
+    <div class="play-button">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+  </div>
+  <p class="video-caption">Lorem ipsum dolor sit amet — a quick walkthrough of dolor, sit and amet, from booking a pitch to checking in from a phone.</p>
+  <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
+</section>
+
+<section class="wrap" id="overview">
+  <h2>What is camping management software?</h2>
+  <ul class="takeaways">
+    <li>Lorem ipsum dolor — a property management dolor built for campgrounds, glamping sites and outdoor hospitality providers</li>
+    <li>Books and assigns individual pitches or units, not just rooms — tent sites, RV hookups, cabins and dolor</li>
+    <li>Built around seasonal demand rather than year-round room inventory — one seasonal site or a growing portfolio, managed the same sit</li>
+    <li>Handles shared, on-site facilities and custom amenities that a room-based dolor doesn't</li>
+    <li>Works equally for a rustic campground or a high-end glamping dolor</li>
+  </ul>
+</section>
+
+<section class="wrap kw-question">
+  <h2>What is outdoor hospitality software?</h2>
+  <p>Lorem ipsum — a broader term covering camping and glamping management software together, built around pitch-level booking, seasonal management and on-site facilities, as distinct from PMS platforms built primarily for indoor hotel rooms.</p>
+</section>
+
+<section class="wrap" id="whychoose">
+  <h2>Why choose Mews as your camping management software?</h2>
+  <div class="stepper-nav" id="stepperNav1">
+    <button class="stepper-btn active" data-step="0"><span class="n">/01</span>Flexibility</button>
+    <button class="stepper-btn" data-step="1"><span class="n">/02</span>Customize</button>
+    <button class="stepper-btn" data-step="2"><span class="n">/03</span>Maximize</button>
+    <button class="stepper-btn" data-step="3"><span class="n">/04</span>Property Groups</button>
+  </div>
+  <div class="stepper-panels" id="stepperPanels1">
+    <div class="stepper-panel active" data-panel="0">
+      <h3>Flexibility and freedom</h3>
+      <p>Lorem ipsum dolor sit — manage your property from anywhere with just a login, a device and internet.</p>
+    </div>
+    <div class="stepper-panel" data-panel="1">
+      <h3>Customize your platform</h3>
+      <p>Dolor sit amet — open APIs and 1,000+ integrations, from accounting to maintenance.</p>
+    </div>
+    <div class="stepper-panel" data-panel="2">
+      <h3>Maximize your potential</h3>
+      <p>Amet consectetur — turn tents, yurts, cabins and other spaces into bookable, revenue-generating inventory.</p>
+    </div>
+    <div class="stepper-panel" data-panel="3">
+      <h3>Property group management</h3>
+      <p>Lorem ipsum: centralize operations, share data and deploy quickly across every site.</p>
+    </div>
+  </div>
+  <div class="stepper-progress"><div class="stepper-progress-fill" id="stepperProgressFill1"></div></div>
+</section>
+
+<section class="wrap">
+  <p class="kicker">trusted by hospitality brands around the world</p>
+  <div class="logo-strip">
+    <span class="logo-chip">MOA</span>
+    <span class="logo-chip">Yalo</span>
+    <span class="logo-chip">Scribner's</span>
+    <span class="logo-chip">Pluimpapaver</span>
+    <span class="logo-chip">Cabiner</span>
+    <span class="logo-chip">Finn Lough</span>
+    <span class="logo-chip">YHA Australia</span>
+    <span class="logo-chip">Glampsource</span>
+  </div>
+</section>
+
+<section class="wrap" id="operations">
+  <h2>Your path to streamlined operations</h2>
+  <ul class="feat-list">
+    <li class="feat-item"><h3>Automate daily tasks</h3><p>Lorem ipsum dolor sit — drag-and-drop reservation timelines, optimized room assignments and rate management replace manual admin.</p></li>
+    <li class="feat-item"><h3>Digital solutions</h3><p>Dolor sit amet — let guests truly disconnect, checking in, checking out and asking questions with just their phones.</p></li>
+    <li class="feat-item"><h3>Embedded payments</h3><p>Amet consectetur — guests can pay at any point in their stay, with card details securely tokenized for easy repeat purchases.</p></li>
+  </ul>
+  <p style="margin-top:20px;">Lorem ipsum dolor sit — click a tab to see what else streamlined operations covers.</p>
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="cloud" role="tab" aria-selected="true">Cloud-native</button>
+    <button class="tab-btn" data-tab="journey" role="tab" aria-selected="false">Guest journey</button>
+    <button class="tab-btn" data-tab="comms" role="tab" aria-selected="false">Communications</button>
+    <button class="tab-btn" data-tab="sustain" role="tab" aria-selected="false">Sustainability</button>
+    <button class="tab-btn" data-tab="ecosystem" role="tab" aria-selected="false">Ecosystem</button>
+  </div>
+  <div class="tab-panel active" data-panel="cloud">
+    <div class="tab-body">
+      <div class="tab-image"><span class="icon">☁️</span><span class="caption">Cloud dashboard accessible from any device</span></div>
+      <div><h3>Cloud-native</h3><ul><li>99% uptime</li><li>No on-site server needed</li><li>Automatic system updates</li></ul></div>
+    </div>
+  </div>
+  <div class="tab-panel" data-panel="journey">
+    <div class="tab-body">
+      <div class="tab-image"><span class="icon">📲</span><span class="caption">Guest checking in from a mobile device</span></div>
+      <div><h3>Guest journey</h3><ul><li>Check-in and out via mobile or Mews Kiosk</li><li>Guests and staff communicate via app</li><li>Save staff time for guests who need it</li></ul></div>
+    </div>
+  </div>
+  <div class="tab-panel" data-panel="comms">
+    <div class="tab-body">
+      <div class="tab-image"><span class="icon">💬</span><span class="caption">Task and messaging notifications on a phone</span></div>
+      <div><h3>Communications</h3><ul><li>Deliver frictionless notifications</li><li>Share housekeeping updates on mobile</li><li>Assign and prioritize tasks via messaging</li></ul></div>
+    </div>
+  </div>
+  <div class="tab-panel" data-panel="sustain">
+    <div class="tab-body">
+      <div class="tab-image"><span class="icon">🌱</span><span class="caption">Paperless, cloud-based documentation</span></div>
+      <div><h3>Sustainability</h3><ul><li>Build your reputation as eco-conscious</li><li>Reduce paper waste with digitalization</li><li>Access all documents from the cloud</li></ul></div>
+    </div>
+  </div>
+  <div class="tab-panel" data-panel="ecosystem">
+    <div class="tab-body">
+      <div class="tab-image"><span class="icon">🔗</span><span class="caption">Third-party apps connecting into one ecosystem</span></div>
+      <div><h3>Ecosystem</h3><ul><li>Adapts to your existing ecosystem</li><li>Build your platform with third-party apps</li><li>Increase distribution visibility and direct bookings</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="revenue">
+  <h2>Revenue beyond pitches</h2>
+  <div class="stepper-nav" id="stepperNav2">
+    <button class="stepper-btn active" data-step="0"><span class="n">/01</span>Direct</button>
+    <button class="stepper-btn" data-step="1"><span class="n">/02</span>Upsells</button>
+    <button class="stepper-btn" data-step="2"><span class="n">/03</span>Spaces</button>
+  </div>
+  <div class="stepper-panels" id="stepperPanels2">
+    <div class="stepper-panel active" data-panel="0">
+      <h3>Direct bookings</h3>
+      <p>Lorem ipsum dolor sit — cut out OTA fees and offer exclusive deals right on your own site.</p>
+    </div>
+    <div class="stepper-panel" data-panel="1">
+      <h3>Seamless upsells and cross-sells</h3>
+      <p>Dolor sit amet — boost average booking value at booking, check-in or through targeted messaging during the stay.</p>
+    </div>
+    <div class="stepper-panel" data-panel="2">
+      <h3>Bookable services and spaces</h3>
+      <p>Amet consectetur — offer various space types and services to broaden appeal and attract more guests.</p>
+    </div>
+  </div>
+  <div class="stepper-progress"><div class="stepper-progress-fill" id="stepperProgressFill2"></div></div>
+</section>
+
+<section class="wrap" id="related">
+  <h2>Our Related Products</h2>
+  <p>Lorem ipsum — camping management software rarely works alone. Here's how it connects to the rest of the Mews platform.</p>
+  <div class="def-grid" id="relatedGrid">
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Booking Engine <span class="def-mark">＋</span></h3>
+      <p>Lorem ipsum dolor sit — drive more direct bookings and reduce OTA fees.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Guest Check-In <span class="def-mark">＋</span></h3>
+      <p>Ipsum dolor sit amet — mobile check-in or self-serve kiosks for a smoother arrival.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Embedded Payments <span class="def-mark">＋</span></h3>
+      <p>Dolor sit amet — tokenized cards and automated reconciliation, built in natively.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Housekeeping <span class="def-mark">＋</span></h3>
+      <p>Sit amet — manage tasks and scheduling across every unit in real time.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Business Intelligence <span class="def-mark">＋</span></h3>
+      <p>Amet dolor — dashboards that track occupancy, revenue and property performance.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Mews Marketplace <span class="def-mark">＋</span></h3>
+      <p>Dolor sit amet — 1,000+ integrations, from accounting to maintenance.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="proof">
+  <h2>What outdoor hospitality operators say</h2>
+  <blockquote>
+    "The best technology blends into the background. Mews actually helps us to ensure our guests remain immersed in nature and the beautiful surroundings of the Lough."
+    <cite>— Gillian Beare, Director, Finn Lough</cite>
+  </blockquote>
+</section>
+
+<section class="wrap" id="choose">
+  <h2>How to choose the best software</h2>
+  <p>Lorem ipsum dolor sit — the best camping software is flexible, easy to use and built to support a wide range of accommodation types, from tent pitches to luxury domes. Look for real-time availability, mobile check-in, embedded payments and integrations with the hospitality apps you already rely on.</p>
+</section>
+
+<section class="wrap" id="faqs">
+  <div class="bug-note">Note: the live Mews page's FAQ currently includes two questions about digital key door-lock compatibility and key sharing — these appear to be copied over from the separate Digital Key product page and aren't relevant to camping software. They're omitted here; worth flagging to fix on the live page.</div>
+  <h2>Frequently asked questions</h2>
+
+  <div class="faq-item">
+    <h3>What is glamping management software? <span class="faq-mark">＋</span></h3>
+    <p>Lorem ipsum dolor sit — the same category of software as camping management software, with an emphasis on higher-end outdoor accommodation like domes, yurts and cabins.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is a camping booking system? <span class="faq-mark">＋</span></h3>
+    <p>Dolor sit amet — the reservation layer specifically, the part guests interact with to check availability and book a pitch, unit or site.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is a glamping PMS? <span class="faq-mark">＋</span></h3>
+    <p>Amet consectetur — a property management system built for glamping operations: reservations, pitch or unit assignment, billing and guest communication in one place.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Why is glamping and camping management software important? <span class="faq-mark">＋</span></h3>
+    <p>Lorem ipsum: it simplifies the unique challenges of outdoor property management — coordinating check-ins, managing seasonal demand, and handling shared facilities and custom amenities.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can I manage multiple camping sites or locations from one system? <span class="faq-mark">＋</span></h3>
+    <p>Yes. Dolor sit amet — a single dashboard gives centralized control over reservations, availability, rates and reporting across every property.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does camping software support different unit types like RVs, tents and cabins? <span class="faq-mark">＋</span></h3>
+    <p>Yes — amet consectetur, modern camping software handles a wide range of unit types, including RV hookups, tent pitches, cabins and pods.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How is camping software different from general hospitality management software? <span class="faq-mark">＋</span></h3>
+    <p>Dolor sit amet — camping software is built around pitch-level booking instead of room inventory, seasonal opening and closing instead of year-round operations, and shared, on-site facilities and non-room accommodation types like tents, yurts and RVs. Same underlying Mews platform, different operating reality.</p>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="wrap">
+    <h2>See Mews in action</h2>
+    <p>Book a personalised demo and see how Mews keeps outdoor operations running smoothly.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">Talk to sales</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="palette-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#16213E;"></div><div class="swatch-info"><b>Deep Navy</b><span>#16213E — hero backgrounds</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FF6B6B;"></div><div class="swatch-info"><b>Coral</b><span>#FF6B6B — CTAs / highlights</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF0F0;"></div><div class="swatch-info"><b>Coral Light</b><span>#FFF0F0 — soft fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2ECC71;"></div><div class="swatch-info"><b>Green</b><span>#2ECC71 — positive indicators</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#6B7280;"></div><div class="swatch-info"><b>Grey</b><span>#6B7280 — body copy</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F8F9FA;"></div><div class="swatch-info"><b>Light Grey</b><span>#F8F9FA — card fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E5E7EB;"></div><div class="swatch-info"><b>Mid Grey</b><span>#E5E7EB — borders</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4F8EF7;"></div><div class="swatch-info"><b>Blue Accent</b><span>#4F8EF7 — info / links</span></div></div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+  /* Sticky jump-nav active highlighting */
+  const navLinks = Array.from(document.querySelectorAll('.jump-nav a'));
+  const targets = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function setActiveNav(){
+    let current = null;
+    for (const t of targets) { if (t.getBoundingClientRect().top <= 80) current = t; }
+    navLinks.forEach(a => a.classList.toggle('active', !!current && a.getAttribute('href') === '#' + current.id));
+  }
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  setActiveNav();
+
+  /* Scroll progress bar */
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  /* Back to top */
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 600), { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Video card click-to-note */
+  const videoCard = document.getElementById('videoCard');
+  const videoNote = document.getElementById('videoNote');
+  function toggleVideoNote(){ videoNote.style.display = videoNote.style.display === 'block' ? 'none' : 'block'; }
+  videoCard.addEventListener('click', toggleVideoNote);
+  videoCard.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') toggleVideoNote(); });
+
+  /* Animated count-up stats */
+  const counters = document.querySelectorAll('[data-count]');
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 900;
+    const start = performance.now();
+    function step(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) { animateCount(entry.target); io.unobserve(entry.target); } });
+  }, { threshold: 0.4 });
+  counters.forEach(c => io.observe(c));
+
+  /* Generic numbered-stepper factory — clickable + auto-advancing */
+  function makeStepper(navId, panelsId, fillId, sectionId){
+    const btns = document.querySelectorAll('#' + navId + ' .stepper-btn');
+    const panels = document.querySelectorAll('#' + panelsId + ' .stepper-panel');
+    const fill = document.getElementById(fillId);
+    let current = 0;
+    let timer, raf, start;
+    const DURATION = 5000;
+
+    function goTo(index){
+      current = (index + btns.length) % btns.length;
+      btns.forEach((b, i) => b.classList.toggle('active', i === current));
+      panels.forEach((p, i) => p.classList.toggle('active', i === current));
+    }
+    function tick(now){
+      if (!start) start = now;
+      const progress = Math.min((now - start) / DURATION, 1);
+      fill.style.width = (progress * 100) + '%';
+      if (progress < 1) { raf = requestAnimationFrame(tick); }
+    }
+    function startAuto(){
+      start = null;
+      fill.style.width = '0%';
+      raf = requestAnimationFrame(tick);
+      timer = setInterval(() => { goTo(current + 1); start = null; fill.style.width = '0%'; }, DURATION);
+    }
+    function stopAuto(){ clearInterval(timer); cancelAnimationFrame(raf); }
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        goTo(parseInt(btn.dataset.step, 10));
+        stopAuto();
+        startAuto();
+      });
+    });
+    const section = document.getElementById(sectionId);
+    section.addEventListener('mouseenter', stopAuto);
+    section.addEventListener('mouseleave', startAuto);
+    startAuto();
+  }
+  makeStepper('stepperNav1', 'stepperPanels1', 'stepperProgressFill1', 'whychoose');
+  makeStepper('stepperNav2', 'stepperPanels2', 'stepperProgressFill2', 'revenue');
+
+  /* Operations detail tabs */
+  const opsTabButtons = document.querySelectorAll('.tab-btn');
+  const opsTabPanels = document.querySelectorAll('#operations .tab-panel');
+  opsTabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      opsTabButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      opsTabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+    });
+  });
+
+  /* Related Products click-to-reveal */
+  document.querySelectorAll('#relatedGrid .def-toggle').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const card = h3.closest('.def-card');
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      const mark = h3.querySelector('.def-mark');
+      if (mark) mark.textContent = wasOpen ? '＋' : '－';
+    });
+  });
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-item h3').forEach(h3 => {
+    h3.addEventListener('click', () => h3.parentElement.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mews · Hotel PMS · Interactive Mockup (Lorem Ipsum, Mews Style)</title>
+<style>
+  :root{
+    --navy:#16213E; --coral:#FF6B6B; --coral-light:#FFF0F0; --green:#2ECC71;
+    --grey:#6B7280; --light-grey:#F8F9FA; --mid-grey:#E5E7EB; --blue:#4F8EF7;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--navy);background:#fff;line-height:1.55;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  section{padding:60px 0;border-bottom:1px solid var(--mid-grey);scroll-margin-top:64px;}
+  section h2:first-child, section h3:first-child{margin-top:0;}
+  .section-label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .section-label .tag{background:var(--mid-grey);color:var(--navy);padding:2px 8px;border-radius:3px;font-weight:600;}
+  .section-label.on-dark{color:#C7CCDA;justify-content:center;}
+  .section-label.on-dark .tag{background:rgba(255,255,255,.15);color:#fff;}
+  h1{font-size:34px;margin:0 0 14px;line-height:1.15;}
+  h2{font-size:26px;margin:0 0 14px;}
+  h3{font-size:17px;margin:0 0 8px;}
+  p{color:var(--grey);margin:0 0 16px;}
+
+  .award-badge{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12.5px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+  .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hero h1{color:#fff;max-width:700px;margin:0 auto 14px;}
+  .hero p.lead{color:#C7CCDA;max-width:560px;margin:0 auto 20px;font-size:17px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
+  .btn-primary{background:var(--coral);color:#fff;}
+  .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
+  .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
+  .stat{text-align:center;}
+  .stat .num{font-size:22px;font-weight:700;color:var(--coral);}
+  .stat .lbl{font-size:13px;color:#C7CCDA;margin-top:4px;}
+
+  /* STICKY JUMP NAV */
+  .jump-nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--mid-grey);box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .jump-nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+  .jump-nav-inner::-webkit-scrollbar{display:none;}
+  .jump-nav a{flex-shrink:0;font-size:13px;font-weight:600;color:var(--grey);text-decoration:none;padding:14px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
+  .jump-nav a:hover{color:var(--navy);}
+  .jump-nav a.active{color:var(--coral);border-bottom-color:var(--coral);}
+
+  /* VIDEO SECTION */
+  .video-card{position:relative;max-width:760px;margin:0 auto;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--navy),#233158);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.1);}
+  .video-card:hover .play-button{transform:scale(1.08);}
+  .play-button{width:74px;height:74px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 8px 24px rgba(255,107,107,.4);}
+  .play-button svg{margin-left:4px;}
+  .video-caption{text-align:center;max-width:560px;margin:18px auto 0;font-size:13.5px;color:var(--grey);}
+  .video-duration{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;padding:3px 8px;border-radius:4px;}
+  .video-playing-note{text-align:center;font-size:12px;color:var(--coral);margin-top:10px;display:none;}
+
+  ul.takeaways{list-style:none;padding:0;margin:0;}
+  ul.takeaways li{padding-left:26px;position:relative;margin-bottom:14px;color:var(--navy);}
+  ul.takeaways li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);position:absolute;left:0;top:7px;}
+
+  .feat-list{list-style:none;padding:0;margin:0;}
+  .feat-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .feat-item:last-child{border-bottom:none;}
+  .feat-item h3{font-size:15.5px;margin-bottom:6px;}
+  .feat-item ul{list-style:none;padding:0;margin:0;}
+  .feat-item li{font-size:13.5px;color:var(--grey);padding-left:16px;position:relative;margin-bottom:6px;}
+  .feat-item li:before{content:"–";position:absolute;left:0;color:var(--coral);}
+
+  .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .cap-card{border:1px solid var(--mid-grey);border-radius:8px;padding:16px;}
+  .cap-card h3{font-size:14px;}
+  .cap-card p{font-size:12.5px;margin:0;}
+
+  /* TABS (Guest Experiences — mirrors the real page's tabbed switcher) */
+  .tab-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px;border-bottom:1px solid var(--mid-grey);}
+  .tab-btn{background:none;border:none;padding:10px 4px;margin-right:20px;font-size:14.5px;font-weight:600;color:var(--grey);cursor:pointer;border-bottom:2px solid transparent;font-family:inherit;}
+  .tab-btn:hover{color:var(--navy);}
+  .tab-btn.active{color:var(--coral);border-bottom-color:var(--coral);}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;animation:fadeIn .25s ease;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  .tab-panel ul{list-style:none;padding:0;margin:0;}
+  .tab-panel li{padding-left:20px;position:relative;margin-bottom:10px;font-size:14px;color:var(--navy);}
+  .tab-panel li:before{content:"✓";color:var(--green);font-weight:700;position:absolute;left:0;}
+
+  .def-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .def-card{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px;}
+  .def-card h3{color:var(--navy);font-size:14px;}
+  .def-card p{margin:0;font-size:12.5px;}
+
+  blockquote{background:var(--coral-light);border-left:4px solid var(--coral);padding:18px 22px;margin:0;font-size:15px;color:var(--navy);font-style:italic;}
+  blockquote cite{display:block;margin-top:10px;font-size:13px;color:var(--grey);font-style:normal;}
+  .quote-carousel{position:relative;}
+  .quote-slide{display:none;animation:fadeIn .3s ease;}
+  .quote-slide.active{display:block;}
+  .quote-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+  .quote-dot{width:8px;height:8px;border-radius:50%;background:var(--mid-grey);border:none;cursor:pointer;padding:0;}
+  .quote-dot.active{background:var(--coral);}
+
+  .data-row{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
+  .data-card{flex:1;min-width:130px;background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px;text-align:center;}
+  .data-card .num{font-size:20px;font-weight:700;color:var(--navy);}
+  .data-card .lbl{font-size:11px;color:var(--grey);margin-top:6px;}
+  .data-card .src{font-size:10px;color:var(--grey);margin-top:6px;font-style:italic;}
+
+  .checklist{list-style:none;padding:0;margin:0;}
+  .checklist li{padding-left:24px;position:relative;margin-bottom:12px;font-size:14px;color:var(--navy);}
+  .checklist li:before{content:"✓";color:var(--green);font-weight:700;position:absolute;left:0;}
+
+  /* IMAGE PLACEHOLDERS */
+  .img-placeholder{background:linear-gradient(135deg,var(--light-grey),var(--mid-grey));border:1px dashed var(--grey);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--grey);padding:20px;}
+  .img-placeholder .icon{font-size:26px;margin-bottom:6px;}
+  .img-placeholder .caption{font-size:12px;max-width:220px;}
+  .img-placeholder .note{font-size:10.5px;color:var(--coral);margin-top:6px;font-style:italic;}
+
+  .hero-image{margin:0 auto 32px;max-width:640px;height:220px;}
+  .logo-strip{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;padding:20px 0 28px;border-top:1px solid rgba(255,255,255,.15);}
+  .logo-chip{background:rgba(255,255,255,.08);border:1px dashed rgba(255,255,255,.3);border-radius:6px;padding:8px 18px;font-size:11.5px;color:#C7CCDA;}
+
+  .feature-shot{height:200px;margin-top:20px;}
+
+  /* CAROUSEL (Section 4) */
+  .carousel{position:relative;margin-top:24px;}
+  .carousel-track{height:220px;position:relative;overflow:hidden;border-radius:10px;}
+  .carousel-slide{position:absolute;inset:0;opacity:0;transition:opacity .4s ease;display:flex;}
+  .carousel-slide.active{opacity:1;}
+  .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:14px;}
+  .carousel-dot{width:8px;height:8px;border-radius:50%;background:var(--mid-grey);border:none;cursor:pointer;padding:0;}
+  .carousel-dot.active{background:var(--coral);}
+  .carousel-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.9);border:1px solid var(--mid-grey);border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:14px;color:var(--navy);z-index:5;}
+  .carousel-nav.prev{left:10px;}
+  .carousel-nav.next{right:10px;}
+
+  /* CHART (Section 9) */
+  .chart-box{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:10px;padding:20px 22px;margin-bottom:18px;}
+  .chart-box h3{font-size:14px;margin-bottom:14px;}
+  .chart-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .chart-label{width:110px;font-size:12px;color:var(--navy);flex-shrink:0;}
+  .chart-bar-track{flex:1;background:var(--mid-grey);border-radius:6px;height:16px;overflow:hidden;}
+  .chart-bar-fill{height:100%;background:var(--coral);border-radius:6px;width:0;transition:width 1s cubic-bezier(.4,0,.2,1);}
+  .chart-value{width:54px;text-align:right;font-size:12.5px;font-weight:700;color:var(--navy);flex-shrink:0;}
+
+  /* FAQ ACCORDION */
+  .faq-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .faq-item h3{font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;cursor:pointer;user-select:none;}
+  .faq-item p{font-size:14px;margin:8px 0 0;max-height:0;overflow:hidden;transition:max-height .25s ease,margin .25s ease;}
+  .faq-item.open p{max-height:220px;}
+  .faq-mark{color:var(--coral);font-size:18px;flex-shrink:0;transition:transform .2s;display:inline-block;}
+  .faq-item.open .faq-mark{transform:rotate(45deg);}
+
+  .cta-block{background:var(--navy);color:#fff;text-align:center;padding:60px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .cta-block h2{color:#fff;}
+  .cta-block p{color:#C7CCDA;max-width:480px;margin:0 auto 28px;}
+
+  .palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .swatch{border:1px solid var(--mid-grey);border-radius:8px;overflow:hidden;}
+  .swatch-color{height:56px;}
+  .swatch-info{padding:10px 12px;background:#fff;}
+  .swatch-info b{font-size:13px;display:block;}
+  .swatch-info span{font-size:11.5px;color:var(--grey);}
+
+  /* MEWS VS LEGACY PMS COMPARISON TABLE */
+  .compare-table{border:1px solid var(--mid-grey);border-radius:10px;overflow:hidden;}
+  .compare-header{display:grid;grid-template-columns:1.3fr 1fr 1fr;background:var(--navy);color:#fff;}
+  .compare-header div{padding:12px 14px;font-size:13px;font-weight:700;}
+  .compare-header .compare-col-mews{color:var(--coral);}
+  .compare-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:1px solid var(--mid-grey);}
+  .compare-row:nth-child(odd){background:var(--light-grey);}
+  .compare-label{padding:12px 14px;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .compare-cell{padding:12px 14px;font-size:12.5px;color:var(--grey);}
+  .compare-cell.mews{color:var(--navy);font-weight:600;}
+  .compare-cell.mews:before{content:"✓ ";color:var(--green);font-weight:700;}
+  .compare-cell.legacy:before{content:"– ";color:var(--grey);}
+
+  @media (max-width:800px){
+    .cap-grid,.def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
+    h1{font-size:24px;}
+    .compare-header div,.compare-label,.compare-cell{padding:10px 8px;font-size:11.5px;}
+  }
+
+  /* SCROLL PROGRESS BAR */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:100;transition:width .05s linear;}
+
+  /* BACK TO TOP */
+  .back-to-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);z-index:60;font-size:18px;}
+  .back-to-top.visible{display:flex;}
+  .back-to-top:hover{background:var(--coral);}
+
+  /* ROI CALCULATOR */
+  .roi-calc{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:10px;padding:22px 24px;margin-top:8px;}
+  .roi-calc h3{margin-bottom:12px;}
+  .roi-calc label{font-size:13.5px;color:var(--navy);font-weight:600;display:block;margin-bottom:10px;}
+  .roi-calc input[type=range]{width:100%;accent-color:var(--coral);margin-bottom:18px;}
+  .roi-output{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:8px;}
+  .roi-output-num{display:block;font-size:22px;font-weight:700;color:var(--coral);}
+  .roi-output-lbl{display:block;font-size:12px;color:var(--grey);margin-top:2px;}
+  .roi-disclaimer{font-size:11.5px;color:var(--grey);font-style:italic;margin:10px 0 0;}
+  .roi-hint{font-size:12px;color:var(--grey);margin:-8px 0 18px;line-height:1.4;}
+  .roi-source{font-size:11.5px;margin:6px 0 0;}
+  .roi-source a{color:var(--coral);text-decoration:none;font-weight:600;}
+  .roi-source a:hover{text-decoration:underline;}
+
+  /* EXPANDABLE CAP-CARDS */
+  .cap-card{cursor:pointer;transition:box-shadow .15s,border-color .15s;}
+  .cap-card:hover{border-color:var(--coral);box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .cap-card .extra{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;font-size:12px;color:var(--coral);margin-top:0;}
+  .cap-card.expanded .extra{max-height:80px;margin-top:8px;}
+  .cap-card .more-toggle{font-size:11.5px;color:var(--coral);font-weight:600;margin-top:8px;display:inline-block;}
+
+  /* OPERATIONS ACCORDION */
+  .feat-item h3.acc-toggle{cursor:pointer;display:flex;justify-content:space-between;align-items:center;margin:0;user-select:none;}
+  .acc-mark{color:var(--coral);font-weight:700;font-size:15px;flex-shrink:0;}
+  .feat-item ul{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;margin-top:0;}
+  .feat-item.open ul{max-height:220px;margin-top:10px;}
+
+  /* DEFINITIONS — CLICK TO REVEAL */
+  .def-card{cursor:pointer;}
+  .def-toggle{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0;user-select:none;}
+  .def-mark{color:var(--coral);font-weight:700;font-size:15px;flex-shrink:0;transition:transform .2s;}
+  .def-card.open .def-mark{transform:rotate(45deg);}
+  .def-card p{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;margin-top:0;}
+  .def-card.open p{max-height:140px;margin-top:8px;}
+
+  /* BUYER CRITERIA GRID */
+  .criteria-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .criteria-card{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px 20px;}
+  .criteria-card h3{color:var(--navy);font-size:15px;margin-bottom:8px;}
+  .criteria-card p{margin:0;font-size:13.5px;}
+
+  /* COMPETITOR BENCHMARK TABLE */
+  .bench-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .bench-table th,.bench-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--mid-grey);}
+  .bench-table th{color:var(--grey);font-size:11px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;}
+  .bench-table td{color:var(--navy);}
+
+  /* STRUCTURED FAQ CATEGORIES */
+  .faq-category{font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);font-weight:700;margin:28px 0 6px;}
+  .faq-category:first-child{margin-top:0;}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="hero">
+  <div class="wrap">
+    <span class="award-badge">🏆 World's Best Hotel Property Management System 2026</span>
+    <h1>The best hotel PMS for modern hotels</h1>
+    <p class="lead">Lorem ipsum — cloud-native, deeply integrated and built to scale from one property to a global group.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">See pricing</a>
+    </div>
+    <div class="img-placeholder hero-image">
+      <span class="icon">🖼️</span>
+      <span class="caption">Hero property photo — e.g. a Mews customer property in use</span>
+      <span class="note">Placeholder — swap in real photography</span>
+    </div>
+    <div class="logo-strip">
+      <span class="logo-chip">Customer logo</span>
+      <span class="logo-chip">Customer logo</span>
+      <span class="logo-chip">Customer logo</span>
+      <span class="logo-chip">Customer logo</span>
+      <span class="logo-chip">Customer logo</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" data-count="15000" data-suffix="+">0</div><div class="lbl">Properties on Mews PMS</div></div>
+      <div class="stat"><div class="num" data-count="24" data-suffix="%">0</div><div class="lbl">Boost in front desk efficiency</div></div>
+      <div class="stat"><div class="num" data-count="1000" data-suffix="+">0</div><div class="lbl">Integrations</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="jump-nav">
+  <div class="jump-nav-inner">
+    <a href="#video">Overview video</a>
+    <a href="#overview">Overview</a>
+    <a href="#buyer-criteria">Buyer Criteria</a>
+    <a href="#operations">Operations</a>
+    <a href="#guest-experiences">Guest Experiences</a>
+    <a href="#upsells">Upsells</a>
+    <a href="#vs-legacy">Vs. Legacy PMS</a>
+    <a href="#benchmark">Vs. Cloudbeds &amp; SiteMinder</a>
+    <a href="#definitions">Related Products</a>
+    <a href="#customer-proof">Customer Proof</a>
+    <a href="#roi">ROI</a>
+    <a href="#faqs">FAQs</a>
+  </div>
+</nav>
+
+<section class="wrap" id="video">
+  <h2>See Mews PMS in 90 seconds</h2>
+  <div class="video-card" id="videoCard" role="button" tabindex="0" aria-label="Play overview video">
+    <span class="video-duration">1:32</span>
+    <div class="play-button">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+  </div>
+  <p class="video-caption">A quick walkthrough of how Mews, a cloud hotel PMS, unifies reservations, payments, housekeeping and guest experience in one system — from the front desk timeline to the guest's phone.</p>
+  <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
+</section>
+
+<section class="wrap" id="overview">
+  <h2>What is a property management system?</h2>
+  <ul class="takeaways">
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
+    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
+    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
+    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
+  </ul>
+</section>
+
+<section class="wrap" id="cloud-pms">
+  <h2>What is a cloud PMS?</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
+</section>
+
+<section class="wrap" id="pms-software">
+  <h2>What is hotel PMS software?</h2>
+  <p>Incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+</section>
+
+<section class="wrap" id="buyer-criteria">
+  <h2>What to weigh before you choose a PMS</h2>
+  <p>Lorem ipsum — four questions worth answering for yourself, whatever vendor you're evaluating.</p>
+  <div class="criteria-grid">
+    <div class="criteria-card">
+      <h3>Cloud vs. on-premise</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.</p>
+    </div>
+    <div class="criteria-card">
+      <h3>Integrations</h3>
+      <p>Eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="criteria-card">
+      <h3>Migration</h3>
+      <p>Ut enim ad minim veniam quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="criteria-card">
+      <h3>Enterprise vs. independent</h3>
+      <p>Laboris nisi ut aliquip ex ea commodo consequat duis.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="operations">
+  <h2>Automate the routine, focus on the guest</h2>
+  <p>Great hotel PMS software should disappear into the background, handling the routine so your team can focus on guests.</p>
+  <ul class="feat-list" id="opsAccordion">
+    <li class="feat-item open"><h3 class="acc-toggle">Reservations &amp; timeline <span class="acc-mark">–</span></h3><ul><li>Lorem ipsum dolor sit amet consectetur adipiscing</li><li>Elit sed do eiusmod tempor incididunt ut</li><li>Labore et dolore magna aliqua ut enim</li></ul></li>
+    <li class="feat-item"><h3 class="acc-toggle">Business intelligence <span class="acc-mark">+</span></h3><ul><li>Ad minim veniam quis nostrud exercitation</li><li>Ullamco laboris nisi ut aliquip ex</li><li>Ea commodo consequat duis aute irure</li></ul></li>
+    <li class="feat-item"><h3 class="acc-toggle">Accounting &amp; billing <span class="acc-mark">+</span></h3><ul><li>Dolor in reprehenderit in voluptate velit</li><li>Esse cillum dolore eu fugiat nulla</li><li>Pariatur excepteur sint occaecat cupidatat non</li></ul></li>
+    <li class="feat-item"><h3 class="acc-toggle">Housekeeping <span class="acc-mark">+</span></h3><ul><li>Proident sunt in culpa qui officia</li><li>Deserunt mollit anim id est laborum</li><li>Sed ut perspiciatis unde omnis iste</li></ul></li>
+  </ul>
+  <div class="img-placeholder feature-shot">
+    <span class="icon">🖥️</span>
+    <span class="caption">Product screenshot — the reservations timeline / dashboard view</span>
+    <span class="note">Placeholder — swap in a real product screenshot</span>
+  </div>
+</section>
+
+<section class="wrap" id="guest-experiences">
+  <h2>Elevate guest experiences, every time</h2>
+  <div class="tab-bar" role="tablist">
+    <button class="tab-btn active" data-tab="checkin" role="tab" aria-selected="true">Guest check-in/out</button>
+    <button class="tab-btn" data-tab="intelligence" role="tab" aria-selected="false">Guest intelligence</button>
+    <button class="tab-btn" data-tab="payments" role="tab" aria-selected="false">Embedded payments</button>
+  </div>
+  <div class="tab-panel active" data-panel="checkin">
+    <h3>Frictionless digital journeys</h3>
+    <ul>
+      <li>Lorem ipsum dolor sit amet consectetur adipiscing</li>
+      <li>Elit sed do eiusmod tempor incididunt ut</li>
+      <li>Labore et dolore magna aliqua ut enim</li>
+    </ul>
+  </div>
+  <div class="tab-panel" data-panel="intelligence">
+    <h3>Guest intelligence at your fingertips</h3>
+    <ul>
+      <li>Ad minim veniam quis nostrud exercitation ullamco</li>
+      <li>Laboris nisi ut aliquip ex ea commodo</li>
+      <li>Consequat duis aute irure dolor in reprehenderit</li>
+    </ul>
+  </div>
+  <div class="tab-panel" data-panel="payments">
+    <h3>Payments that drive performance</h3>
+    <ul>
+      <li>Voluptate velit esse cillum dolore eu fugiat</li>
+      <li>Nulla pariatur excepteur sint occaecat cupidatat non</li>
+      <li>Proident sunt in culpa qui officia deserunt</li>
+    </ul>
+  </div>
+
+  <div class="carousel" id="guestCarousel">
+    <div class="carousel-track">
+      <button class="carousel-nav prev" aria-label="Previous slide">‹</button>
+      <div class="carousel-slide active img-placeholder" style="position:absolute;inset:0;">
+        <span class="icon">📱</span><span class="caption">Guest unlocking a room with a digital key on their phone</span><span class="note">Placeholder</span>
+      </div>
+      <div class="carousel-slide img-placeholder" style="position:absolute;inset:0;">
+        <span class="icon">🔳</span><span class="caption">Guest scanning a QR code to check in</span><span class="note">Placeholder</span>
+      </div>
+      <div class="carousel-slide img-placeholder" style="position:absolute;inset:0;">
+        <span class="icon">📋</span><span class="caption">Staff member using a tablet at the front desk</span><span class="note">Placeholder</span>
+      </div>
+      <div class="carousel-slide img-placeholder" style="position:absolute;inset:0;">
+        <span class="icon">💳</span><span class="caption">Contactless payment terminal in use</span><span class="note">Placeholder</span>
+      </div>
+      <button class="carousel-nav next" aria-label="Next slide">›</button>
+    </div>
+    <div class="carousel-dots"></div>
+  </div>
+</section>
+
+<section class="wrap" id="upsells">
+  <h2>More ways to grow</h2>
+  <div class="cap-grid">
+    <div class="cap-card" data-expand><h3>Turn browsers into bookers</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p><span class="more-toggle">+ more detail</span><div class="extra">Flexible engines for hourly, nightly or monthly stays.</div></div>
+    <div class="cap-card" data-expand><h3>Make upselling work harder</h3><p>Sed do eiusmod tempor incididunt ut labore et.</p><span class="more-toggle">+ more detail</span><div class="extra">Early check-ins, premium rooms, extras like bike rentals.</div></div>
+    <div class="cap-card" data-expand><h3>Monetize every space</h3><p>Dolore magna aliqua ut enim ad minim veniam.</p><span class="more-toggle">+ more detail</span><div class="extra">Meeting rooms, co-working desks, parking spaces.</div></div>
+    <div class="cap-card" data-expand><h3>Simplify large bookings</h3><p>Quis nostrud exercitation ullamco laboris nisi ut.</p><span class="more-toggle">+ more detail</span><div class="extra">Package rooms, catering and meeting spaces together.</div></div>
+    <div class="cap-card" data-expand><h3>Price every stay properly</h3><p>Aliquip ex ea commodo consequat duis aute irure.</p><span class="more-toggle">+ more detail</span><div class="extra">Forecasting up to two years ahead with Atomize RMS.</div></div>
+    <div class="cap-card" data-expand><h3>Easy switching</h3><p>Dolor in reprehenderit in voluptate velit esse cillum.</p><span class="more-toggle">+ more detail</span><div class="extra">Minimal-training onboarding via Mews University.</div></div>
+  </div>
+</section>
+
+<section class="wrap" id="vs-legacy">
+  <h2>Mews vs. legacy PMS</h2>
+  <p>Lorem ipsum — here's how a modern, cloud hotel PMS stacks up against an aging, on-premise hotel property management system.</p>
+  <div class="compare-table">
+    <div class="compare-header">
+      <div>&nbsp;</div>
+      <div class="compare-col-mews">Mews</div>
+      <div class="compare-col-legacy">Legacy PMS</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-label">Deployment</div>
+      <div class="compare-cell mews">Lorem ipsum dolor sit amet consectetur.</div>
+      <div class="compare-cell legacy">Adipiscing elit sed do eiusmod tempor.</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-label">Updates</div>
+      <div class="compare-cell mews">Incididunt ut labore et dolore magna.</div>
+      <div class="compare-cell legacy">Aliqua ut enim ad minim veniam.</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-label">Payments</div>
+      <div class="compare-cell mews">Quis nostrud exercitation ullamco laboris.</div>
+      <div class="compare-cell legacy">Nisi ut aliquip ex ea commodo.</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-label">Integrations</div>
+      <div class="compare-cell mews">Consequat duis aute irure dolor in.</div>
+      <div class="compare-cell legacy">Reprehenderit in voluptate velit esse cillum.</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-label">Guest experience</div>
+      <div class="compare-cell mews">Dolore eu fugiat nulla pariatur excepteur.</div>
+      <div class="compare-cell legacy">Sint occaecat cupidatat non proident sunt.</div>
+    </div>
+    <div class="compare-row">
+      <div class="compare-label">Onboarding</div>
+      <div class="compare-cell mews">In culpa qui officia deserunt mollit.</div>
+      <div class="compare-cell legacy">Anim id est laborum sed ut perspiciatis.</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="benchmark">
+  <h2>How Mews compares: Cloudbeds and SiteMinder</h2>
+  <p>Lorem ipsum — these two get compared to Mews often, but they're not solving quite the same problem.</p>
+  <table class="bench-table">
+    <tr><th>Vendor</th><th>What they actually are</th><th>Where Mews differs</th></tr>
+    <tr><td>Cloudbeds</td><td>Lorem ipsum dolor sit amet consectetur adipiscing elit sed.</td><td>Do eiusmod tempor incididunt ut labore et dolore magna.</td></tr>
+    <tr><td>SiteMinder</td><td>Aliqua ut enim ad minim veniam quis nostrud exercitation.</td><td>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</td></tr>
+  </table>
+  <p class="footnote" style="font-size:12px;margin-top:12px;">Lorem ipsum — descriptions above reflect how each vendor positions itself publicly; ask any vendor for a feature-by-feature comparison based on your own requirements.</p>
+</section>
+
+<section class="wrap" id="definitions">
+  <h2>Our Related Products</h2>
+  <p>A modern hotel property management software platform rarely works alone. Here's how the pieces connect around your PMS.</p>
+  <div class="def-grid" id="defGrid">
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Point-of-Sale (POS) <span class="def-mark">＋</span></h3>
+      <p>Lorem ipsum dolor sit amet — F&amp;B and retail charges post directly to the guest folio, no separate reconciliation needed.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Revenue Management (RMS) <span class="def-mark">＋</span></h3>
+      <p>Ipsum dolor sit — dynamic pricing and demand forecasting, powered by Atomize — forecasting up to 24 months ahead.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Embedded Payments <span class="def-mark">＋</span></h3>
+      <p>Dolor sit amet — tokenized cards and automated reconciliation, built into the same platform as the PMS.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Booking Engine <span class="def-mark">＋</span></h3>
+      <p>Sit amet — direct, commission-free reservations, reducing OTA reliance with a mobile-first booking flow.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Housekeeping <span class="def-mark">＋</span></h3>
+      <p>Amet dolor — room status and task updates, synced in real time with the connected front desk.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Guest Check-In <span class="def-mark">＋</span></h3>
+      <p>Dolor sit — mobile-first check-in and registration, with self-service kiosks and digital keys.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>What features are most important in a modern PMS?</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
+  <p>Incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+  <div class="cap-grid">
+    <div class="cap-card"><h3>Direct booking engine</h3><p>Lorem ipsum dolor sit amet consectetur.</p></div>
+    <div class="cap-card"><h3>Embedded payments</h3><p>Adipiscing elit sed do eiusmod tempor.</p></div>
+    <div class="cap-card"><h3>Connected housekeeping</h3><p>Incididunt ut labore et dolore magna.</p></div>
+    <div class="cap-card"><h3>Complete guest profiles</h3><p>Aliqua ut enim ad minim veniam quis.</p></div>
+    <div class="cap-card"><h3>Distribution connections</h3><p>Nostrud exercitation ullamco laboris nisi.</p></div>
+  </div>
+</section>
+
+<section class="wrap" id="customer-proof">
+  <h2>Testimonials</h2>
+  <p>Independent properties and large groups alike choose Mews as their PMS for hotels that need to move fast without sacrificing guest experience.</p>
+  <div class="img-placeholder" style="height:140px;margin-bottom:18px;">
+    <span class="icon">🏨</span>
+    <span class="caption">Property photo — Leven Manchester</span>
+    <span class="note">Placeholder — swap in a real property photo</span>
+  </div>
+  <div class="quote-carousel" id="quoteCarousel">
+    <div class="quote-slide active">
+      <blockquote>
+        "We're really happy with Mews POS. It connects seamlessly with the rest of Mews and empowers our F&amp;B team to work faster and give guests a better dining experience."
+        <cite>— Kris Doyle, General Manager, Leven Manchester</cite>
+      </blockquote>
+    </div>
+    <div class="quote-slide">
+      <blockquote>
+        "Mews gives me valuable hours back each day. Without it, managing multiple properties and expanding into new cities would be nearly impossible."
+        <cite>— Álvaro Bautista, Director of Operations, Petit Hostel</cite>
+      </blockquote>
+    </div>
+    <div class="quote-slide">
+      <blockquote>
+        "We wanted to be able to maintain consistency between properties, rate groups, users and segments. That's why we were looking for a system that allowed us to grow without requiring more staff."
+        <cite>— Fredrik Ternsjö, Head of Revenue Distribution and Systems, Ligula</cite>
+      </blockquote>
+    </div>
+    <div class="quote-dots"></div>
+  </div>
+</section>
+
+<section class="wrap" id="roi">
+  <h2>The Metrics That Matter</h2>
+  <div class="chart-box">
+    <h3>ADR growth vs. three-year ROI</h3>
+    <div class="chart-row">
+      <span class="chart-label">ADR growth</span>
+      <div class="chart-bar-track"><div class="chart-bar-fill" data-chart-target="7.3" data-chart-max="500"></div></div>
+      <span class="chart-value">7.3%</span>
+    </div>
+    <div class="chart-row">
+      <span class="chart-label">3-yr ROI</span>
+      <div class="chart-bar-track"><div class="chart-bar-fill" data-chart-target="476" data-chart-max="500"></div></div>
+      <span class="chart-value">476%</span>
+    </div>
+  </div>
+
+  <div class="roi-calc">
+    <h3>Estimate your impact</h3>
+    <p>Curious what Mews could mean for your property's bottom line? Use Mews' own calculator to get a personalized estimate based on your property's details.</p>
+    <a class="btn btn-primary" href="https://www.mews.com/en/products/payments/calculator" target="_blank" rel="noopener">Open the Mews impact calculator</a>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>What to look for when selecting a hotel PMS</h2>
+  <ul class="checklist">
+    <li>A cloud-native platform that scales with your portfolio</li>
+    <li>Embedded payments and revenue management, not bolted-on add-ons</li>
+    <li>Onboarding and support built for how fast you need to move</li>
+    <li>A system that feels invisible, not like extra work for your team</li>
+  </ul>
+</section>
+
+<section class="wrap" id="faqs">
+  <h2>Frequently asked questions</h2>
+
+  <p class="faq-category">Cloud vs. on-premise</p>
+  <div class="faq-item">
+    <h3>Is cloud-based better than an on-premise PMS? <span class="faq-mark">＋</span></h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What happens if my internet goes down? <span class="faq-mark">＋</span></h3>
+    <p>Incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+  </div>
+
+  <p class="faq-category">Integrations</p>
+  <div class="faq-item">
+    <h3>Why are third-party integrations important with a PMS? <span class="faq-mark">＋</span></h3>
+    <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What if the tool I use isn't in the Marketplace? <span class="faq-mark">＋</span></h3>
+    <p>Commodo consequat duis aute irure dolor in reprehenderit in voluptate.</p>
+  </div>
+
+  <p class="faq-category">Migration</p>
+  <div class="faq-item">
+    <h3>How does switching PMS providers actually work? <span class="faq-mark">＋</span></h3>
+    <p>Velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How long does onboarding take? <span class="faq-mark">＋</span></h3>
+    <p>Occaecat cupidatat non proident sunt in culpa qui officia deserunt.</p>
+  </div>
+
+  <p class="faq-category">Enterprise vs. independent</p>
+  <div class="faq-item">
+    <h3>Does Mews work for a single independent hotel as well as a chain? <span class="faq-mark">＋</span></h3>
+    <p>Mollit anim id est laborum sed ut perspiciatis unde omnis iste.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What makes Mews different from other hotel software? <span class="faq-mark">＋</span></h3>
+    <p>Natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What are the key functions of a hotel PMS? <span class="faq-mark">＋</span></h3>
+    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="wrap">
+    <h2>See Mews in action</h2>
+    <p>Book a personalized demo and see why Mews was named the world's best hotel PMS.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">Talk to our enterprise team</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="palette-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#16213E;"></div><div class="swatch-info"><b>Deep Navy</b><span>#16213E — hero backgrounds</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FF6B6B;"></div><div class="swatch-info"><b>Coral</b><span>#FF6B6B — CTAs / highlights</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF0F0;"></div><div class="swatch-info"><b>Coral Light</b><span>#FFF0F0 — soft fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2ECC71;"></div><div class="swatch-info"><b>Green</b><span>#2ECC71 — positive indicators</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#6B7280;"></div><div class="swatch-info"><b>Grey</b><span>#6B7280 — body copy</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F8F9FA;"></div><div class="swatch-info"><b>Light Grey</b><span>#F8F9FA — card fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E5E7EB;"></div><div class="swatch-info"><b>Mid Grey</b><span>#E5E7EB — borders</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4F8EF7;"></div><div class="swatch-info"><b>Blue Accent</b><span>#4F8EF7 — info / links</span></div></div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+  // --- Sticky jump-nav: highlight active section on scroll ---
+  const navLinks = Array.from(document.querySelectorAll('.jump-nav a'));
+  const targets = navLinks
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+  const setActive = () => {
+    let current = null;
+    for (const t of targets) {
+      const rect = t.getBoundingClientRect();
+      if (rect.top <= 80) current = t;
+    }
+    navLinks.forEach(a => {
+      const match = current && a.getAttribute('href') === '#' + current.id;
+      a.classList.toggle('active', !!match);
+    });
+  };
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  // --- Video card: click to "play" (placeholder note toggle) ---
+  const videoCard = document.getElementById('videoCard');
+  const videoNote = document.getElementById('videoNote');
+  function toggleVideoNote(){
+    videoNote.style.display = videoNote.style.display === 'block' ? 'none' : 'block';
+  }
+  videoCard.addEventListener('click', toggleVideoNote);
+  videoCard.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') toggleVideoNote(); });
+
+  // --- Tabs (Guest Experiences) ---
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+    });
+  });
+
+  // --- Customer proof quote carousel ---
+  const quoteCarousel = document.getElementById('quoteCarousel');
+  const quoteSlides = quoteCarousel.querySelectorAll('.quote-slide');
+  const quoteDotsWrap = quoteCarousel.querySelector('.quote-dots');
+  let quoteCurrent = 0;
+  let quoteTimer;
+  quoteSlides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to quote ' + (i + 1));
+    dot.addEventListener('click', () => { quoteGoTo(i); stopQuoteAuto(); startQuoteAuto(); });
+    quoteDotsWrap.appendChild(dot);
+  });
+  const quoteDots = quoteDotsWrap.querySelectorAll('.quote-dot');
+  function quoteGoTo(index){
+    quoteSlides[quoteCurrent].classList.remove('active');
+    quoteDots[quoteCurrent].classList.remove('active');
+    quoteCurrent = (index + quoteSlides.length) % quoteSlides.length;
+    quoteSlides[quoteCurrent].classList.add('active');
+    quoteDots[quoteCurrent].classList.add('active');
+  }
+  function startQuoteAuto(){ quoteTimer = setInterval(() => quoteGoTo(quoteCurrent + 1), 6000); }
+  function stopQuoteAuto(){ clearInterval(quoteTimer); }
+  quoteCarousel.addEventListener('mouseenter', stopQuoteAuto);
+  quoteCarousel.addEventListener('mouseleave', startQuoteAuto);
+  startQuoteAuto();
+
+  // --- FAQ accordion ---
+  document.querySelectorAll('.faq-item h3').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      h3.parentElement.classList.toggle('open');
+    });
+  });
+
+  // --- Animated count-up for stats, triggered on scroll into view ---
+  const counters = document.querySelectorAll('[data-count]');
+  const animateCount = el => {
+    const target = parseFloat(el.dataset.count);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 900;
+    const start = performance.now();
+    function step(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      el.textContent = (decimals ? value.toFixed(decimals) : Math.round(value).toLocaleString()) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  };
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(c => io.observe(c));
+
+  // --- Scroll progress bar ---
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // --- Back to top ---
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // --- Expandable cap-cards ---
+  document.querySelectorAll('.cap-card[data-expand]').forEach(card => {
+    card.addEventListener('click', () => {
+      const willOpen = !card.classList.contains('expanded');
+      card.classList.toggle('expanded');
+      const toggle = card.querySelector('.more-toggle');
+      if (toggle) toggle.textContent = willOpen ? '– less detail' : '+ more detail';
+    });
+  });
+
+  // --- Keyboard arrow navigation for tabs ---
+  const tabBar = document.querySelector('.tab-bar');
+  if (tabBar) {
+    tabBar.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const btns = Array.from(tabButtons);
+      const activeIndex = btns.findIndex(b => b.classList.contains('active'));
+      const nextIndex = e.key === 'ArrowRight'
+        ? (activeIndex + 1) % btns.length
+        : (activeIndex - 1 + btns.length) % btns.length;
+      btns[nextIndex].click();
+      btns[nextIndex].focus();
+    });
+    tabButtons.forEach(b => b.setAttribute('tabindex', '0'));
+  }
+
+  // --- Operations accordion (Section 3) ---
+  document.querySelectorAll('#opsAccordion .acc-toggle').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const item = h3.closest('.feat-item');
+      const wasOpen = item.classList.contains('open');
+      item.classList.toggle('open');
+      const mark = h3.querySelector('.acc-mark');
+      if (mark) mark.textContent = wasOpen ? '+' : '–';
+    });
+  });
+
+  // --- Definitions click-to-reveal (Section 6) ---
+  document.querySelectorAll('#defGrid .def-toggle').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const card = h3.closest('.def-card');
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      const mark = h3.querySelector('.def-mark');
+      if (mark) mark.textContent = wasOpen ? '＋' : '－';
+    });
+  });
+
+  // --- Guest experience image carousel (Section 4) ---
+  const carousel = document.getElementById('guestCarousel');
+  if (carousel) {
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dotsWrap = carousel.querySelector('.carousel-dots');
+    let current = 0;
+    let autoTimer;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = dotsWrap.querySelectorAll('.carousel-dot');
+
+    function goTo(index){
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (index + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+    function next(){ goTo(current + 1); }
+    function prev(){ goTo(current - 1); }
+    function startAuto(){ autoTimer = setInterval(next, 4000); }
+    function stopAuto(){ clearInterval(autoTimer); }
+
+    carousel.querySelector('.carousel-nav.next').addEventListener('click', () => { next(); stopAuto(); startAuto(); });
+    carousel.querySelector('.carousel-nav.prev').addEventListener('click', () => { prev(); stopAuto(); startAuto(); });
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+    startAuto();
+  }
+
+  // --- Chart bar animation, triggered on scroll into view ---
+  const chartBars = document.querySelectorAll('.chart-bar-fill');
+  const chartIo = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const pct = (parseFloat(el.dataset.chartTarget) / parseFloat(el.dataset.chartMax)) * 100;
+        el.style.width = Math.min(pct, 100) + '%';
+        chartIo.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  chartBars.forEach(b => chartIo.observe(b));
+</script>
+
+</body>
+</html>

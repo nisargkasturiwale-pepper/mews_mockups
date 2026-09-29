@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Mews · Hotel Accounting Software · Page Mockup</title>
+<style>
+  :root{
+    --navy:#16213E; --coral:#FF6B6B; --coral-light:#FFF0F0; --green:#2ECC71;
+    --grey:#6B7280; --light-grey:#F8F9FA; --mid-grey:#E5E7EB; --blue:#4F8EF7;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--navy);background:#fff;line-height:1.55;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  section{padding:60px 0;border-bottom:1px solid var(--mid-grey);scroll-margin-top:64px;}
+  section h2:first-child{margin-top:0;}
+  h1{font-size:34px;margin:0 0 14px;line-height:1.15;}
+  h2{font-size:26px;margin:0 0 14px;}
+  h3{font-size:17px;margin:0 0 8px;}
+  p{color:var(--grey);margin:0 0 16px;font-size:14px;}
+  .gap-note{font-size:12.5px;color:var(--coral);font-style:italic;margin:-6px 0 18px;}
+  .footnote{font-size:12px;color:var(--grey);margin-top:8px;font-style:italic;}
+
+  .award-badge{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12.5px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:18px;}
+  .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hero h1{color:#fff;max-width:700px;margin:0 auto 14px;}
+  .hero p.lead{color:#C7CCDA;max-width:560px;margin:0 auto 20px;font-size:17px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
+  .btn-primary{background:var(--coral);color:#fff;}
+  .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
+  .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
+  .stat{text-align:center;}
+  .stat .num{font-size:22px;font-weight:700;color:var(--coral);}
+  .stat .lbl{font-size:13px;color:#C7CCDA;margin-top:4px;}
+
+  /* STICKY JUMP NAV */
+  .jump-nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--mid-grey);box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .jump-nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+  .jump-nav-inner::-webkit-scrollbar{display:none;}
+  .jump-nav a{flex-shrink:0;font-size:13px;font-weight:600;color:var(--grey);text-decoration:none;padding:14px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
+  .jump-nav a:hover{color:var(--navy);}
+  .jump-nav a.active{color:var(--coral);border-bottom-color:var(--coral);}
+
+  /* VIDEO */
+  .video-card{position:relative;max-width:760px;margin:0 auto;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--navy),#233158);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.1);}
+  .video-card:hover .play-button{transform:scale(1.08);}
+  .play-button{width:74px;height:74px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 8px 24px rgba(255,107,107,.4);}
+  .play-button svg{margin-left:4px;}
+  .video-caption{text-align:center;max-width:560px;margin:18px auto 0;font-size:13.5px;color:var(--grey);}
+  .video-duration{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;padding:3px 8px;border-radius:4px;}
+  .video-playing-note{text-align:center;font-size:12px;color:var(--coral);margin-top:10px;display:none;}
+
+  ul.takeaways{list-style:none;padding:0;margin:0;}
+  ul.takeaways li{padding-left:26px;position:relative;margin-bottom:14px;color:var(--navy);font-size:14.5px;}
+  ul.takeaways li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);position:absolute;left:0;top:7px;}
+
+  /* WHY DIFFERENT */
+  .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .diff-card{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px;}
+  .diff-card h3{font-size:14.5px;}
+  .diff-card p{font-size:13.5px;margin:0;}
+
+  /* USALI BOX */
+  .usali-box{background:var(--coral-light);border:1px solid var(--coral);border-radius:8px;padding:22px 24px;}
+  .usali-box p{color:var(--navy);margin-bottom:10px;font-size:14px;}
+  .usali-box p:last-child{margin-bottom:0;}
+
+  /* FEATURES TO LOOK FOR */
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .feat-card{border:1px solid var(--mid-grey);border-radius:8px;padding:18px;transition:box-shadow .15s,border-color .15s;}
+  .feat-card:hover{border-color:var(--coral);box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .feat-card h3{font-size:15px;}
+  .feat-card p{font-size:13.5px;margin:0;}
+
+  /* WHAT'S INCLUDED ACCORDION */
+  .feat-list{list-style:none;padding:0;margin:0;}
+  .feat-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .feat-item:last-child{border-bottom:none;}
+  .feat-item h3.acc-toggle{cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:15.5px;margin:0;user-select:none;}
+  .acc-mark{color:var(--coral);font-weight:700;font-size:15px;flex-shrink:0;}
+  .feat-item p.acc-body{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;font-size:14px;margin:0;}
+  .feat-item.open p.acc-body{max-height:140px;margin-top:10px;}
+
+  /* TABLES */
+  table.kpi-table, table.choose-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.kpi-table th, table.kpi-table td, table.choose-table th, table.choose-table td{
+    text-align:left;padding:10px 12px;border-bottom:1px solid var(--mid-grey);
+  }
+  table.kpi-table th, table.choose-table th{color:var(--grey);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;}
+  table.kpi-table td, table.choose-table td{color:var(--navy);}
+
+  /* COMPARISON TABLE */
+  .compare-table{border:1px solid var(--mid-grey);border-radius:10px;overflow:hidden;}
+  .compare-header{display:grid;grid-template-columns:1.3fr 1fr 1fr;background:var(--navy);color:#fff;}
+  .compare-header div{padding:12px 14px;font-size:13px;font-weight:700;}
+  .compare-header .compare-col-mews{color:var(--coral);}
+  .compare-row{display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:1px solid var(--mid-grey);}
+  .compare-row:nth-child(odd){background:var(--light-grey);}
+  .compare-label{padding:12px 14px;font-size:13.5px;font-weight:600;color:var(--navy);}
+  .compare-cell{padding:12px 14px;font-size:12.5px;color:var(--grey);}
+  .compare-cell.mews{color:var(--navy);font-weight:600;}
+  .compare-cell.mews:before{content:"✓ ";color:var(--green);font-weight:700;}
+  .compare-cell.legacy:before{content:"– ";color:var(--grey);}
+
+  /* RELATED PRODUCTS — CLICK TO REVEAL GRID */
+  .def-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .def-card{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px;cursor:pointer;}
+  .def-toggle{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0;user-select:none;color:var(--navy);font-size:14px;}
+  .def-mark{color:var(--coral);font-weight:700;font-size:15px;flex-shrink:0;transition:transform .2s;}
+  .def-card.open .def-mark{transform:rotate(45deg);}
+  .def-card p{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;margin:0;font-size:12.5px;}
+  .def-card.open p{max-height:140px;margin-top:8px;}
+
+  /* DATA CARDS */
+  .data-row{display:flex;gap:16px;margin-bottom:24px;flex-wrap:wrap;}
+  .data-card{flex:1;min-width:170px;background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:20px;text-align:center;}
+  .data-card .num{font-size:24px;font-weight:700;color:var(--navy);}
+  .data-card .lbl{font-size:12.5px;color:var(--grey);margin-top:6px;}
+  .data-card .src{font-size:10.5px;color:var(--grey);margin-top:8px;font-style:italic;}
+
+  /* TESTIMONIAL CAROUSEL */
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  blockquote{background:var(--coral-light);border-left:4px solid var(--coral);padding:18px 22px;margin:0;font-size:15px;color:var(--navy);font-style:italic;}
+  blockquote cite{display:block;margin-top:10px;font-size:13px;color:var(--grey);font-style:normal;}
+  .quote-carousel{position:relative;max-width:640px;}
+  .quote-slide{display:none;animation:fadeIn .3s ease;}
+  .quote-slide.active{display:block;}
+  .quote-dots{display:flex;gap:6px;margin-top:14px;}
+  .quote-dot{width:8px;height:8px;border-radius:50%;background:var(--mid-grey);border:none;cursor:pointer;padding:0;}
+  .quote-dot.active{background:var(--coral);}
+
+  /* STEPS */
+  .step{display:flex;gap:16px;margin-bottom:22px;}
+  .step-num{width:30px;height:30px;border-radius:50%;background:var(--coral);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+
+  /* FAQ ACCORDION */
+  .faq-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .faq-item h3{font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;cursor:pointer;user-select:none;}
+  .faq-item p{font-size:14px;margin:8px 0 0;max-height:0;overflow:hidden;transition:max-height .25s ease,margin .25s ease;}
+  .faq-item.open p{max-height:220px;}
+  .faq-mark{color:var(--coral);font-size:18px;flex-shrink:0;transition:transform .2s;display:inline-block;}
+  .faq-item.open .faq-mark{transform:rotate(45deg);}
+
+  /* CTA */
+  .cta-block{background:var(--navy);color:#fff;text-align:center;padding:60px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .cta-block h2{color:#fff;}
+  .cta-block p{color:#C7CCDA;max-width:480px;margin:0 auto 28px;}
+
+  /* PALETTE */
+  .palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .swatch{border:1px solid var(--mid-grey);border-radius:8px;overflow:hidden;}
+  .swatch-color{height:56px;}
+  .swatch-info{padding:10px 12px;background:#fff;}
+  .swatch-info b{font-size:13px;display:block;}
+  .swatch-info span{font-size:11.5px;color:var(--grey);}
+
+  /* SCROLL PROGRESS + BACK TO TOP */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:100;transition:width .05s linear;}
+  .back-to-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);z-index:60;font-size:18px;}
+  .back-to-top.visible{display:flex;}
+  .back-to-top:hover{background:var(--coral);}
+
+  @media (max-width:800px){
+    .diff-grid,.feat-grid,.def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
+    h1{font-size:24px;}
+    table.kpi-table, table.choose-table{font-size:12px;}
+    .compare-header div,.compare-label,.compare-cell{padding:10px 8px;font-size:11px;}
+  }
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="hero">
+<div class="wrap">
+<span class="award-badge">🏆 Best Property Management System — HotelTechAwards 2026</span>
+<h1>Hotel accounting software built for modern hotels</h1>
+<p class="lead">Lorem ipsum — automate charge routing, close your books with confidence, and keep every number connected to your PMS.</p>
+<div class="cta-row">
+<a class="btn btn-primary" href="#">Book a demo</a>
+<a class="btn btn-secondary" href="#">See pricing</a>
+</div>
+<div class="stat-row">
+<div class="stat"><div class="num" data-count="15000" data-suffix="+">0</div><div class="lbl">Properties worldwide</div></div>
+<div class="stat"><div class="num" data-count="1000" data-suffix="+">0</div><div class="lbl">Integrations</div></div>
+<div class="stat"><div class="num" data-count="24" data-suffix="%">0</div><div class="lbl">Front-desk efficiency gain</div></div>
+</div>
+</div>
+</div>
+<nav class="jump-nav">
+<div class="jump-nav-inner">
+<a href="#video">Overview video</a>
+<a href="#overview">Overview</a>
+<a href="#included">Capability</a>
+<a href="#integrations">Integrations</a>
+<a href="#workflow">Finance Workflow</a>
+<a href="#roi">ROI</a>
+<a href="#different">Why It's Different</a>
+<a href="#usali">USALI</a>
+<a href="#evaluate">Buyer Evaluation</a>
+<a href="#metrics">Key Metrics</a>
+<a href="#related-products">Related Products</a>
+<a href="#choose">How to Choose</a>
+<a href="#faq">FAQ</a>
+</div>
+</nav>
+<section class="wrap" id="video">
+<h2>See Mews hotel accounting software in 90 seconds</h2>
+<div aria-label="Play overview video" class="video-card" id="videoCard" role="button" tabindex="0">
+<span class="video-duration">1:20</span>
+<div class="play-button">
+<svg fill="white" height="26" viewbox="0 0 24 24" width="26"><path d="M8 5v14l11-7z"></path></svg>
+</div>
+</div>
+<p class="video-caption">Lorem ipsum — a quick walkthrough of how a charge moves from booking to bill without anyone touching a spreadsheet.</p>
+<p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
+</section>
+<section class="wrap" id="overview">
+<h2>What is hotel accounting software?</h2>
+<ul class="takeaways">
+<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</li>
+<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</li>
+<li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</li>
+<li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</li>
+<li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</li>
+</ul>
+</section>
+<section class="wrap" id="included">
+<h2>Bills that take care of themselves</h2>
+<ul class="feat-list" id="opsAccordion">
+<li class="feat-item open">
+<h3 class="acc-toggle">Live ledger <span class="acc-mark">–</span></h3>
+<p class="acc-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+</li>
+<li class="feat-item">
+<h3 class="acc-toggle">Fixed trial balance <span class="acc-mark">+</span></h3>
+<p class="acc-body">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.</p>
+</li>
+<li class="feat-item">
+<h3 class="acc-toggle">Automatic charge routing <span class="acc-mark">+</span></h3>
+<p class="acc-body">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+</li>
+<li class="feat-item">
+<h3 class="acc-toggle">Accounts Receivable, built in <span class="acc-mark">+</span></h3>
+<p class="acc-body">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+</li>
+<li class="feat-item">
+<h3 class="acc-toggle">Never miss a charge <span class="acc-mark">+</span></h3>
+<p class="acc-body">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
+</li>
+<li class="feat-item">
+<h3 class="acc-toggle">On-time guest payment collection <span class="acc-mark">+</span></h3>
+<p class="acc-body">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+</li>
+</ul>
+</section>
+<section class="wrap" id="integrations">
+<h2>Integrations, starting with your PMS</h2>
+<p>Lorem ipsum — accounting software is only as good as the systems feeding it. Mews accounting runs natively on the PMS, then connects out to the finance stack you already use.</p>
+<div class="def-grid" id="integrationsGrid">
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Property Management (PMS) <span class="def-mark">＋</span></h3>
+<p>Dolor sit amet — the native connection: charges, payments and folios post automatically, with no separate sync to manage.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Xero <span class="def-mark">＋</span></h3>
+<p>Amet consectetur — transfer daily revenue and payment data between Mews and Xero in real time.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">QuickBooks <span class="def-mark">＋</span></h3>
+<p>Lorem ipsum — one of the accounting platforms Mews connects to directly for financial reporting.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Sage Intacct <span class="def-mark">＋</span></h3>
+<p>Dolor sit amet — automate multi-entity consolidation, project billing and revenue recognition.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">M3 <span class="def-mark">＋</span></h3>
+<p>Amet consectetur — accounting, business intelligence and payroll, with daily transactions inserted into the PMS automatically.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Yardi <span class="def-mark">＋</span></h3>
+<p>Lorem ipsum — another of the financial management platforms Mews connects to directly, alongside QuickBooks and Xero.</p>
+</div>
+</div>
+<p class="footnote">Full list of 1,000+ integrations available via Mews Marketplace, no connection fees.</p>
+</section>
+<section class="wrap" id="workflow">
+<h2>Connected accounting vs. disconnected tools</h2>
+<div class="compare-table">
+<div class="compare-header">
+<div> </div>
+<div class="compare-col-mews">PMS-connected (Mews)</div>
+<div class="compare-col-legacy">Disconnected / spreadsheet-based</div>
+</div>
+<div class="compare-row">
+<div class="compare-label">Posting</div>
+<div class="compare-cell mews">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+<div class="compare-cell legacy">Sed do eiusmod tempor incididunt ut labore et dolore.</div>
+</div>
+<div class="compare-row">
+<div class="compare-label">Data source</div>
+<div class="compare-cell mews">Ut enim ad minim veniam, quis nostrud exercitation ullamco.</div>
+<div class="compare-cell legacy">Laboris nisi ut aliquip ex ea commodo consequat.</div>
+</div>
+<div class="compare-row">
+<div class="compare-label">Reporting</div>
+<div class="compare-cell mews">Duis aute irure dolor in reprehenderit in voluptate velit.</div>
+<div class="compare-cell legacy">Esse cillum dolore eu fugiat nulla pariatur excepteur.</div>
+</div>
+<div class="compare-row">
+<div class="compare-label">Audit trail</div>
+<div class="compare-cell mews">Sint occaecat cupidatat non proident sunt in culpa.</div>
+<div class="compare-cell legacy">Qui officia deserunt mollit anim id est laborum.</div>
+</div>
+<div class="compare-row">
+<div class="compare-label">Month-end close</div>
+<div class="compare-cell mews">Sed ut perspiciatis unde omnis iste natus error sit.</div>
+<div class="compare-cell legacy">Voluptatem accusantium doloremque laudantium totam rem.</div>
+</div>
+</div>
+</section>
+<section class="wrap" id="roi">
+<h2>The cost of doing this manually</h2>
+<div class="data-row">
+<div class="data-card"><div class="num">$12–$30</div><div class="lbl">estimated cost to process a single hotel invoice manually</div><div class="src">General AP industry benchmarks (IOFM, industry surveys)</div></div>
+<div class="data-card"><div class="num">31%</div><div class="lbl">fewer manual errors with Mews' embedded payments and automated posting</div><div class="src">IDC White Paper, sponsored by Mews</div></div>
+</div>
+<div class="quote-carousel" id="quoteCarousel">
+<div class="quote-slide active">
+<blockquote>"...much easier to manage reservations and finances when it's all done..."<cite>Domitille Quennec, Marketing and Sales Manager — Pierres d'Histoire</cite></blockquote>
+</div>
+<div class="quote-slide">
+<blockquote>"...flow from reservation to stay to billing is a very logical and smooth..."<cite>Coen Schelfhorst, Owner — GuestHouse Hotels</cite></blockquote>
+</div>
+<div class="quote-dots" id="quoteDots"></div>
+</div>
+<p class="footnote">Lorem ipsum — the manual-processing cost is an industry benchmark, not a Mews-specific figure; the 31% figure is Mews' own, from IDC-audited customer data.</p>
+</section>
+<section class="wrap" id="different">
+<h2>Why hotel accounting isn't like general business accounting</h2>
+<p>Lorem ipsum — hotels run multiple revenue streams and a 24-hour operating cycle that most accounting software was never built for.</p>
+<div class="diff-grid">
+<div class="diff-card"><h3>Multiple revenue streams</h3><p>Dolor sit amet — rooms, F&amp;B and other departments each need their own P&amp;L.</p></div>
+<div class="diff-card"><h3>Dynamic, 24/7 operations</h3><p>Amet consectetur — a night audit closes the day, every day, not just at quarter-end.</p></div>
+<div class="diff-card"><h3>Complex payroll</h3><p>Lorem ipsum — shift-based, seasonal and department-specific labor costs.</p></div>
+<div class="diff-card"><h3>Vendor &amp; supplier contracts</h3><p>Dolor sit amet — recurring F&amp;B, housekeeping and maintenance invoices at volume.</p></div>
+<div class="diff-card"><h3>Occupancy taxes &amp; compliance</h3><p>Amet consectetur — rates and rules that vary by jurisdiction and room type.</p></div>
+<div class="diff-card"><h3>Industry-specific reporting</h3><p>Lorem ipsum — RevPAR, ADR and GOPPAR aren't metrics generic software tracks.</p></div>
+</div>
+</section>
+<section class="wrap" id="usali">
+<h2>What is USALI, and why does it matter?</h2>
+<div class="usali-box">
+<p>Lorem ipsum — USALI (the Uniform System of Accounts for the Lodging Industry) organizes hotel bookkeeping into three revenue and cost centers: rooms, food and beverage, and other departments.</p>
+<p>Dolor sit amet — it uses accrual accounting, so a metric like TRevPAR includes F&amp;B and other revenue, but each is still reported separately underneath it. Most management agreements require USALI compliance.</p>
+</div>
+</section>
+<section class="wrap" id="evaluate">
+<h2>Buyer evaluation: what to check before you sign</h2>
+<p>Lorem ipsum — the criteria Mews' own product content and independent buyer guides both point to.</p>
+<div class="feat-grid">
+<div class="feat-card"><h3>Direct PMS integration</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+<div class="feat-card"><h3>USALI-aligned chart of accounts</h3><p>Sed do eiusmod tempor incididunt ut labore et dolore magna.</p></div>
+<div class="feat-card"><h3>AP/AR automation</h3><p>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p></div>
+<div class="feat-card"><h3>Bank feeds &amp; reconciliation</h3><p>Laboris nisi ut aliquip ex ea commodo consequat duis aute.</p></div>
+<div class="feat-card"><h3>Role-based reporting</h3><p>Irure dolor in reprehenderit in voluptate velit esse cillum.</p></div>
+<div class="feat-card"><h3>Multi-property consolidation</h3><p>Dolore eu fugiat nulla pariatur excepteur sint occaecat.</p></div>
+</div>
+</section>
+<section class="wrap" id="metrics">
+<h2>The numbers hotel accounting software should surface</h2>
+<table class="kpi-table">
+<tr><th>Metric</th><th>What it measures</th></tr>
+<tr><td>RevPAR</td><td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td></tr>
+<tr><td>ADR</td><td>Sed do eiusmod tempor incididunt ut labore et dolore magna.</td></tr>
+<tr><td>Occupancy rate</td><td>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</td></tr>
+<tr><td>GOPPAR</td><td>Laboris nisi ut aliquip ex ea commodo consequat duis aute.</td></tr>
+<tr><td>Labor &amp; food cost %</td><td>Irure dolor in reprehenderit in voluptate velit esse cillum.</td></tr>
+</table>
+</section>
+<section class="wrap" id="related-products">
+<h2>Explore more of the Mews platform</h2>
+<p>Lorem ipsum — hotel accounting rarely works alone. Here's how it connects to the rest of the Mews platform.</p>
+<div class="def-grid" id="defGrid">
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Accounts Receivable <span class="def-mark">＋</span></h3>
+<p>Dolor sit amet — automate the invoice-to-cash cycle end to end.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Property Management (PMS) <span class="def-mark">＋</span></h3>
+<p>Amet consectetur — the core reservation and billing system accounting runs on.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Embedded Payments <span class="def-mark">＋</span></h3>
+<p>Lorem ipsum — tokenized cards and automated reconciliation, built in.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Business Intelligence <span class="def-mark">＋</span></h3>
+<p>Dolor sit amet — dashboards that track performance across departments and properties.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Point-of-Sale (POS) <span class="def-mark">＋</span></h3>
+<p>Amet consectetur — F&amp;B and other revenue synced straight to the guest folio.</p>
+</div>
+<div class="def-card" data-reveal="">
+<h3 class="def-toggle">Open API &amp; Marketplace <span class="def-mark">＋</span></h3>
+<p>Lorem ipsum — 1,000+ integrations, no connection fees.</p>
+</div>
+</div>
+</section>
+<section class="wrap" id="choose">
+<h2>How to choose by property type</h2>
+<table class="choose-table">
+<tr><th>Property type</th><th>Primary need</th><th>What to prioritize</th></tr>
+<tr><td>Independent hotel or B&amp;B</td><td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td><td>Sed do eiusmod tempor incididunt ut labore.</td></tr>
+<tr><td>Multi-property group</td><td>Ut enim ad minim veniam, quis nostrud exercitation ullamco.</td><td>Laboris nisi ut aliquip ex ea commodo consequat.</td></tr>
+<tr><td>Enterprise / chain</td><td>Duis aute irure dolor in reprehenderit in voluptate.</td><td>Velit esse cillum dolore eu fugiat nulla pariatur.</td></tr>
+</table>
+<p style="margin-top:18px;">Lorem ipsum — three checks worth doing before you shortlist anything.</p>
+<div class="step" style="margin-top:24px;"><div class="step-num">1</div><div><h3>Map your revenue streams</h3><p>Dolor sit amet — rooms, F&amp;B and other departments should each report separately, per USALI.</p></div></div>
+<div class="step"><div class="step-num">2</div><div><h3>Check the PMS connection</h3><p>Amet consectetur — confirm charges post natively, not through a bolt-on sync.</p></div></div>
+<div class="step"><div class="step-num">3</div><div><h3>Confirm USALI support</h3><p>Lorem ipsum — ask specifically about the 12th Revised Edition, mandatory since January 2026.</p></div></div>
+</section>
+<section class="wrap" id="faq">
+<h2>Frequently asked questions</h2>
+<div class="faq-item open">
+<h3>What does hotel accounting software actually do day to day? <span class="faq-mark">＋</span></h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+<div class="faq-item">
+<h3>How is accounting software for hotels different from generic accounting tools? <span class="faq-mark">＋</span></h3>
+<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+</div>
+<div class="faq-item">
+<h3>What is a hotel accounting system? <span class="faq-mark">＋</span></h3>
+<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+</div>
+<div class="faq-item">
+<h3>What should I look for in the best accounting software for hotels? <span class="faq-mark">＋</span></h3>
+<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div class="faq-item">
+<h3>Is hotel finance software the same thing as a PMS? <span class="faq-mark">＋</span></h3>
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+</div>
+<div class="faq-item">
+<h3>How much does an accounting system for hotels cost? <span class="faq-mark">＋</span></h3>
+<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.</p>
+</div>
+<div class="faq-item">
+<h3>Does Mews integrate with hotel accounting systems like QuickBooks and Xero? <span class="faq-mark">＋</span></h3>
+<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur adipisci velit, sed quia non numquam.</p>
+</div>
+<div class="faq-item">
+<h3>What's the best hotel accounting software for multi-property groups? <span class="faq-mark">＋</span></h3>
+<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.</p>
+</div>
+</section>
+<section class="cta-block">
+<div class="wrap">
+<h2>See Mews in action</h2>
+<p>Lorem ipsum — book a demo and see how your books close themselves.</p>
+<div class="cta-row">
+<a class="btn btn-primary" href="#">Book a demo</a>
+<a class="btn btn-secondary" href="#">Talk to sales</a>
+</div>
+</div>
+</section>
+<section class="wrap">
+<h2 style="font-size:18px;color:var(--grey);">Brand colour palette reference</h2>
+<div class="palette-grid">
+<div class="swatch"><div class="swatch-color" style="background:#16213E;"></div><div class="swatch-info"><b>Deep Navy</b><span>#16213E — hero backgrounds</span></div></div>
+<div class="swatch"><div class="swatch-color" style="background:#FF6B6B;"></div><div class="swatch-info"><b>Coral</b><span>#FF6B6B — CTAs / highlights</span></div></div>
+<div class="swatch"><div class="swatch-color" style="background:#FFF0F0;"></div><div class="swatch-info"><b>Coral Light</b><span>#FFF0F0 — soft fills</span></div></div>
+<div class="swatch"><div class="swatch-color" style="background:#2ECC71;"></div><div class="swatch-info"><b>Green</b><span>#2ECC71 — positive indicators</span></div></div>
+<div class="swatch"><div class="swatch-color" style="background:#6B7280;"></div><div class="swatch-info"><b>Grey</b><span>#6B7280 — body copy</span></div></div>
+<div class="swatch"><div class="swatch-color" style="background:#F8F9FA;"></div><div class="swatch-info"><b>Light Grey</b><span>#F8F9FA — card fills</span></div></div>
+<div class="swatch"><div class="swatch-color" style="background:#E5E7EB;"></div><div class="swatch-info"><b>Mid Grey</b><span>#E5E7EB — borders</span></div></div>
+<div class="swatch"><div class="swatch-color" style="background:#4F8EF7;"></div><div class="swatch-info"><b>Blue Accent</b><span>#4F8EF7 — info / links</span></div></div>
+</div>
+</section>
+<button aria-label="Back to top" class="back-to-top" id="backToTop">↑</button>
+
+<script>
+  // --- Sticky jump-nav: highlight active section on scroll ---
+  const navLinks = Array.from(document.querySelectorAll('.jump-nav a'));
+  const targets = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const setActive = () => {
+    let current = null;
+    for (const t of targets) {
+      const rect = t.getBoundingClientRect();
+      if (rect.top <= 80) current = t;
+    }
+    navLinks.forEach(a => {
+      const match = current && a.getAttribute('href') === '#' + current.id;
+      a.classList.toggle('active', !!match);
+    });
+  };
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  // --- Video card: click to "play" (placeholder note toggle) ---
+  const videoCard = document.getElementById('videoCard');
+  const videoNote = document.getElementById('videoNote');
+  function toggleVideoNote(){
+    videoNote.style.display = videoNote.style.display === 'block' ? 'none' : 'block';
+  }
+  videoCard.addEventListener('click', toggleVideoNote);
+  videoCard.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') toggleVideoNote(); });
+
+  // --- FAQ accordion ---
+  document.querySelectorAll('.faq-item h3').forEach(h3 => {
+    h3.addEventListener('click', () => { h3.parentElement.classList.toggle('open'); });
+  });
+
+  // --- What's Included accordion ---
+  document.querySelectorAll('#opsAccordion .acc-toggle').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const item = h3.closest('.feat-item');
+      const wasOpen = item.classList.contains('open');
+      item.classList.toggle('open');
+      const mark = h3.querySelector('.acc-mark');
+      if (mark) mark.textContent = wasOpen ? '+' : '–';
+    });
+  });
+
+  // --- Related Products click-to-reveal ---
+  document.querySelectorAll('#defGrid .def-toggle').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const card = h3.closest('.def-card');
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      const mark = h3.querySelector('.def-mark');
+      if (mark) mark.textContent = wasOpen ? '＋' : '－';
+    });
+  });
+
+  // --- Integrations click-to-reveal ---
+  document.querySelectorAll('#integrationsGrid .def-toggle').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const card = h3.closest('.def-card');
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      const mark = h3.querySelector('.def-mark');
+      if (mark) mark.textContent = wasOpen ? '＋' : '－';
+    });
+  });
+
+  // --- Testimonial carousel ---
+  const quoteCarousel = document.getElementById('quoteCarousel');
+  if (quoteCarousel) {
+    const qSlides = quoteCarousel.querySelectorAll('.quote-slide');
+    const qDotsWrap = document.getElementById('quoteDots');
+    let qCurrent = 0;
+    let qTimer;
+    qSlides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to quote ' + (i + 1));
+      dot.addEventListener('click', () => { qGoTo(i); qStop(); qStart(); });
+      qDotsWrap.appendChild(dot);
+    });
+    const qDots = qDotsWrap.querySelectorAll('.quote-dot');
+    function qGoTo(i){
+      qSlides[qCurrent].classList.remove('active');
+      qDots[qCurrent].classList.remove('active');
+      qCurrent = i;
+      qSlides[qCurrent].classList.add('active');
+      qDots[qCurrent].classList.add('active');
+    }
+    function qNext(){ qGoTo((qCurrent + 1) % qSlides.length); }
+    function qStart(){ qTimer = setInterval(qNext, 6000); }
+    function qStop(){ clearInterval(qTimer); }
+    qStart();
+    quoteCarousel.addEventListener('mouseenter', qStop);
+    quoteCarousel.addEventListener('mouseleave', qStart);
+  }
+
+  // --- Animated count-up for stats, triggered on scroll into view ---
+  const counters = document.querySelectorAll('[data-count]');
+  const animateCount = el => {
+    const target = parseFloat(el.dataset.count);
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const suffix = el.dataset.suffix || '';
+    const duration = 900;
+    const start = performance.now();
+    function step(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      el.textContent = (decimals ? value.toFixed(decimals) : Math.round(value).toLocaleString()) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  };
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { animateCount(entry.target); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.4 });
+  counters.forEach(c => io.observe(c));
+
+  // --- Scroll progress bar ---
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // --- Back to top ---
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+  }, { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>

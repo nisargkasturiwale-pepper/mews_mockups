@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mews · Serviced Apartment Software · Interactive Mockup (Consolidates Aparthotel Intent)</title>
+<style>
+  :root{
+    --navy:#16213E; --coral:#FF6B6B; --coral-light:#FFF0F0; --green:#2ECC71;
+    --grey:#6B7280; --light-grey:#F8F9FA; --mid-grey:#E5E7EB; --blue:#4F8EF7;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--navy);background:#fff;line-height:1.55;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  section{padding:60px 0;border-bottom:1px solid var(--mid-grey);scroll-margin-top:64px;}
+  section h2:first-child, section h3:first-child{margin-top:0;}
+  h1{font-size:34px;margin:0 0 14px;line-height:1.15;}
+  h2{font-size:26px;margin:0 0 14px;}
+  .kicker{font-size:12.5px;letter-spacing:.02em;color:var(--coral);font-style:italic;text-transform:lowercase;margin:0 0 8px;font-weight:600;}
+  h3{font-size:16px;margin:0 0 8px;}
+  p{color:var(--grey);margin:0 0 16px;font-size:14px;}
+
+  /* HERO */
+  .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hero h1{color:#fff;max-width:620px;margin:0 auto 14px;}
+  .hero p.lead{color:#C7CCDA;max-width:560px;margin:0 auto 20px;font-size:17px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
+  .btn-primary{background:var(--coral);color:#fff;}
+  .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
+  .img-placeholder{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#C7CCDA;padding:20px;}
+  .img-placeholder .icon{font-size:24px;margin-bottom:6px;}
+  .img-placeholder .caption{font-size:12px;max-width:260px;}
+  .img-placeholder .note{font-size:10.5px;color:var(--coral);margin-top:6px;font-style:italic;}
+  .hero-image{margin:0 auto 32px;max-width:640px;height:200px;}
+  .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
+  .stat{text-align:center;}
+  .stat .num{font-size:22px;font-weight:700;color:var(--coral);}
+  .stat .lbl{font-size:13px;color:#C7CCDA;margin-top:4px;}
+
+  /* JUMP NAV */
+  .jump-nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--mid-grey);box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .jump-nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+  .jump-nav-inner::-webkit-scrollbar{display:none;}
+  .jump-nav a{flex-shrink:0;font-size:13px;font-weight:600;color:var(--grey);text-decoration:none;padding:14px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
+  .jump-nav a:hover{color:var(--navy);}
+  .jump-nav a.active{color:var(--coral);border-bottom-color:var(--coral);}
+
+  /* SCROLL PROGRESS + BACK TO TOP */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:100;transition:width .05s linear;}
+  .back-to-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);z-index:60;font-size:18px;}
+  .back-to-top.visible{display:flex;}
+  .back-to-top:hover{background:var(--coral);}
+
+  /* VIDEO */
+  .video-card{position:relative;max-width:760px;margin:0 auto;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--navy),#233158);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.1);}
+  .video-card:hover .play-button{transform:scale(1.08);}
+  .play-button{width:70px;height:70px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 8px 24px rgba(255,107,107,.4);}
+  .play-button svg{margin-left:4px;}
+  .video-caption{text-align:center;max-width:560px;margin:16px auto 0;font-size:13.5px;color:var(--grey);}
+  .video-duration{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;padding:3px 8px;border-radius:4px;}
+  .video-playing-note{text-align:center;font-size:12px;color:var(--coral);margin-top:10px;display:none;}
+
+  /* TAKEAWAYS */
+  ul.takeaways{list-style:none;padding:0;margin:0;}
+  ul.takeaways li{padding-left:26px;position:relative;margin-bottom:14px;color:var(--navy);font-size:14px;}
+  ul.takeaways li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);position:absolute;left:0;top:6px;}
+
+  /* SPLIT */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .split-card{border-radius:8px;padding:20px 22px;border:1px solid var(--mid-grey);}
+  .split-card.old{background:var(--light-grey);}
+  .split-card.new{background:var(--coral-light);border-color:var(--coral);}
+  .split-card h3{font-size:15px;}
+  .split-card p{margin:0;font-size:13.5px;}
+
+  /* NUMBERED STEPPER (/01 /02 /03 /04) */
+  .stepper-nav{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+  .stepper-btn{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:10px 16px;font-family:inherit;font-size:13px;font-weight:700;color:var(--grey);cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+  .stepper-btn .n{color:var(--coral);margin-right:6px;}
+  .stepper-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .stepper-btn.active .n{color:#fff;}
+  .stepper-panels{position:relative;min-height:110px;}
+  .stepper-panel{display:none;animation:fadeIn .3s ease;}
+  .stepper-panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  .stepper-panel h3{font-size:18px;margin-bottom:8px;}
+  .stepper-panel p{font-size:14.5px;margin-bottom:0;}
+  .stepper-progress{height:3px;background:var(--mid-grey);border-radius:2px;margin-top:18px;overflow:hidden;}
+  .stepper-progress-fill{height:100%;background:var(--coral);width:0%;transition:width .05s linear;}
+
+  /* STAY-LENGTH WIDGET — PLACEHOLDER */
+  .widget-placeholder{background:var(--light-grey);border:2px dashed var(--mid-grey);border-radius:10px;padding:32px 24px;text-align:center;color:var(--grey);}
+  .widget-placeholder .icon{font-size:28px;margin-bottom:8px;display:block;}
+  .widget-placeholder .caption{font-size:13.5px;color:var(--navy);font-weight:600;margin-bottom:4px;}
+  .widget-placeholder .note{font-size:11.5px;color:var(--coral);font-style:italic;}
+
+  /* FEATURE LIST */
+  .feat-list{list-style:none;padding:0;margin:0;}
+  .feat-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .feat-item:last-child{border-bottom:none;}
+  .feat-item h3{font-size:15.5px;margin-bottom:4px;}
+  .feat-item p{margin:0;font-size:14px;}
+
+  /* SECONDARY-KEYWORD QUESTION SECTIONS */
+  .kw-question{padding:44px 0;}
+
+  /* RELATED PRODUCTS — CLICK TO REVEAL */
+  .def-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .def-card{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px;cursor:pointer;}
+  .def-toggle{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0;font-size:14.5px;user-select:none;}
+  .def-mark{color:var(--coral);font-weight:700;font-size:15px;flex-shrink:0;transition:transform .2s;}
+  .def-card.open .def-mark{transform:rotate(45deg);}
+  .def-card p{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;margin-top:0;font-size:12.5px;}
+  .def-card.open p{max-height:120px;margin-top:8px;}
+
+  /* CUSTOMER PROOF CAROUSEL */
+  blockquote{background:var(--coral-light);border-left:4px solid var(--coral);padding:18px 22px;margin:0;font-size:15px;color:var(--navy);font-style:italic;}
+  blockquote cite{display:block;margin-top:10px;font-size:13px;color:var(--grey);font-style:normal;}
+  .quote-carousel{position:relative;}
+  .quote-slide{display:none;animation:fadeIn .3s ease;}
+  .quote-slide.active{display:block;}
+  .quote-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+  .quote-dot{width:8px;height:8px;border-radius:50%;background:var(--mid-grey);border:none;cursor:pointer;padding:0;}
+  .quote-dot.active{background:var(--coral);}
+
+  /* SIMILAR PROPERTY CHIPS */
+  .similar-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .similar-chip{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:20px;padding:8px 16px;font-size:13px;color:var(--navy);font-weight:600;}
+
+  /* CHOOSE TABLE */
+  table.choose-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.choose-table th, table.choose-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--mid-grey);}
+  table.choose-table th{color:var(--grey);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;}
+  table.choose-table td{color:var(--navy);}
+
+  /* FAQ ACCORDION */
+  .faq-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .faq-item h3{font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;cursor:pointer;user-select:none;}
+  .faq-item p{font-size:14px;margin:8px 0 0;max-height:0;overflow:hidden;transition:max-height .25s ease,margin .25s ease;}
+  .faq-item.open p{max-height:220px;}
+  .faq-mark{color:var(--coral);font-size:18px;flex-shrink:0;transition:transform .2s;display:inline-block;}
+  .faq-item.open .faq-mark{transform:rotate(45deg);}
+
+  /* CTA BLOCK */
+  .cta-block{background:var(--navy);color:#fff;text-align:center;padding:60px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .cta-block h2{color:#fff;}
+  .cta-block p{color:#C7CCDA;max-width:480px;margin:0 auto 28px;}
+
+  /* PALETTE */
+  .palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .swatch{border:1px solid var(--mid-grey);border-radius:8px;overflow:hidden;}
+  .swatch-color{height:56px;}
+  .swatch-info{padding:10px 12px;background:#fff;}
+  .swatch-info b{font-size:13px;display:block;}
+  .swatch-info span{font-size:11.5px;color:var(--grey);}
+
+  @media (max-width:800px){
+    .split,.def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
+    h1{font-size:24px;}
+    table.choose-table{font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Serviced apartment &amp; aparthotel operations, simplified</h1>
+    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing — manage rates and reservations, revenue and reporting, payments and performance more efficiently, for a night, a month, or longer, whether you call it a serviced apartment or an aparthotel.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">See pricing</a>
+    </div>
+    <div class="img-placeholder hero-image">
+      <span class="icon">🖼️</span>
+      <span class="caption">Hero product shot — a serviced apartment guest checking in via the Mews guest portal</span>
+      <span class="note">Placeholder — swap in real product photography</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" data-count="15000" data-suffix="+">0</div><div class="lbl">Properties worldwide</div></div>
+      <div class="stat"><div class="num">1 night –</div><div class="lbl">to a school semester, one system</div></div>
+      <div class="stat"><div class="num">Days</div><div class="lbl">Not weeks, to learn the system</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="jump-nav">
+  <div class="jump-nav-inner">
+    <a href="#video">Overview video</a>
+    <a href="#overview">Overview</a>
+    <a href="#length">Any Length of Stay</a>
+    <a href="#stay-length">Stay-Length Example</a>
+    <a href="#simplified">Operations, Simplified</a>
+    <a href="#booking">Flexible Booking</a>
+    <a href="#brand">Tech That Adapts</a>
+    <a href="#related">Related Products</a>
+    <a href="#proof">Customer Proof</a>
+    <a href="#portfolio">Portfolio Revenue</a>
+    <a href="#faqs">FAQs</a>
+  </div>
+</nav>
+
+<section class="wrap" id="video">
+  <h2>See Mews for serviced apartments in 90 seconds</h2>
+  <div class="video-card" id="videoCard" role="button" tabindex="0" aria-label="Play overview video">
+    <span class="video-duration">1:18</span>
+    <div class="play-button">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+  </div>
+  <p class="video-caption">Lorem ipsum dolor sit amet — a quick walkthrough of dolor, sit and amet, from a single night to a full semester.</p>
+  <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
+</section>
+
+<section class="wrap" id="overview">
+  <h2>What is serviced apartment software for?</h2>
+  <ul class="takeaways">
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
+    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
+    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
+    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
+  </ul>
+</section>
+
+<section class="wrap" id="length">
+  <h2>One system, any length of stay</h2>
+  <div class="split">
+    <div class="split-card old">
+      <h3>Most PMS platforms</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.</p>
+    </div>
+    <div class="split-card new">
+      <h3>Mews</h3>
+      <p>Eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="stay-length">
+  <h2>See how one system handles any stay length</h2>
+  <p>Lorem ipsum dolor sit — an interactive slider here would let visitors see how a single reservation flexes from a night to a semester.</p>
+  <div class="widget-placeholder">
+    <span class="icon">🎚️</span>
+    <span class="caption">Interactive widget — "length of stay" slider</span>
+    <span class="note">Placeholder — build as a live slider with illustrative output (e.g. billing cycle, folio type), clearly marked as an example, since actual billing rules are configured per property</span>
+  </div>
+</section>
+
+<section class="wrap" id="simplified">
+  <h2>Top reasons to move your serviced apartment PMS to Mews</h2>
+  <div class="stepper-nav" id="stepperNav1">
+    <button class="stepper-btn active" data-step="0"><span class="n">/01</span>Cloud</button>
+    <button class="stepper-btn" data-step="1"><span class="n">/02</span>Stays</button>
+    <button class="stepper-btn" data-step="2"><span class="n">/03</span>Contactless</button>
+    <button class="stepper-btn" data-step="3"><span class="n">/04</span>Central</button>
+  </div>
+  <div class="stepper-panels" id="stepperPanels1">
+    <div class="stepper-panel active" data-panel="0">
+      <h3>Cloud-native</h3>
+      <p>Lorem ipsum dolor sit — no on-site servers to install or maintain. Manage operations from anywhere with a true cloud solution.</p>
+    </div>
+    <div class="stepper-panel" data-panel="1">
+      <h3>Long- and short-stay</h3>
+      <p>Dolor sit amet — handle all types of stays with ease, thanks to flexible reservation and billing functionality.</p>
+    </div>
+    <div class="stepper-panel" data-panel="2">
+      <h3>Contactless solutions</h3>
+      <p>Amet consectetur — no onsite staff, no problem. A fully digital guest journey including check-in, payments and check-out.</p>
+    </div>
+    <div class="stepper-panel" data-panel="3">
+      <h3>Centralization capabilities</h3>
+      <p>Lorem ipsum: manage multiple properties from a central platform, with centralized rates, users and faster reporting.</p>
+    </div>
+  </div>
+  <div class="stepper-progress"><div class="stepper-progress-fill" id="stepperProgressFill1"></div></div>
+</section>
+
+<section class="wrap" id="booking">
+  <h2>Built for how serviced apartments actually book</h2>
+  <ul class="feat-list">
+    <li class="feat-item"><h3>Flexible, direct booking</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p></li>
+    <li class="feat-item"><h3>Long-stay reservation timeline</h3><p>Sed do eiusmod tempor incididunt ut labore et.</p></li>
+  </ul>
+</section>
+
+<section class="wrap" id="brand">
+  <h2>Tech that adapts to your brand</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</section>
+
+<section class="wrap" id="related">
+  <h2>Our Related Products</h2>
+  <p>Lorem ipsum — serviced apartment software rarely works alone. Here's how it connects to the rest of the Mews platform.</p>
+  <div class="def-grid" id="relatedGrid">
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Booking Engine <span class="def-mark">＋</span></h3>
+      <p>Lorem ipsum dolor sit — drive more direct bookings and reduce OTA fees.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Housekeeping <span class="def-mark">＋</span></h3>
+      <p>Ipsum dolor sit amet — manage tasks and scheduling across every unit in real time.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Embedded Payments <span class="def-mark">＋</span></h3>
+      <p>Dolor sit amet — tokenized cards and automatic reconciliation, built in natively.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Guest Check-In <span class="def-mark">＋</span></h3>
+      <p>Sit amet — self-service kiosks and digital keys for a smoother, staffless arrival.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Revenue Management (RMS) <span class="def-mark">＋</span></h3>
+      <p>Amet dolor — forecasting and pricing across long- and short-stay inventory.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Accounting &amp; Billing <span class="def-mark">＋</span></h3>
+      <p>Dolor sit amet — cut errors and save time with automated reconciliation.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="proof">
+  <h2>What serviced apartment operators say</h2>
+  <div class="quote-carousel" id="quoteCarousel">
+    <div class="quote-slide active">
+      <blockquote>
+        "We were looking for anything but the legacy systems on the market today. We landed on Mews because of the open API, the willingness and ability to scale and 'bolt on' other white-label solutions."
+        <cite>— Matthew Opferkuch, CEO, The Laundry Rooms</cite>
+      </blockquote>
+    </div>
+    <div class="quote-slide">
+      <blockquote>
+        "We have customized a perfectly adapted tech stack to our operations, which allows us to automate repetitive tasks, optimize our daily operations, and respond effectively to the needs of our employees and travelers. Mews is the central point of all our technological tools."
+        <cite>— Grégoire Benoit, Co-Founder and COO, Edgar Suites</cite>
+      </blockquote>
+    </div>
+    <div class="quote-dots"></div>
+  </div>
+</section>
+
+<section class="wrap" id="portfolio">
+  <h2>Maximize revenue and save time across your portfolio</h2>
+  <div class="stepper-nav" id="stepperNav2">
+    <button class="stepper-btn active" data-step="0"><span class="n">/01</span>Rates</button>
+    <button class="stepper-btn" data-step="1"><span class="n">/02</span>Billing</button>
+    <button class="stepper-btn" data-step="2"><span class="n">/03</span>Central</button>
+  </div>
+  <div class="stepper-panels" id="stepperPanels2">
+    <div class="stepper-panel active" data-panel="0">
+      <h3>Flexible rate management</h3>
+      <p>Lorem ipsum dolor sit — set rates by space type, time period or age, and charge partial months pro-rata.</p>
+    </div>
+    <div class="stepper-panel" data-panel="1">
+      <h3>Corporate management and billing</h3>
+      <p>Dolor sit amet — issue invoices to business customers, move bills between guest and company profiles, track it all in one place.</p>
+    </div>
+    <div class="stepper-panel" data-panel="2">
+      <h3>Centralized operations</h3>
+      <p>Amet consectetur — manage the whole portfolio from one platform, with bulk rate management, one-click data sharing and SSO.</p>
+    </div>
+  </div>
+  <div class="stepper-progress"><div class="stepper-progress-fill" id="stepperProgressFill2"></div></div>
+</section>
+
+<section class="wrap">
+  <h2>Similar property types Mews supports</h2>
+  <div class="similar-row">
+    <span class="similar-chip">Student accommodation</span>
+    <span class="similar-chip">Retirement homes</span>
+    <span class="similar-chip">Hybrid long- and short-stay properties</span>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>How to choose serviced apartment software</h2>
+  <table class="choose-table">
+    <tr><th>Consider</th><th>Why it matters for serviced apartments</th></tr>
+    <tr><td>Flexible-length billing</td><td>Lorem ipsum dolor sit amet consectetur adipiscing.</td></tr>
+    <tr><td>Corporate account support</td><td>Elit sed do eiusmod tempor incididunt ut labore.</td></tr>
+    <tr><td>Amenity &amp; co-working space sales</td><td>Et dolore magna aliqua ut enim ad minim.</td></tr>
+    <tr><td>Cloud-native architecture</td><td>Veniam quis nostrud exercitation ullamco laboris.</td></tr>
+    <tr><td>Third-party integration flexibility</td><td>Nisi ut aliquip ex ea commodo consequat duis.</td></tr>
+  </table>
+</section>
+
+<section class="wrap" id="faqs">
+  <h2>Frequently asked questions</h2>
+
+  <div class="faq-item">
+    <h3>What is serviced apartment management software? <span class="faq-mark">＋</span></h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is aparthotel software? <span class="faq-mark">＋</span></h3>
+    <p>Tempor incididunt ut labore et dolore magna aliqua ut enim ad.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>What unique features does serviced accommodation software need? <span class="faq-mark">＋</span></h3>
+    <p>Minim veniam quis nostrud exercitation ullamco laboris nisi ut.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is a cloud-native PMS the same as a cloud-based PMS? <span class="faq-mark">＋</span></h3>
+    <p>Aliquip ex ea commodo consequat duis aute irure dolor in.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Can serviced apartment software handle diverse room types? <span class="faq-mark">＋</span></h3>
+    <p>Reprehenderit in voluptate velit esse cillum dolore eu fugiat.</p>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="wrap">
+    <h2>See Mews in action</h2>
+    <p>Book a personalised demo and see how Mews handles a night, a month or a year from the same system.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">Talk to sales</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="palette-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#16213E;"></div><div class="swatch-info"><b>Deep Navy</b><span>#16213E — hero backgrounds</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FF6B6B;"></div><div class="swatch-info"><b>Coral</b><span>#FF6B6B — CTAs / highlights</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF0F0;"></div><div class="swatch-info"><b>Coral Light</b><span>#FFF0F0 — soft fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2ECC71;"></div><div class="swatch-info"><b>Green</b><span>#2ECC71 — positive indicators</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#6B7280;"></div><div class="swatch-info"><b>Grey</b><span>#6B7280 — body copy</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F8F9FA;"></div><div class="swatch-info"><b>Light Grey</b><span>#F8F9FA — card fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E5E7EB;"></div><div class="swatch-info"><b>Mid Grey</b><span>#E5E7EB — borders</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4F8EF7;"></div><div class="swatch-info"><b>Blue Accent</b><span>#4F8EF7 — info / links</span></div></div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+  /* Sticky jump-nav active highlighting */
+  const navLinks = Array.from(document.querySelectorAll('.jump-nav a'));
+  const targets = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function setActiveNav(){
+    let current = null;
+    for (const t of targets) { if (t.getBoundingClientRect().top <= 80) current = t; }
+    navLinks.forEach(a => a.classList.toggle('active', !!current && a.getAttribute('href') === '#' + current.id));
+  }
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  setActiveNav();
+
+  /* Scroll progress bar */
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  /* Back to top */
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 600), { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Video card click-to-note */
+  const videoCard = document.getElementById('videoCard');
+  const videoNote = document.getElementById('videoNote');
+  function toggleVideoNote(){ videoNote.style.display = videoNote.style.display === 'block' ? 'none' : 'block'; }
+  videoCard.addEventListener('click', toggleVideoNote);
+  videoCard.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') toggleVideoNote(); });
+
+  /* Animated count-up stats */
+  const counters = document.querySelectorAll('[data-count]');
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 900;
+    const start = performance.now();
+    function step(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) { animateCount(entry.target); io.unobserve(entry.target); } });
+  }, { threshold: 0.4 });
+  counters.forEach(c => io.observe(c));
+
+  /* Generic numbered-stepper factory — clickable + auto-advancing */
+  function makeStepper(navId, panelsId, fillId, sectionId){
+    const btns = document.querySelectorAll('#' + navId + ' .stepper-btn');
+    const panels = document.querySelectorAll('#' + panelsId + ' .stepper-panel');
+    const fill = document.getElementById(fillId);
+    let current = 0;
+    let timer, raf, start;
+    const DURATION = 5000;
+
+    function goTo(index){
+      current = (index + btns.length) % btns.length;
+      btns.forEach((b, i) => b.classList.toggle('active', i === current));
+      panels.forEach((p, i) => p.classList.toggle('active', i === current));
+    }
+    function tick(now){
+      if (!start) start = now;
+      const progress = Math.min((now - start) / DURATION, 1);
+      fill.style.width = (progress * 100) + '%';
+      if (progress < 1) { raf = requestAnimationFrame(tick); }
+    }
+    function startAuto(){
+      start = null;
+      fill.style.width = '0%';
+      raf = requestAnimationFrame(tick);
+      timer = setInterval(() => { goTo(current + 1); start = null; fill.style.width = '0%'; }, DURATION);
+    }
+    function stopAuto(){ clearInterval(timer); cancelAnimationFrame(raf); }
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        goTo(parseInt(btn.dataset.step, 10));
+        stopAuto();
+        startAuto();
+      });
+    });
+    const section = document.getElementById(sectionId);
+    section.addEventListener('mouseenter', stopAuto);
+    section.addEventListener('mouseleave', startAuto);
+    startAuto();
+  }
+  makeStepper('stepperNav1', 'stepperPanels1', 'stepperProgressFill1', 'simplified');
+  makeStepper('stepperNav2', 'stepperPanels2', 'stepperProgressFill2', 'portfolio');
+
+  /* Related Products click-to-reveal */
+  document.querySelectorAll('#relatedGrid .def-toggle').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const card = h3.closest('.def-card');
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      const mark = h3.querySelector('.def-mark');
+      if (mark) mark.textContent = wasOpen ? '＋' : '－';
+    });
+  });
+
+  /* Customer proof quote carousel */
+  const quoteCarousel = document.getElementById('quoteCarousel');
+  const quoteSlides = quoteCarousel.querySelectorAll('.quote-slide');
+  const quoteDotsWrap = quoteCarousel.querySelector('.quote-dots');
+  let quoteCurrent = 0;
+  let quoteTimer;
+  quoteSlides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to quote ' + (i + 1));
+    dot.addEventListener('click', () => { quoteGoTo(i); stopQuoteAuto(); startQuoteAuto(); });
+    quoteDotsWrap.appendChild(dot);
+  });
+  const quoteDots = quoteDotsWrap.querySelectorAll('.quote-dot');
+  function quoteGoTo(index){
+    quoteSlides[quoteCurrent].classList.remove('active');
+    quoteDots[quoteCurrent].classList.remove('active');
+    quoteCurrent = (index + quoteSlides.length) % quoteSlides.length;
+    quoteSlides[quoteCurrent].classList.add('active');
+    quoteDots[quoteCurrent].classList.add('active');
+  }
+  function startQuoteAuto(){ quoteTimer = setInterval(() => quoteGoTo(quoteCurrent + 1), 6000); }
+  function stopQuoteAuto(){ clearInterval(quoteTimer); }
+  quoteCarousel.addEventListener('mouseenter', stopQuoteAuto);
+  quoteCarousel.addEventListener('mouseleave', startQuoteAuto);
+  startQuoteAuto();
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-item h3').forEach(h3 => {
+    h3.addEventListener('click', () => h3.parentElement.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>

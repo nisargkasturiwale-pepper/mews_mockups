@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mews · Independent Hotel Management Software · Interactive Mockup</title>
+<style>
+  :root{
+    --navy:#16213E; --coral:#FF6B6B; --coral-light:#FFF0F0; --green:#2ECC71;
+    --grey:#6B7280; --light-grey:#F8F9FA; --mid-grey:#E5E7EB; --blue:#4F8EF7;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--navy);background:#fff;line-height:1.55;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+  section{padding:60px 0;border-bottom:1px solid var(--mid-grey);scroll-margin-top:64px;}
+  section h2:first-child, section h3:first-child{margin-top:0;}
+  h1{font-size:34px;margin:0 0 14px;line-height:1.15;}
+  h2{font-size:26px;margin:0 0 14px;}
+  .kicker{font-size:12.5px;letter-spacing:.02em;color:var(--coral);font-style:italic;text-transform:lowercase;margin:0 0 8px;font-weight:600;}
+  h3{font-size:16px;margin:0 0 8px;}
+  p{color:var(--grey);margin:0 0 16px;font-size:14px;}
+
+  /* HERO */
+  .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hero h1{color:#fff;max-width:620px;margin:0 auto 14px;}
+  .hero p.lead{color:#C7CCDA;max-width:560px;margin:0 auto 20px;font-size:17px;}
+  .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
+  .btn-primary{background:var(--coral);color:#fff;}
+  .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
+  .img-placeholder{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#C7CCDA;padding:20px;}
+  .img-placeholder .icon{font-size:24px;margin-bottom:6px;}
+  .img-placeholder .caption{font-size:12px;max-width:260px;}
+  .img-placeholder .note{font-size:10.5px;color:var(--coral);margin-top:6px;font-style:italic;}
+  .hero-image{margin:0 auto 32px;max-width:640px;height:200px;}
+  .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
+  .stat{text-align:center;}
+  .stat .num{font-size:22px;font-weight:700;color:var(--coral);}
+  .stat .lbl{font-size:13px;color:#C7CCDA;margin-top:4px;}
+
+  /* JUMP NAV */
+  .jump-nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--mid-grey);box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .jump-nav-inner{max-width:960px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+  .jump-nav-inner::-webkit-scrollbar{display:none;}
+  .jump-nav a{flex-shrink:0;font-size:13px;font-weight:600;color:var(--grey);text-decoration:none;padding:14px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
+  .jump-nav a:hover{color:var(--navy);}
+  .jump-nav a.active{color:var(--coral);border-bottom-color:var(--coral);}
+
+  /* SCROLL PROGRESS + BACK TO TOP */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:100;transition:width .05s linear;}
+  .back-to-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);z-index:60;font-size:18px;}
+  .back-to-top.visible{display:flex;}
+  .back-to-top:hover{background:var(--coral);}
+
+  /* VIDEO */
+  .video-card{position:relative;max-width:760px;margin:0 auto;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,var(--navy),#233158);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(255,255,255,.1);}
+  .video-card:hover .play-button{transform:scale(1.08);}
+  .play-button{width:70px;height:70px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 8px 24px rgba(255,107,107,.4);}
+  .play-button svg{margin-left:4px;}
+  .video-caption{text-align:center;max-width:560px;margin:16px auto 0;font-size:13.5px;color:var(--grey);}
+  .video-duration{position:absolute;bottom:14px;right:14px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;padding:3px 8px;border-radius:4px;}
+  .video-playing-note{text-align:center;font-size:12px;color:var(--coral);margin-top:10px;display:none;}
+
+  /* TAKEAWAYS */
+  ul.takeaways{list-style:none;padding:0;margin:0;}
+  ul.takeaways li{padding-left:26px;position:relative;margin-bottom:14px;color:var(--navy);font-size:14px;}
+  ul.takeaways li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);position:absolute;left:0;top:6px;}
+
+  /* SPLIT */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .split-card{border-radius:8px;padding:20px 22px;border:1px solid var(--mid-grey);background:var(--light-grey);}
+  .split-card h3{font-size:15px;color:var(--navy);}
+  .split-card p{margin:0;font-size:13.5px;}
+
+  /* NUMBERED STEPPER (/01 /02 /03 /04) */
+  .stepper-nav{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+  .stepper-btn{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:10px 16px;font-family:inherit;font-size:13px;font-weight:700;color:var(--grey);cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+  .stepper-btn .n{color:var(--coral);margin-right:6px;}
+  .stepper-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .stepper-btn.active .n{color:#fff;}
+  .stepper-panels{position:relative;min-height:110px;}
+  .stepper-panel{display:none;animation:fadeIn .3s ease;}
+  .stepper-panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  .stepper-panel h3{font-size:18px;margin-bottom:8px;}
+  .stepper-panel p{font-size:14.5px;margin-bottom:0;}
+  .stepper-progress{height:3px;background:var(--mid-grey);border-radius:2px;margin-top:18px;overflow:hidden;}
+  .stepper-progress-fill{height:100%;background:var(--coral);width:0%;transition:width .05s linear;}
+
+  /* CONSORTIUM CHIPS */
+
+  /* STRATEGY LIST */
+  .strat-list{list-style:none;padding:0;margin:0;}
+  .strat-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .strat-item:last-child{border-bottom:none;}
+  .strat-item h3{font-size:15.5px;margin-bottom:4px;}
+  .strat-item p{margin:0;font-size:14px;}
+
+  /* SECONDARY-KEYWORD QUESTION SECTIONS */
+  .kw-question{padding:44px 0;}
+
+  /* RELATED PRODUCTS/SOLUTIONS — CLICK TO REVEAL */
+  .def-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .def-card{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px;cursor:pointer;}
+  .def-toggle{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:0;font-size:14.5px;user-select:none;}
+  .def-mark{color:var(--coral);font-weight:700;font-size:15px;flex-shrink:0;transition:transform .2s;}
+  .def-card.open .def-mark{transform:rotate(45deg);}
+  .def-card p{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;margin-top:0;font-size:12.5px;}
+  .def-card.open p{max-height:120px;margin-top:8px;}
+
+  /* CONSORTIUM LOGO MARQUEE */
+  .marquee{overflow:hidden;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+  .marquee-track{display:flex;gap:12px;width:max-content;animation:marquee-scroll 28s linear infinite;}
+  .marquee:hover .marquee-track{animation-play-state:paused;}
+  @keyframes marquee-scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  .consortium-chip{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:20px;padding:8px 16px;font-size:13px;color:var(--navy);font-weight:600;white-space:nowrap;flex-shrink:0;}
+
+  /* CUSTOMER PROOF CAROUSEL */
+  blockquote{background:var(--coral-light);border-left:4px solid var(--coral);padding:18px 22px;margin:0;font-size:15px;color:var(--navy);font-style:italic;}
+  blockquote cite{display:block;margin-top:10px;font-size:13px;color:var(--grey);font-style:normal;}
+  .quote-carousel{position:relative;}
+  .quote-slide{display:none;animation:fadeIn .3s ease;}
+  .quote-slide.active{display:block;}
+  .quote-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+  .quote-dot{width:8px;height:8px;border-radius:50%;background:var(--mid-grey);border:none;cursor:pointer;padding:0;}
+  .quote-dot.active{background:var(--coral);}
+
+  /* DATA CARDS */
+  .data-row{display:flex;gap:20px;flex-wrap:wrap;}
+  .data-card{flex:1;min-width:150px;background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:20px;text-align:center;}
+  .data-card .num{font-size:22px;font-weight:700;color:var(--navy);}
+  .data-card .lbl{font-size:12px;color:var(--grey);margin-top:6px;}
+  .data-card .src{font-size:10px;color:var(--grey);margin-top:6px;font-style:italic;}
+  .src-note{font-size:12px;color:var(--grey);font-style:italic;margin-top:14px;}
+
+  /* CHOOSE TABLE */
+  table.choose-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.choose-table th, table.choose-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--mid-grey);}
+  table.choose-table th{color:var(--grey);font-size:11.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;}
+  table.choose-table td{color:var(--navy);}
+
+  /* FAQ ACCORDION */
+  .faq-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .faq-item h3{font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;cursor:pointer;user-select:none;}
+  .faq-item p{font-size:14px;margin:8px 0 0;max-height:0;overflow:hidden;transition:max-height .25s ease,margin .25s ease;}
+  .faq-item.open p{max-height:220px;}
+  .faq-mark{color:var(--coral);font-size:18px;flex-shrink:0;transition:transform .2s;display:inline-block;}
+  .faq-item.open .faq-mark{transform:rotate(45deg);}
+
+  /* CTA BLOCK */
+  .cta-block{background:var(--navy);color:#fff;text-align:center;padding:60px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .cta-block h2{color:#fff;}
+  .cta-block p{color:#C7CCDA;max-width:480px;margin:0 auto 28px;}
+
+  /* PALETTE */
+  .palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .swatch{border:1px solid var(--mid-grey);border-radius:8px;overflow:hidden;}
+  .swatch-color{height:56px;}
+  .swatch-info{padding:10px 12px;background:#fff;}
+  .swatch-info b{font-size:13px;display:block;}
+  .swatch-info span{font-size:11.5px;color:var(--grey);}
+
+  @media (max-width:800px){
+    .split,.def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
+    h1{font-size:24px;}
+    table.choose-table{font-size:12px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="hero">
+  <div class="wrap">
+    <h1>Unique hotels. Unified excellence.</h1>
+    <p class="lead">Lorem ipsum — run every part of your property from one cloud-native platform, flexible enough to fit your standards, without answering to a corporate brand mandate.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">See pricing</a>
+    </div>
+    <div class="img-placeholder hero-image">
+      <span class="icon">🖼️</span>
+      <span class="caption">Hero product shot — an independent boutique hotel's front desk running Mews</span>
+      <span class="note">Placeholder — swap in real product photography</span>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" data-count="15000" data-suffix="+">0</div><div class="lbl">Properties worldwide</div></div>
+      <div class="stat"><div class="num" data-count="39" data-suffix="%">0</div><div class="lbl">Increase in RevPAR with Mews</div></div>
+      <div class="stat"><div class="num" data-count="99.9" data-suffix="%">0</div><div class="lbl">Guaranteed uptime</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="jump-nav">
+  <div class="jump-nav-inner">
+    <a href="#video">Overview video</a>
+    <a href="#overview">Overview</a>
+    <a href="#freedom">Why Independence Needs Its Own Software</a>
+    <a href="#unified">Unique Hotels, Unified Excellence</a>
+    <a href="#experiences">Guest Experiences</a>
+    <a href="#consortium">Consortiums &amp; Soft Brands</a>
+    <a href="#compete">Compete Like a Chain</a>
+    <a href="#related">Related Products</a>
+    <a href="#proof">Customer Proof</a>
+    <a href="#data">The Data</a>
+    <a href="#faqs">FAQs</a>
+  </div>
+</nav>
+
+<section class="wrap" id="video">
+  <h2>See Mews for independent hotels in 90 seconds</h2>
+  <div class="video-card" id="videoCard" role="button" tabindex="0" aria-label="Play overview video">
+    <span class="video-duration">1:20</span>
+    <div class="play-button">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+  </div>
+  <p class="video-caption">Lorem ipsum dolor sit amet — a quick walkthrough of dolor, sit and amet, run entirely on your own terms.</p>
+  <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
+</section>
+
+<section class="wrap" id="overview">
+  <h2>What is independent hotel management software?</h2>
+  <ul class="takeaways">
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
+    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
+    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
+    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
+  </ul>
+</section>
+
+<section class="wrap" id="freedom">
+  <h2>Freedom comes with the responsibility to choose well</h2>
+  <div class="split">
+    <div class="split-card">
+      <h3>Chain-affiliated hotels</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.</p>
+    </div>
+    <div class="split-card">
+      <h3>Independent hotels</h3>
+      <p>Eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="unified">
+  <h2>Unique hotels, unified excellence</h2>
+  <div class="stepper-nav" id="stepperNav">
+    <button class="stepper-btn active" data-step="0"><span class="n">/01</span>Admin</button>
+    <button class="stepper-btn" data-step="1"><span class="n">/02</span>Silos</button>
+    <button class="stepper-btn" data-step="2"><span class="n">/03</span>Scale</button>
+    <button class="stepper-btn" data-step="3"><span class="n">/04</span>Onboard</button>
+  </div>
+  <div class="stepper-panels" id="stepperPanels">
+    <div class="stepper-panel active" data-panel="0">
+      <h3>Less admin, more time with guests</h3>
+      <p>Lorem ipsum dolor sit — cut down manual work, reduce errors and give staff more time to focus on memorable guest experiences.</p>
+    </div>
+    <div class="stepper-panel" data-panel="1">
+      <h3>One platform, zero silos</h3>
+      <p>Dolor sit amet — manage rooms, rates, payments and POS from a single connected system built for independent hotels.</p>
+    </div>
+    <div class="stepper-panel" data-panel="2">
+      <h3>Technology that scales with you</h3>
+      <p>Amet consectetur — unprecedented freedom to customize your tech ecosystem with 1,000+ integrations, so your platform reflects your standards, not a vendor's defaults.</p>
+    </div>
+    <div class="stepper-panel" data-panel="3">
+      <h3>Onboard in days, not months</h3>
+      <p>Lorem ipsum: start fast, train staff quickly and get up and running faster with intuitive, self-guided learning.</p>
+    </div>
+  </div>
+  <div class="stepper-progress"><div class="stepper-progress-fill" id="stepperProgressFill"></div></div>
+</section>
+
+<section class="wrap" id="experiences">
+  <h2>Create truly memorable guest experiences</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <ul class="takeaways">
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
+    <li>Eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+    <li>Ut enim ad minim veniam quis nostrud exercitation ullamco</li>
+  </ul>
+</section>
+
+<section class="wrap" id="consortium">
+  <h2>Distribution power without giving up who you are</h2>
+  <p>Lorem ipsum dolor sit — many independent hotels join marketing consortiums and soft brands for global reach. Mews works alongside them, not instead of them:</p>
+  <div class="marquee">
+    <div class="marquee-track" id="consortiumTrack">
+      <span class="consortium-chip">Leading Hotels of the World</span>
+      <span class="consortium-chip">Design Hotels</span>
+      <span class="consortium-chip">Relais &amp; Châteaux</span>
+      <span class="consortium-chip">Small Luxury Hotels</span>
+      <span class="consortium-chip">Romantik</span>
+      <span class="consortium-chip">Logis Hotels</span>
+      <span class="consortium-chip">Quality Lodgings</span>
+      <span class="consortium-chip">De Historiske</span>
+      <span class="consortium-chip">Teritoria</span>
+    </div>
+  </div>
+  <p style="margin-top:20px;font-size:13.5px;">Dolor sit amet — this isn't just distribution overlap:</p>
+  <div class="data-row">
+    <div class="data-card"><div class="num">580+</div><div class="lbl">independently owned hotels &amp; restaurants</div><div class="src">Relais &amp; Châteaux — official PMS partner</div></div>
+    <div class="data-card"><div class="num">700+</div><div class="lbl">independent boutique hotels</div><div class="src">Small Luxury Hotels of the World — preferred PMS partner across Europe, the Americas and APAC</div></div>
+  </div>
+  <p style="margin-top:16px;font-size:13.5px;">Amet consectetur — in both cases, precisely because it lets each property keep its own standards.</p>
+</section>
+
+<section class="wrap" id="compete">
+  <h2>Compete like a chain, stay independent</h2>
+  <ul class="strat-list">
+    <li class="strat-item"><h3>Use OTAs for visibility, not dependency</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.</p></li>
+    <li class="strat-item"><h3>Personalize at the guest-profile level</h3><p>Eiusmod tempor incididunt ut labore et dolore magna aliqua.</p></li>
+    <li class="strat-item"><h3>Join distribution networks on your own terms</h3><p>Ut enim ad minim veniam quis nostrud exercitation ullamco.</p></li>
+  </ul>
+</section>
+
+<section class="wrap" id="related">
+  <h2>Our Related Products &amp; Solutions</h2>
+  <p>Lorem ipsum — independent hotel management software rarely works alone. Here's how it connects to the rest of the Mews platform.</p>
+  <div class="def-grid" id="relatedGrid">
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">For General Managers <span class="def-mark">＋</span></h3>
+      <p>Lorem ipsum dolor sit — simplify daily operations and deliver better guest satisfaction scores.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">For F&amp;B Managers <span class="def-mark">＋</span></h3>
+      <p>Ipsum dolor sit amet — streamline restaurant service and connect POS directly with PMS.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Booking Engine <span class="def-mark">＋</span></h3>
+      <p>Dolor sit amet — drive more direct bookings and reduce OTA fees.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Housekeeping <span class="def-mark">＋</span></h3>
+      <p>Sit amet — manage tasks and scheduling from a single Housekeeping App.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Embedded Payments <span class="def-mark">＋</span></h3>
+      <p>Amet dolor — manage all transactions and reconciliations in one secure platform.</p>
+    </div>
+    <div class="def-card" data-reveal>
+      <h3 class="def-toggle">Guest Intelligence <span class="def-mark">＋</span></h3>
+      <p>Dolor sit amet — turn guest data into smarter, more personalized experiences.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="proof">
+  <h2>What independent hoteliers say</h2>
+  <div class="quote-carousel" id="quoteCarousel">
+    <div class="quote-slide active">
+      <blockquote>
+        "Mews is incredibly user-friendly, even for someone like me who had no prior experience in hospitality. It's ideal for independent hoteliers."
+        <cite>— Nicolas Lopez Alcalde, Sales Director, Hotel Patagonia Sur</cite>
+      </blockquote>
+    </div>
+    <div class="quote-slide">
+      <blockquote>
+        "Soon, it won't be possible to delay modernization, especially for independent boutique hotels. Mews enables us to operate more efficiently and address challenges like labor costs."
+        <cite>— Ryan Killeen, Co-Founder &amp; CEO, The Annex</cite>
+      </blockquote>
+    </div>
+    <div class="quote-slide">
+      <blockquote>
+        "We looked for a modern hospitality cloud to help us preserve our hotel's historical legacy and inspire our guests to embrace it. Mews took away the operational burden so that we could focus fully on delivering once-in-a-lifetime guest experiences."
+        <cite>— Alexander Grieg, Owner / Managing Director, Opus XVI</cite>
+      </blockquote>
+    </div>
+    <div class="quote-slide">
+      <blockquote>
+        "What made Mews stand out was their agility, their support, and the ease with which they fit into our business model and values."
+        <cite>— Philippe Gombert, President, Relais &amp; Châteaux</cite>
+      </blockquote>
+    </div>
+    <div class="quote-slide">
+      <blockquote>
+        "Mews has supported our European hotels, and this expansion allows more of our members to access a modern and flexible platform to support their operational needs across regions, while maintaining the individuality of each SLH property."
+        <cite>— Richard Hyde, COO, Small Luxury Hotels of the World</cite>
+      </blockquote>
+    </div>
+    <div class="quote-dots"></div>
+  </div>
+</section>
+
+<section class="wrap" id="data">
+  <h2>What the data says</h2>
+  <div class="data-row">
+    <div class="data-card"><div class="num">39%</div><div class="lbl">increase in RevPAR</div><div class="src">Mews product data*</div></div>
+    <div class="data-card"><div class="num">67%</div><div class="lbl">RevPAR increase in one year — Opus XVI</div><div class="src">Small Luxury Hotels of the World partnership announcement</div></div>
+    <div class="data-card"><div class="num">65%</div><div class="lbl">of hotels report labor shortages</div><div class="src">AHLA research</div></div>
+  </div>
+  <p class="src-note">*Mews figures are calculated internally by Mews, per its own published disclosure, rather than independently audited.</p>
+</section>
+
+<section class="wrap">
+  <h2>How to choose hotel management for independent hotels</h2>
+  <table class="choose-table">
+    <tr><th>Consider</th><th>Why it matters for an independent</th></tr>
+    <tr><td>Freedom from lock-in</td><td>Lorem ipsum dolor sit amet consectetur adipiscing.</td></tr>
+    <tr><td>Consortium compatibility</td><td>Elit sed do eiusmod tempor incididunt ut labore.</td></tr>
+    <tr><td>Personalization tools</td><td>Et dolore magna aliqua ut enim ad minim.</td></tr>
+    <tr><td>Speed to onboard</td><td>Veniam quis nostrud exercitation ullamco laboris.</td></tr>
+    <tr><td>Direct booking tools</td><td>Nisi ut aliquip ex ea commodo consequat duis.</td></tr>
+  </table>
+</section>
+
+<section class="wrap" id="faqs">
+  <h2>Frequently asked questions</h2>
+
+  <div class="faq-item">
+    <h3>What is software for independent hotels? <span class="faq-mark">＋</span></h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is a PMS for independent hotels? <span class="faq-mark">＋</span></h3>
+    <p>Incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
+  </div>
+
+  <div class="faq-item">
+    <h3>What's the difference between software for independent hotels and a chain's system? <span class="faq-mark">＋</span></h3>
+    <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How can independent hotels compete with larger chains? <span class="faq-mark">＋</span></h3>
+    <p>Consequat duis aute irure dolor in reprehenderit in voluptate velit esse.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is independent hotel management software different for luxury versus budget properties? <span class="faq-mark">＋</span></h3>
+    <p>Cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Do recognized independent hotel groups actually use Mews? <span class="faq-mark">＋</span></h3>
+    <p>Proident sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is the best hotel management for independent hotels with under 20 rooms? <span class="faq-mark">＋</span></h3>
+    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium.</p>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="wrap">
+    <h2>See Mews in action</h2>
+    <p>Book a personalised demo and see how Mews helps independent hotels run their own way.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">Talk to sales</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="palette-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#16213E;"></div><div class="swatch-info"><b>Deep Navy</b><span>#16213E — hero backgrounds</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FF6B6B;"></div><div class="swatch-info"><b>Coral</b><span>#FF6B6B — CTAs / highlights</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF0F0;"></div><div class="swatch-info"><b>Coral Light</b><span>#FFF0F0 — soft fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2ECC71;"></div><div class="swatch-info"><b>Green</b><span>#2ECC71 — positive indicators</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#6B7280;"></div><div class="swatch-info"><b>Grey</b><span>#6B7280 — body copy</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F8F9FA;"></div><div class="swatch-info"><b>Light Grey</b><span>#F8F9FA — card fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E5E7EB;"></div><div class="swatch-info"><b>Mid Grey</b><span>#E5E7EB — borders</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4F8EF7;"></div><div class="swatch-info"><b>Blue Accent</b><span>#4F8EF7 — info / links</span></div></div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+  /* Sticky jump-nav active highlighting */
+  const navLinks = Array.from(document.querySelectorAll('.jump-nav a'));
+  const targets = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function setActiveNav(){
+    let current = null;
+    for (const t of targets) { if (t.getBoundingClientRect().top <= 80) current = t; }
+    navLinks.forEach(a => a.classList.toggle('active', !!current && a.getAttribute('href') === '#' + current.id));
+  }
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  setActiveNav();
+
+  /* Scroll progress bar */
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  /* Back to top */
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 600), { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Video card click-to-note */
+  const videoCard = document.getElementById('videoCard');
+  const videoNote = document.getElementById('videoNote');
+  function toggleVideoNote(){ videoNote.style.display = videoNote.style.display === 'block' ? 'none' : 'block'; }
+  videoCard.addEventListener('click', toggleVideoNote);
+  videoCard.addEventListener('keypress', e => { if (e.key === 'Enter' || e.key === ' ') toggleVideoNote(); });
+
+  /* Animated count-up stats */
+  const counters = document.querySelectorAll('[data-count]');
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const decimals = (el.dataset.count.indexOf('.') > -1) ? 1 : 0;
+    const duration = 900;
+    const start = performance.now();
+    function step(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = target * eased;
+      el.textContent = (decimals ? value.toFixed(decimals) : Math.round(value).toLocaleString()) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) { animateCount(entry.target); io.unobserve(entry.target); } });
+  }, { threshold: 0.4 });
+  counters.forEach(c => io.observe(c));
+
+  /* Numbered stepper /01 /02 /03 /04 — clickable + auto-advancing */
+  const stepperBtns = document.querySelectorAll('#stepperNav .stepper-btn');
+  const stepperPanels = document.querySelectorAll('#stepperPanels .stepper-panel');
+  const stepperFill = document.getElementById('stepperProgressFill');
+  let stepperCurrent = 0;
+  let stepperTimer, stepperRAF, stepperStart;
+  const STEP_DURATION = 5000;
+
+  function goToStep(index){
+    stepperCurrent = (index + stepperBtns.length) % stepperBtns.length;
+    stepperBtns.forEach((b, i) => b.classList.toggle('active', i === stepperCurrent));
+    stepperPanels.forEach((p, i) => p.classList.toggle('active', i === stepperCurrent));
+  }
+  function stepperTick(now){
+    if (!stepperStart) stepperStart = now;
+    const progress = Math.min((now - stepperStart) / STEP_DURATION, 1);
+    stepperFill.style.width = (progress * 100) + '%';
+    if (progress < 1) { stepperRAF = requestAnimationFrame(stepperTick); }
+  }
+  function startStepperAuto(){
+    stepperStart = null;
+    stepperFill.style.width = '0%';
+    stepperRAF = requestAnimationFrame(stepperTick);
+    stepperTimer = setInterval(() => { goToStep(stepperCurrent + 1); stepperStart = null; stepperFill.style.width = '0%'; }, STEP_DURATION);
+  }
+  function stopStepperAuto(){ clearInterval(stepperTimer); cancelAnimationFrame(stepperRAF); }
+  stepperBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      goToStep(parseInt(btn.dataset.step, 10));
+      stopStepperAuto();
+      startStepperAuto();
+    });
+  });
+  document.getElementById('unified').addEventListener('mouseenter', stopStepperAuto);
+  document.getElementById('unified').addEventListener('mouseleave', startStepperAuto);
+  startStepperAuto();
+
+  /* Consortium logo marquee — duplicate track for a seamless loop */
+  const consortiumTrack = document.getElementById('consortiumTrack');
+  if (consortiumTrack) { consortiumTrack.innerHTML += consortiumTrack.innerHTML; }
+
+  /* Related Products/Solutions click-to-reveal */
+  document.querySelectorAll('#relatedGrid .def-toggle').forEach(h3 => {
+    h3.addEventListener('click', () => {
+      const card = h3.closest('.def-card');
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      const mark = h3.querySelector('.def-mark');
+      if (mark) mark.textContent = wasOpen ? '＋' : '－';
+    });
+  });
+
+  /* Customer proof quote carousel */
+  const quoteCarousel = document.getElementById('quoteCarousel');
+  const quoteSlides = quoteCarousel.querySelectorAll('.quote-slide');
+  const quoteDotsWrap = quoteCarousel.querySelector('.quote-dots');
+  let quoteCurrent = 0;
+  let quoteTimer;
+  quoteSlides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to quote ' + (i + 1));
+    dot.addEventListener('click', () => { quoteGoTo(i); stopQuoteAuto(); startQuoteAuto(); });
+    quoteDotsWrap.appendChild(dot);
+  });
+  const quoteDots = quoteDotsWrap.querySelectorAll('.quote-dot');
+  function quoteGoTo(index){
+    quoteSlides[quoteCurrent].classList.remove('active');
+    quoteDots[quoteCurrent].classList.remove('active');
+    quoteCurrent = (index + quoteSlides.length) % quoteSlides.length;
+    quoteSlides[quoteCurrent].classList.add('active');
+    quoteDots[quoteCurrent].classList.add('active');
+  }
+  function startQuoteAuto(){ quoteTimer = setInterval(() => quoteGoTo(quoteCurrent + 1), 6000); }
+  function stopQuoteAuto(){ clearInterval(quoteTimer); }
+  quoteCarousel.addEventListener('mouseenter', stopQuoteAuto);
+  quoteCarousel.addEventListener('mouseleave', startQuoteAuto);
+  startQuoteAuto();
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-item h3').forEach(h3 => {
+    h3.addEventListener('click', () => h3.parentElement.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mews vs Cloudbeds · Interactive Comparison Mockup</title>
+<style>
+  :root{
+    --navy:#16213E; --coral:#FF6B6B; --coral-light:#FFF0F0; --green:#2ECC71;
+    --grey:#6B7280; --light-grey:#F8F9FA; --mid-grey:#E5E7EB; --blue:#4F8EF7;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--navy);background:#fff;line-height:1.55;}
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px;}
+  section{padding:60px 0;border-bottom:1px solid var(--mid-grey);scroll-margin-top:64px;}
+  section h2:first-child, section h3:first-child{margin-top:0;}
+  h1{font-size:34px;margin:0 0 10px;line-height:1.15;}
+  h2{font-size:26px;margin:0 0 14px;}
+  .kicker{font-size:12.5px;letter-spacing:.02em;color:var(--coral);font-style:italic;text-transform:lowercase;margin:0 0 8px;font-weight:600;}
+  h3{font-size:16px;margin:0 0 8px;}
+  p{color:var(--grey);margin:0 0 16px;font-size:14px;}
+
+  /* HERO */
+  .hero{background:var(--navy);color:#fff;text-align:center;padding:56px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .hero h1{color:#fff;max-width:680px;margin:0 auto 10px;}
+  .vs-line{color:var(--coral);font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+  .hero p.lead{color:#C7CCDA;max-width:560px;margin:0 auto 22px;font-size:16.5px;}
+  .rating-row{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:28px;}
+  .rating-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:6px 14px;font-size:12.5px;color:#fff;}
+  .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
+  .btn-primary{background:var(--coral);color:#fff;}
+  .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
+  .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
+  .stat{text-align:center;}
+  .stat .num{font-size:22px;font-weight:700;color:var(--coral);}
+  .stat .lbl{font-size:12.5px;color:#C7CCDA;margin-top:4px;}
+
+  /* JUMP NAV */
+  .jump-nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--mid-grey);box-shadow:0 1px 6px rgba(0,0,0,.04);}
+  .jump-nav-inner{max-width:980px;margin:0 auto;padding:0 24px;display:flex;gap:6px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none;}
+  .jump-nav-inner::-webkit-scrollbar{display:none;}
+  .jump-nav a{flex-shrink:0;font-size:13px;font-weight:600;color:var(--grey);text-decoration:none;padding:14px 12px;border-bottom:2px solid transparent;white-space:nowrap;transition:color .15s,border-color .15s;}
+  .jump-nav a:hover{color:var(--navy);}
+  .jump-nav a.active{color:var(--coral);border-bottom-color:var(--coral);}
+
+  /* SCROLL PROGRESS + BACK TO TOP */
+  .scroll-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);width:0%;z-index:100;transition:width .05s linear;}
+  .back-to-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.2);z-index:60;font-size:18px;}
+  .back-to-top.visible{display:flex;}
+  .back-to-top:hover{background:var(--coral);}
+
+  /* TAKEAWAYS */
+  ul.takeaways{list-style:none;padding:0;margin:0;}
+  ul.takeaways li{padding-left:26px;position:relative;margin-bottom:14px;color:var(--navy);font-size:14px;}
+  ul.takeaways li:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--coral);position:absolute;left:0;top:6px;}
+
+  /* FEATURE COMPARISON TABLE */
+  table.vs-table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.vs-table th{text-align:left;padding:10px 12px;color:var(--grey);font-size:11px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;border-bottom:2px solid var(--mid-grey);}
+  table.vs-table td{padding:14px 12px;border-bottom:1px solid var(--mid-grey);vertical-align:top;color:var(--navy);font-size:13px;}
+  table.vs-table td.cat{font-weight:700;color:var(--navy);width:16%;}
+  table.vs-table td.mews-cell{background:var(--coral-light);width:42%;}
+  table.vs-table tr.tr-row{cursor:pointer;}
+  table.vs-table tr.tr-row td.cat:after{content:" ▾";color:var(--coral);font-size:11px;}
+  table.vs-table tr.tr-row.open td.cat:after{content:" ▴";}
+  .src-note{font-size:12px;color:var(--grey);font-style:italic;margin-top:14px;}
+
+  /* DIRECT-COMPARISON ANIMATED CHART */
+  .chart-box{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:10px;padding:20px 22px;margin-bottom:20px;}
+  .chart-box h3{font-size:14px;margin-bottom:14px;}
+  .chart-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+  .chart-label{width:120px;font-size:12px;color:var(--navy);flex-shrink:0;}
+  .chart-bar-track{flex:1;background:var(--mid-grey);border-radius:6px;height:16px;overflow:hidden;}
+  .chart-bar-fill{height:100%;background:var(--coral);border-radius:6px;width:0;transition:width 1s cubic-bezier(.4,0,.2,1);}
+  .chart-bar-fill.legacy{background:var(--grey);}
+  .chart-value{width:70px;text-align:right;font-size:12.5px;font-weight:700;color:var(--navy);flex-shrink:0;}
+  .chart-note{font-size:11.5px;color:var(--grey);font-style:italic;margin:0;}
+
+  /* DATA CARDS */
+  .data-row{display:flex;gap:20px;flex-wrap:wrap;}
+  .data-card{flex:1;min-width:150px;background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:20px;text-align:center;}
+  .data-card .num{font-size:22px;font-weight:700;color:var(--navy);}
+  .data-card .lbl{font-size:12.5px;color:var(--grey);margin-top:6px;}
+  .data-card .src{font-size:10.5px;color:var(--grey);margin-top:6px;font-style:italic;}
+
+  /* CUSTOMER PROOF */
+  blockquote{background:var(--coral-light);border-left:4px solid var(--coral);padding:20px 24px;margin:0;font-size:16px;color:var(--navy);font-style:italic;}
+  blockquote cite{display:block;margin-top:12px;font-size:13px;color:var(--grey);font-style:normal;}
+  .logo-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .logo-chip{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:20px;padding:8px 16px;font-size:13px;color:var(--navy);font-weight:600;}
+
+  /* MIGRATION STEPPER */
+  .stepper-nav{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap;}
+  .stepper-btn{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:10px 16px;font-family:inherit;font-size:13px;font-weight:700;color:var(--grey);cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+  .stepper-btn .n{color:var(--coral);margin-right:6px;}
+  .stepper-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .stepper-btn.active .n{color:#fff;}
+  .stepper-panels{position:relative;min-height:90px;}
+  .stepper-panel{display:none;animation:fadeIn .3s ease;}
+  .stepper-panel.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  .stepper-panel h3{font-size:17px;margin-bottom:8px;}
+  .stepper-panel p{font-size:14.5px;margin-bottom:0;}
+  .stepper-progress{height:3px;background:var(--mid-grey);border-radius:2px;margin-top:18px;overflow:hidden;}
+  .stepper-progress-fill{height:100%;background:var(--coral);width:0%;transition:width .05s linear;}
+
+  /* COMPARE HUB */
+  .hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .hub-card{border:1px solid var(--mid-grey);border-radius:8px;padding:18px 20px;}
+  .hub-card h3{font-size:15px;color:var(--navy);margin-bottom:6px;}
+  .hub-card p{font-size:13px;margin:0 0 10px;}
+  .hub-card a{font-size:13px;color:var(--coral);text-decoration:none;font-weight:600;}
+
+  /* FAQ ACCORDION */
+  .faq-item{border-bottom:1px solid var(--mid-grey);padding:16px 0;}
+  .faq-item h3{font-size:15px;display:flex;justify-content:space-between;align-items:center;gap:12px;margin:0;cursor:pointer;user-select:none;}
+  .faq-item p{font-size:14px;margin:8px 0 0;max-height:0;overflow:hidden;transition:max-height .25s ease,margin .25s ease;}
+  .faq-item.open p{max-height:260px;}
+  .faq-mark{color:var(--coral);font-size:18px;flex-shrink:0;transition:transform .2s;display:inline-block;}
+  .faq-item.open .faq-mark{transform:rotate(45deg);}
+
+  /* CTA BLOCK */
+  .cta-block{background:var(--navy);color:#fff;text-align:center;padding:60px 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .cta-block h2{color:#fff;}
+  .cta-block p{color:#C7CCDA;max-width:480px;margin:0 auto 28px;}
+
+  /* PALETTE */
+  .palette-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .swatch{border:1px solid var(--mid-grey);border-radius:8px;overflow:hidden;}
+  .swatch-color{height:56px;}
+  .swatch-info{padding:10px 12px;background:#fff;}
+  .swatch-info b{font-size:13px;display:block;}
+  .swatch-info span{font-size:11.5px;color:var(--grey);}
+
+  @media (max-width:800px){
+    .hub-grid,.palette-grid{grid-template-columns:1fr;}
+    h1{font-size:24px;}
+    table.vs-table{font-size:12px;}
+    table.vs-table td.cat{width:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="vs-line">PMS Comparison · The Cloudbeds Alternative</div>
+    <h1>Mews vs Cloudbeds</h1>
+    <p class="lead">Lorem ipsum dolor sit amet — instead of adding integrations on top of a channel manager, Mews built an operating system from the best tools in the business, natively.</p>
+    <div class="rating-row">
+      <span class="rating-chip">4.6/5 HotelTechReport</span>
+      <span class="rating-chip">4.6/5 Capterra</span>
+      <span class="rating-chip">4.8/5 G2</span>
+      <span class="rating-chip">4.6/5 GetApp</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">See pricing</a>
+    </div>
+    <div class="stat-row">
+      <div class="stat"><div class="num" data-count="476" data-suffix="%">0</div><div class="lbl">3-year ROI, IDC 2025</div></div>
+      <div class="stat"><div class="num" data-count="15000" data-suffix="+">0</div><div class="lbl">Properties on Mews</div></div>
+      <div class="stat"><div class="num" data-count="1000" data-suffix="+">0</div><div class="lbl">Integrations</div></div>
+    </div>
+  </div>
+</div>
+
+<nav class="jump-nav">
+  <div class="jump-nav-inner">
+    <a href="#overview">Overview</a>
+    <a href="#compare">Feature Comparison</a>
+    <a href="#pricing">Pricing Signals</a>
+    <a href="#head-to-head">Head to Head</a>
+    <a href="#revenue">Revenue Beyond Rooms</a>
+    <a href="#payments">Embedded Payments</a>
+    <a href="#roi">The ROI Case</a>
+    <a href="#proof">Customer Proof</a>
+    <a href="#switching">Switching from Cloudbeds</a>
+    <a href="#hub">Other Alternatives</a>
+    <a href="#faqs">FAQs</a>
+  </div>
+</nav>
+
+<section class="wrap" id="overview">
+  <h2>Mews vs Cloudbeds</h2>
+  <ul class="takeaways">
+    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
+    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
+    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
+    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
+    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
+  </ul>
+</section>
+
+<section class="wrap" id="compare">
+  <h2>Mews vs Cloudbeds: how the two platforms stack up</h2>
+  <p>Lorem ipsum dolor sit — click a row for the full picture on each category.</p>
+  <table class="vs-table" id="vsTable">
+    <tr><th>Category</th><th>Mews</th><th>Cloudbeds</th></tr>
+    <tr class="tr-row">
+      <td class="cat">Guest data</td>
+      <td class="mews-cell">Lorem ipsum dolor sit amet consectetur adipiscing elit.</td>
+      <td>Sed do eiusmod tempor incididunt ut labore et.</td>
+    </tr>
+    <tr class="tr-row">
+      <td class="cat">Payments</td>
+      <td class="mews-cell">Embedded — lorem ipsum covers the entire stay and dolor runs automatically. ADR increases by 7.3% on average.</td>
+      <td>Quis nostrud exercitation ullamco laboris nisi ut.</td>
+    </tr>
+    <tr class="tr-row">
+      <td class="cat">Multi-property</td>
+      <td class="mews-cell">Lorem ipsum dolor sit, scaling from one property to fifty without rebuilding the foundation.</td>
+      <td>Dolor in reprehenderit in voluptate velit esse.</td>
+    </tr>
+    <tr class="tr-row">
+      <td class="cat">Bookable spaces</td>
+      <td class="mews-cell">Lorem ipsum dolor — bookable by the hour, day or month, open to guests and non-guests alike. Nearly $700 million generated to date.</td>
+      <td>Dolor sit amet — in beta as of Spring 2026, with no confirmed timeline for full availability.</td>
+    </tr>
+    <tr class="tr-row">
+      <td class="cat">Revenue management</td>
+      <td class="mews-cell">Built into the PMS — lorem ipsum dolor, forecasting up to 730 days ahead.</td>
+      <td>Dolor sit — a paid third-party add-on; native forecasting capped at a 90-day horizon.</td>
+    </tr>
+    <tr class="tr-row">
+      <td class="cat">Support</td>
+      <td class="mews-cell">Lorem ipsum dolor — 24/7 phone support in 10 countries (US, Canada, UK, Czech Republic, Germany, France, Spain, Netherlands, Australia, Switzerland) on every plan.</td>
+      <td>Laudantium totam rem aperiam eaque ipsa quae.</td>
+    </tr>
+    <tr class="tr-row">
+      <td class="cat">Point of sale</td>
+      <td class="mews-cell">Lorem ipsum dolor — charges post directly to the guest folio. Rated #1 Hotel Restaurant POS, HotelTechAwards 2026.</td>
+      <td>Beatae vitae dicta sunt explicabo nemo enim.</td>
+    </tr>
+    <tr class="tr-row">
+      <td class="cat">Integrations &amp; API</td>
+      <td class="mews-cell">Lorem ipsum — 1,000+ integrations across 15,000+ live properties, with open sandbox access.</td>
+      <td>Dolor sit — around 400 pre-built integrations; production access requires an NDA.</td>
+    </tr>
+    <tr class="tr-row">
+      <td class="cat">AI &amp; automation</td>
+      <td class="mews-cell">Lorem ipsum — one AI layer surfaces upsell moments with no prompt needed, at 5 million views a week.</td>
+      <td>Dolor sit amet on request; proactive rate recommendations are capped at a 90-day horizon.</td>
+    </tr>
+  </table>
+  <p class="src-note">Cloudbeds figures reflect publicly available product documentation and independent review sites (Capterra, G2, SoftwareAdvice) as cited on Mews' own comparison page — confirm current accuracy before publishing, as competitor products change. Mews' own page shows two slightly different figures for the ADR lift (7.3% and 6.8%) and bookable-services revenue ($700m and $800m) in different sections; this mockup uses the figures corroborated in two places each.</p>
+</section>
+
+<section class="wrap" id="pricing">
+  <h2>Pricing signals</h2>
+  <p>Neither vendor publishes a fixed price list — here's what's actually knowable from third-party trackers and each vendor's own quoting model:</p>
+  <div class="data-row">
+    <div class="data-card"><div class="num">~$100/mo</div><div class="lbl">Cloudbeds starting price</div><div class="src">SoftwareAdvice</div></div>
+    <div class="data-card"><div class="num">$200–$1,000+/mo</div><div class="lbl">Typical fully-featured Cloudbeds setup, by modules and channels enabled</div><div class="src">CostBench</div></div>
+    <div class="data-card"><div class="num">~11 tiers</div><div class="lbl">Mews custom plan &amp; product tiers — by property type, plus add-ons like RMS, POS and embedded payments</div><div class="src">Mews quote-based pricing</div></div>
+  </div>
+  <p class="src-note">Ask either vendor for an itemized quote rather than one flat number — the total depends heavily on which modules and channels you actually enable.</p>
+</section>
+
+<section class="wrap" id="head-to-head">
+  <h2>Two numbers worth comparing directly</h2>
+  <div class="chart-box">
+    <h3>Integrations available today</h3>
+    <div class="chart-row">
+      <span class="chart-label">Mews</span>
+      <div class="chart-bar-track"><div class="chart-bar-fill" data-chart-target="1000" data-chart-max="1000"></div></div>
+      <span class="chart-value">1,000+</span>
+    </div>
+    <div class="chart-row">
+      <span class="chart-label">Cloudbeds</span>
+      <div class="chart-bar-track"><div class="chart-bar-fill legacy" data-chart-target="400" data-chart-max="1000"></div></div>
+      <span class="chart-value">~400</span>
+    </div>
+    <p class="chart-note">Per Mews' own comparison page, citing each platform's public integration marketplace.</p>
+  </div>
+  <div class="chart-box">
+    <h3>Native revenue-management forecast horizon</h3>
+    <div class="chart-row">
+      <span class="chart-label">Mews</span>
+      <div class="chart-bar-track"><div class="chart-bar-fill" data-chart-target="730" data-chart-max="730"></div></div>
+      <span class="chart-value">730 days</span>
+    </div>
+    <div class="chart-row">
+      <span class="chart-label">Cloudbeds</span>
+      <div class="chart-bar-track"><div class="chart-bar-fill legacy" data-chart-target="90" data-chart-max="730"></div></div>
+      <span class="chart-value">90 days</span>
+    </div>
+    <p class="chart-note">Native forecasting only — Cloudbeds' enterprise-grade yield management is a separate paid add-on.</p>
+  </div>
+</section>
+
+<section class="wrap" id="revenue">
+  <h2>Revenue beyond rooms</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing — most hotels leave dolor on the table.</p>
+  <div class="data-row">
+    <div class="data-card"><div class="num">1 in 10</div><div class="lbl">guests upgrade their stay before they even arrive</div><div class="src">Mews customer data</div></div>
+    <div class="data-card"><div class="num">$700m</div><div class="lbl">extra revenue generated for Mews hoteliers via bookable services</div><div class="src">Mews customer data</div></div>
+  </div>
+</section>
+
+<section class="wrap" id="payments">
+  <h2>Embedded payments that pay for themselves</h2>
+  <p>Lorem ipsum dolor sit amet — reconciliation, chargebacks and dolor stay in one operating sit.</p>
+  <div class="data-row">
+    <div class="data-card"><div class="num">7.3%</div><div class="lbl">ADR increase with embedded payments</div><div class="src">Mews customer data</div></div>
+    <div class="data-card"><div class="num">31%</div><div class="lbl">fewer manual errors with automatic reconciliation</div><div class="src">Mews customer data</div></div>
+    <div class="data-card"><div class="num">24%</div><div class="lbl">more efficient front desk teams</div><div class="src">Mews customer data</div></div>
+    <div class="data-card"><div class="num">34.1%</div><div class="lbl">reduction in no-show losses via automated pre-arrival charging</div><div class="src">Mews customer data</div></div>
+  </div>
+</section>
+
+<section class="wrap" id="roi">
+  <h2>Mews vs Cloudbeds: the math on switching</h2>
+  <div class="data-row">
+    <div class="data-card"><div class="num">476%</div><div class="lbl">three-year ROI</div><div class="src">IDC, 2025</div></div>
+    <div class="data-card"><div class="num">$28k+</div><div class="lbl">saved annually on OTA commissions</div><div class="src">Mews customer data</div></div>
+    <div class="data-card"><div class="num">44%</div><div class="lbl">of business processes automated</div><div class="src">Mews customer data</div></div>
+    <div class="data-card"><div class="num">4.3x</div><div class="lbl">average increase in direct bookings after switching</div><div class="src">Mews customer data</div></div>
+  </div>
+</section>
+
+<section class="wrap" id="proof">
+  <h2>What hoteliers who switched say</h2>
+  <blockquote>
+    "We couldn't keep scaling a contactless brand on systems that only worked Monday to Friday. With Mews, the tech finally feels as serious about our growth as we are."
+    <cite>— Mitchell Murray, CEO, Playpark Hotels</cite>
+  </blockquote>
+  <p style="margin-top:20px;font-size:12.5px;color:var(--grey);">Trusted by modern hotel groups that outgrew Cloudbeds and similar platforms:</p>
+  <div class="logo-strip">
+    <span class="logo-chip">Lark</span>
+    <span class="logo-chip">The Chloe</span>
+    <span class="logo-chip">Otter Hospitality</span>
+    <span class="logo-chip">Playpark Hotels</span>
+    <span class="logo-chip">Weekender</span>
+    <span class="logo-chip">The Inn on Arsenal</span>
+  </div>
+</section>
+
+<section class="wrap" id="switching">
+  <h2>What migrating from Cloudbeds to Mews looks like</h2>
+  <p>Lorem ipsum — Cloudbeds' own site cites roughly three weeks to go live through its guided onboarding process; most Mews properties go live in under a month via the steps below, so budget a similar timeframe either way and focus your evaluation on what happens after go-live.</p>
+  <div class="stepper-nav" id="stepperNav">
+    <button class="stepper-btn active" data-step="0"><span class="n">/01</span>Discovery</button>
+    <button class="stepper-btn" data-step="1"><span class="n">/02</span>Migration</button>
+    <button class="stepper-btn" data-step="2"><span class="n">/03</span>Training</button>
+    <button class="stepper-btn" data-step="3"><span class="n">/04</span>Go-live</button>
+  </div>
+  <div class="stepper-panels" id="stepperPanels">
+    <div class="stepper-panel active" data-panel="0">
+      <h3>Discovery call</h3>
+      <p>Lorem ipsum: map your current Cloudbeds setup, integrations and any add-ons you rely on.</p>
+    </div>
+    <div class="stepper-panel" data-panel="1">
+      <h3>Data migration</h3>
+      <p>Dolor sit amet: reservations, rates and guest profiles moved across by a dedicated implementation manager.</p>
+    </div>
+    <div class="stepper-panel" data-panel="2">
+      <h3>Staff training</h3>
+      <p>Amet consectetur: most front desk teams are productive after a single shift, no certifications required.</p>
+    </div>
+    <div class="stepper-panel" data-panel="3">
+      <h3>Go-live</h3>
+      <p>Lorem ipsum: most properties are live in under a month.</p>
+    </div>
+  </div>
+  <div class="stepper-progress"><div class="stepper-progress-fill" id="stepperProgressFill"></div></div>
+</section>
+
+<section class="wrap" id="hub">
+  <p class="kicker">comparing cloudbeds alternatives</p>
+  <h2>Looking at other alternatives too?</h2>
+  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
+  <div class="hub-grid">
+    <div class="hub-card">
+      <h3>Mews vs Opera — the Opera PMS alternative</h3>
+      <p>Incididunt ut labore et dolore magna aliqua ut enim.</p>
+      <a href="#">Compare Mews vs Opera →</a>
+    </div>
+    <div class="hub-card">
+      <h3>Mews vs WebRezPro — the WebRezPro alternative</h3>
+      <p>Ad minim veniam quis nostrud exercitation ullamco.</p>
+      <a href="#">Compare Mews vs WebRezPro →</a>
+    </div>
+    <div class="hub-card">
+      <h3>Mews vs StayNTouch — the StayNTouch alternative</h3>
+      <p>Laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <a href="#">Compare Mews vs StayNTouch →</a>
+    </div>
+    <div class="hub-card">
+      <h3>Mews vs Guestline — the Guestline alternative</h3>
+      <p>Duis aute irure dolor in reprehenderit in voluptate.</p>
+      <a href="#">Compare Mews vs Guestline →</a>
+    </div>
+    <div class="hub-card">
+      <h3>Mews vs Apaleo</h3>
+      <p>Velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      <a href="#">Compare Mews vs Apaleo →</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="faqs">
+  <h2>Frequently asked questions</h2>
+
+  <div class="faq-item">
+    <h3>We're already using Cloudbeds. Is switching to Mews really worth it? <span class="faq-mark">＋</span></h3>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How is Mews different from Cloudbeds? <span class="faq-mark">＋</span></h3>
+    <p>Tempor incididunt ut labore et dolore magna aliqua ut enim ad.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How does Mews compare to Cloudbeds on pricing? <span class="faq-mark">＋</span></h3>
+    <p>Minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What are the main Cloudbeds competitors and alternatives hotels consider? <span class="faq-mark">＋</span></h3>
+    <p>Excepteur sint occaecat cupidatat non proident sunt in culpa qui.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is Mews a good Cloudbeds alternative for multi-property groups? <span class="faq-mark">＋</span></h3>
+    <p>Officia deserunt mollit anim id est laborum sed ut perspiciatis.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Does Mews support the same channel management and OTA connections as Cloudbeds? <span class="faq-mark">＋</span></h3>
+    <p>Unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Cloudbeds announced "Spaces" in Spring 2026 — does Mews already have this? <span class="faq-mark">＋</span></h3>
+    <p>Laudantium totam rem aperiam eaque ipsa quae ab illo inventore.</p>
+  </div>
+  <div class="faq-item">
+    <h3>How does Mews handle integrations compared to Cloudbeds? <span class="faq-mark">＋</span></h3>
+    <p>Veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+  </div>
+</section>
+
+<section class="cta-block">
+  <div class="wrap">
+    <h2>See the difference for yourself</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#">Book a demo</a>
+      <a class="btn btn-secondary" href="#">Talk to sales</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="palette-grid">
+    <div class="swatch"><div class="swatch-color" style="background:#16213E;"></div><div class="swatch-info"><b>Deep Navy</b><span>#16213E — hero backgrounds</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FF6B6B;"></div><div class="swatch-info"><b>Coral</b><span>#FF6B6B — CTAs / highlights</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#FFF0F0;"></div><div class="swatch-info"><b>Coral Light</b><span>#FFF0F0 — soft fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#2ECC71;"></div><div class="swatch-info"><b>Green</b><span>#2ECC71 — positive indicators</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#6B7280;"></div><div class="swatch-info"><b>Grey</b><span>#6B7280 — body copy</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#F8F9FA;"></div><div class="swatch-info"><b>Light Grey</b><span>#F8F9FA — card fills</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#E5E7EB;"></div><div class="swatch-info"><b>Mid Grey</b><span>#E5E7EB — borders</span></div></div>
+    <div class="swatch"><div class="swatch-color" style="background:#4F8EF7;"></div><div class="swatch-info"><b>Blue Accent</b><span>#4F8EF7 — info / links</span></div></div>
+  </div>
+</section>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+<script>
+  /* Sticky jump-nav active highlighting */
+  const navLinks = Array.from(document.querySelectorAll('.jump-nav a'));
+  const targets = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  function setActiveNav(){
+    let current = null;
+    for (const t of targets) { if (t.getBoundingClientRect().top <= 80) current = t; }
+    navLinks.forEach(a => a.classList.toggle('active', !!current && a.getAttribute('href') === '#' + current.id));
+  }
+  window.addEventListener('scroll', setActiveNav, { passive: true });
+  setActiveNav();
+
+  /* Scroll progress bar */
+  const progressBar = document.getElementById('scrollProgress');
+  function updateProgress(){
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  /* Back to top */
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => backToTop.classList.toggle('visible', window.scrollY > 600), { passive: true });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* Animated count-up stats */
+  const counters = document.querySelectorAll('[data-count]');
+  function animateCount(el){
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const duration = 900;
+    const start = performance.now();
+    function step(now){
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased).toLocaleString() + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => { if (entry.isIntersecting) { animateCount(entry.target); io.unobserve(entry.target); } });
+  }, { threshold: 0.4 });
+  counters.forEach(c => io.observe(c));
+
+  /* Feature comparison table: click a row to open, close others */
+  document.querySelectorAll('#vsTable tr.tr-row').forEach(row => {
+    row.addEventListener('click', () => {
+      const willOpen = !row.classList.contains('open');
+      document.querySelectorAll('#vsTable tr.tr-row').forEach(r => r.classList.remove('open'));
+      if (willOpen) row.classList.add('open');
+    });
+  });
+
+  /* Animated head-to-head chart bars */
+  const chartBars = document.querySelectorAll('.chart-bar-fill');
+  const chartIo = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const pct = (parseFloat(el.dataset.chartTarget) / parseFloat(el.dataset.chartMax)) * 100;
+        el.style.width = Math.min(pct, 100) + '%';
+        chartIo.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  chartBars.forEach(b => chartIo.observe(b));
+
+  /* Migration stepper /01 /02 /03 /04 — clickable + auto-advancing */
+  const stepperBtns = document.querySelectorAll('#stepperNav .stepper-btn');
+  const stepperPanels = document.querySelectorAll('#stepperPanels .stepper-panel');
+  const stepperFill = document.getElementById('stepperProgressFill');
+  let stepperCurrent = 0;
+  let stepperTimer, stepperRAF, stepperStart;
+  const STEP_DURATION = 5000;
+
+  function goToStep(index){
+    stepperCurrent = (index + stepperBtns.length) % stepperBtns.length;
+    stepperBtns.forEach((b, i) => b.classList.toggle('active', i === stepperCurrent));
+    stepperPanels.forEach((p, i) => p.classList.toggle('active', i === stepperCurrent));
+  }
+  function stepperTick(now){
+    if (!stepperStart) stepperStart = now;
+    const progress = Math.min((now - stepperStart) / STEP_DURATION, 1);
+    stepperFill.style.width = (progress * 100) + '%';
+    if (progress < 1) { stepperRAF = requestAnimationFrame(stepperTick); }
+  }
+  function startStepperAuto(){
+    stepperStart = null;
+    stepperFill.style.width = '0%';
+    stepperRAF = requestAnimationFrame(stepperTick);
+    stepperTimer = setInterval(() => { goToStep(stepperCurrent + 1); stepperStart = null; stepperFill.style.width = '0%'; }, STEP_DURATION);
+  }
+  function stopStepperAuto(){ clearInterval(stepperTimer); cancelAnimationFrame(stepperRAF); }
+  stepperBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      goToStep(parseInt(btn.dataset.step, 10));
+      stopStepperAuto();
+      startStepperAuto();
+    });
+  });
+  document.getElementById('switching').addEventListener('mouseenter', stopStepperAuto);
+  document.getElementById('switching').addEventListener('mouseleave', startStepperAuto);
+  startStepperAuto();
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-item h3').forEach(h3 => {
+    h3.addEventListener('click', () => h3.parentElement.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
