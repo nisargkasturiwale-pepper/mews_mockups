@@ -160,6 +160,9 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+
   @media (max-width:800px){
     .split,.def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
     h1{font-size:24px;}
@@ -195,7 +198,6 @@
 <nav class="jump-nav">
   <div class="jump-nav-inner">
     <a href="#video">Overview video</a>
-    <a href="#overview">Overview</a>
     <a href="#freedom">Why Independence Needs Its Own Software</a>
     <a href="#unified">Unique Hotels, Unified Excellence</a>
     <a href="#experiences">Guest Experiences</a>
@@ -218,17 +220,6 @@
   </div>
   <p class="video-caption">Lorem ipsum dolor sit amet — a quick walkthrough of dolor, sit and amet, run entirely on your own terms.</p>
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
-</section>
-
-<section class="wrap" id="overview">
-  <h2>What is independent hotel management software?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-  </ul>
 </section>
 
 <section class="wrap" id="freedom">
@@ -410,6 +401,10 @@
 <section class="wrap" id="faqs">
   <h2>Frequently asked questions</h2>
 
+  <div class="faq-item">
+    <h3>What is independent hotel management software? <span class="faq-mark">＋</span></h3>
+    <p>Independent hotel management software is a cloud-based property management system (PMS) that runs a property's day-to-day operations, such as reservations, check-in and check-out, payments and reporting, without a corporate brand mandate.</p>
+  </div>
   <div class="faq-item">
     <h3>What is software for independent hotels? <span class="faq-mark">＋</span></h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
