@@ -28,6 +28,7 @@
   .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
   .btn-primary{background:var(--coral);color:#fff;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
   .img-placeholder{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#C7CCDA;padding:20px;}
   .img-placeholder .icon{font-size:24px;margin-bottom:6px;}
@@ -190,6 +191,10 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  section.kw-question{padding-top:32px;padding-bottom:32px;}
+
   @media (max-width:800px){
     .palette-grid{grid-template-columns:1fr 1fr;}
     h1{font-size:24px;}
@@ -253,20 +258,10 @@
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
 </section>
 
-<section class="wrap" id="overview">
+<section class="wrap kw-question" id="overview">
   <h2>What is a hotel booking engine?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-  </ul>
-</section>
-
-<section class="wrap kw-question">
-  <h2>What is an Internet Booking Engine (IBE)?</h2>
-  <p>Lorem ipsum dolor sit amet — another name for a hotel booking engine, the sit guests use to check availability and reserve directly.</p>
+  <p>A hotel booking engine lets guests check availability, select a room or other space and book directly through a property's website. A fast, intuitive experience helps hotels compete with OTAs, increase direct bookings and keep rates, availability and reservation details connected. Visit our full guide to see the essential features.</p>
+  <a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/hotel-booking-engine-features" target="_blank" rel="noopener">Read the booking engine guide →</a>
 </section>
 
 <section class="wrap" id="why-direct">
@@ -537,6 +532,10 @@
   <div class="faq-item">
     <h3>Can I customize the booking engine to match my brand? <span class="faq-mark">＋</span></h3>
     <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is an Internet Booking Engine (IBE)? <span class="faq-mark">＋</span></h3>
+    <p>An Internet Booking Engine (IBE) is another name for a hotel booking engine: the guest-facing tool that lets travelers search availability and book directly through a hotel's website.</p>
   </div>
 </section>
 
