@@ -19,6 +19,8 @@
   .kicker{font-size:12.5px;letter-spacing:.02em;color:var(--coral);font-style:italic;text-transform:lowercase;margin:0 0 8px;font-weight:600;}
   h3{font-size:16px;margin:0 0 8px;}
   p{color:var(--grey);margin:0 0 16px;font-size:14px;}
+  .kw-q h2{font-size:22px;}
+  .kw-q p{max-width:640px;font-size:13.5px;}
 
   /* HERO */
   .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
@@ -28,6 +30,7 @@
   .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
   .btn-primary{background:var(--coral);color:#fff;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
   .img-placeholder{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#C7CCDA;padding:20px;}
   .img-placeholder .icon{font-size:24px;margin-bottom:6px;}
@@ -209,6 +212,10 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  section.kw-q{padding-top:32px;padding-bottom:32px;}
+
   @media (max-width:800px){
     .comp-grid,.feat-grid,.compare-grid,.palette-grid,.def-grid{grid-template-columns:1fr 1fr;}
     h1{font-size:24px;}
@@ -269,16 +276,10 @@
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
 </section>
 
-<section class="wrap" id="overview">
+<section class="wrap kw-q" id="overview">
   <h2>What is a revenue management system for hotels?</h2>
-  <p>Lorem ipsum automates pricing using live demand data instead of static rate sheets and gut instinct.</p>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-  </ul>
+  <p>Hotel revenue management software is a system that helps hotels optimize room pricing and inventory using real-time property and market data. Also called an RMS, it analyzes factors such as demand, occupancy, booking pace, seasonality and competitor rates to recommend or automatically apply pricing changes. Visit our full guide to see how it works.</p>
+  <a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/revenue-management-systems" target="_blank" rel="noopener">Read the full RMS guide →</a>
 </section>
 
 <section class="wrap" id="components">
