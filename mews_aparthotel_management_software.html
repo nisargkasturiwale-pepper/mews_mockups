@@ -19,6 +19,8 @@
   h3{font-size:16px;margin:0 0 8px;}
   p{color:var(--grey);margin:0 0 16px;font-size:14px;}
   .no-competitor-note{font-size:12.5px;color:var(--grey);font-style:italic;margin:-6px 0 18px;}
+  .kw-q h2{font-size:22px;}
+  .kw-q p{max-width:640px;font-size:13.5px;}
 
   /* HERO */
   .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
@@ -27,6 +29,7 @@
   .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
   .btn-primary{background:var(--coral);color:#fff;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
   .img-placeholder{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#C7CCDA;padding:20px;}
   .img-placeholder .icon{font-size:24px;margin-bottom:6px;}
@@ -137,6 +140,10 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  section.kw-q{padding-top:32px;padding-bottom:32px;}
+
   @media (max-width:800px){
     .tag-grid,.def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
     h1{font-size:24px;}
@@ -193,19 +200,11 @@
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
 </section>
 
-<section class="wrap" id="overview">
+<section class="wrap kw-q" id="overview">
   <div class="no-competitor-note">No competitor pages were provided for this keyword — this mockup reorganizes Mews' own real page content rather than closing competitive gaps.</div>
-</section>
-
-<section class="wrap">
   <h2>What is aparthotel management software?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium</li>
-  </ul>
+  <p>An aparthotel is a property that offers self-contained, apartment-style units equipped with a full kitchen, with front desk, cleaning and concierge help alongside them. Aparthotel operators can benefit from a cloud-native property management system (PMS) built for flexible stay lengths. Visit our full guide to learn more about aparthotels.</p>
+  <a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/what-is-an-aparthotel" target="_blank" rel="noopener">Read the aparthotel guide →</a>
 </section>
 
 <section class="wrap" id="manage">
