@@ -27,6 +27,7 @@
   .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
   .btn-primary{background:var(--coral);color:#fff;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
   .img-placeholder{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#C7CCDA;padding:20px;}
   .img-placeholder .icon{font-size:24px;margin-bottom:6px;}
@@ -161,6 +162,10 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  section.kw-question{padding-top:32px;padding-bottom:32px;}
+
   @media (max-width:800px){
     .palette-grid,.comp-grid{grid-template-columns:1fr 1fr;}
     .choose-grid{grid-template-columns:1fr 1fr;}
@@ -224,15 +229,10 @@
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
 </section>
 
-<section class="wrap" id="overview">
+<section class="wrap kw-question" id="overview">
   <h2>What is hotel check-in software?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-  </ul>
+  <p>Hotel check-in software allows guests to check in remotely via their mobile device or kiosk, bypassing the front desk for a seamless, touch-free experience. Through a mobile app or web link, guests provide their information, verify their identity and receive room assignments before they arrive at your property. Visit our full guide to see the best options.</p>
+  <a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/best-hotel-check-in-software" target="_blank" rel="noopener">Read the check-in guide →</a>
 </section>
 
 <section class="wrap" id="pms-native">
