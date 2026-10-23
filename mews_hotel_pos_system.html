@@ -18,6 +18,8 @@
   h2{font-size:26px;margin:0 0 14px;}
   h3{font-size:16px;margin:0 0 8px;}
   p{color:var(--grey);margin:0 0 16px;font-size:14px;}
+  .kw-q h2{font-size:22px;}
+  .kw-q p{max-width:640px;font-size:13.5px;}
 
   .award-badge{display:inline-block;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:12.5px;font-weight:600;padding:6px 16px;border-radius:20px;margin-bottom:18px;}
   .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
@@ -26,6 +28,7 @@
   .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
   .btn-primary{background:var(--coral);color:#fff;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
   .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
   .stat{text-align:center;}
@@ -181,6 +184,10 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  section.kw-q{padding-top:32px;padding-bottom:32px;}
+
   @media (max-width:800px){
     .type-grid,.def-grid,.benefit-grid,.palette-grid{grid-template-columns:1fr;}
     .checklist{columns:1;}
@@ -245,15 +252,10 @@
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
 </section>
 
-<section class="wrap" id="overview">
+<section class="wrap kw-q" id="overview">
   <h2>What is a hotel POS system?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-  </ul>
+  <p>A hotel POS (or EPOS) is an electronic point of sale system that processes sales and payments across your hotel, including F&amp;B outlets. It can also support digital ordering and help teams track inventory more accurately. Visit our full guide to see how it works.</p>
+  <a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/what-is-epos-system" target="_blank" rel="noopener">Read the hotel POS guide →</a>
 </section>
 
 <section class="wrap" id="pms-sync">
@@ -399,16 +401,6 @@
   </div>
 </section>
 
-<section class="wrap" id="terms">
-  <h2>Terms hoteliers often search for</h2>
-  <ul class="term-list">
-    <li class="term-item"><h3>What is hotel point of sale?</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.</p></li>
-    <li class="term-item"><h3>What is hotel POS software?</h3><p>Tempor incididunt ut labore et dolore magna aliqua ut enim ad.</p></li>
-    <li class="term-item"><h3>What is a hotel restaurant POS?</h3><p>Minim veniam quis nostrud exercitation ullamco laboris nisi ut.</p></li>
-    <li class="term-item"><h3>What is hotel F&amp;B POS?</h3><p>Aliquip ex ea commodo consequat duis aute irure dolor in.</p></li>
-  </ul>
-</section>
-
 <section class="wrap" id="customer-proof">
   <h2>What hotel F&amp;B teams say</h2>
   <div class="img-placeholder" style="height:140px;margin-bottom:18px;">
@@ -490,6 +482,22 @@
   <div class="faq-item">
     <h3>What is a hotel POS system? <span class="faq-mark">＋</span></h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is hotel point of sale? <span class="faq-mark">＋</span></h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is hotel POS software? <span class="faq-mark">＋</span></h3>
+    <p>Tempor incididunt ut labore et dolore magna aliqua ut enim ad.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is a hotel restaurant POS? <span class="faq-mark">＋</span></h3>
+    <p>Minim veniam quis nostrud exercitation ullamco laboris nisi ut.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is hotel F&amp;B POS? <span class="faq-mark">＋</span></h3>
+    <p>Aliquip ex ea commodo consequat duis aute irure dolor in.</p>
   </div>
   <div class="faq-item">
     <h3>What's the difference between a POS and a PMS? <span class="faq-mark">＋</span></h3>
