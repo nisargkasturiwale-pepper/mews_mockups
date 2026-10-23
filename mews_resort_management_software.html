@@ -156,6 +156,9 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+
   @media (max-width:800px){
     .def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
     .checklist{columns:1;}
@@ -197,7 +200,6 @@
 <nav class="jump-nav">
   <div class="jump-nav-inner">
     <a href="#video">Overview video</a>
-    <a href="#overview">Overview</a>
     <a href="#departments">Several Businesses</a>
     <a href="#capabilities">What Mews Offers</a>
     <a href="#features">Features to Look For</a>
@@ -218,17 +220,6 @@
   </div>
   <p class="video-caption">Lorem ipsum dolor sit amet — a quick walkthrough of dolor, sit and amet, from the front desk to the spa to the beach bar.</p>
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
-</section>
-
-<section class="wrap" id="overview">
-  <h2>What is resort management software?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-  </ul>
 </section>
 
 <section class="wrap" id="departments">
@@ -341,6 +332,10 @@
 <section class="wrap" id="faqs">
   <h2>Frequently asked questions</h2>
 
+  <div class="faq-item">
+    <h3>What is resort management software? <span class="faq-mark">＋</span></h3>
+    <p>Resort management software is a type of property management system (PMS) that connects a resort's rooms, spa, F&amp;B outlets, activities and events in one system, so every department's reservations, charges and payments sit on one guest folio.</p>
+  </div>
   <div class="faq-item">
     <h3>What is resort software? <span class="faq-mark">＋</span></h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod.</p>
