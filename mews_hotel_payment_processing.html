@@ -18,6 +18,8 @@
   h2{font-size:26px;margin:0 0 14px;}
   h3{font-size:16px;margin:0 0 8px;}
   p{color:var(--grey);margin:0 0 16px;font-size:14px;}
+  .kw-q h2{font-size:22px;}
+  .kw-q p{max-width:640px;font-size:13.5px;}
 
   /* HERO */
   .hero{background:var(--navy);color:#fff;text-align:center;padding:60px 0 0;border-bottom:1px solid rgba(255,255,255,.1);}
@@ -26,6 +28,7 @@
   .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
   .btn-primary{background:var(--coral);color:#fff;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
   .img-placeholder{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px dashed rgba(255,255,255,.35);border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#C7CCDA;padding:20px;}
   .img-placeholder .icon{font-size:24px;margin-bottom:6px;}
@@ -175,6 +178,10 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  section.kw-q{padding-top:32px;padding-bottom:32px;}
+
   @media (max-width:800px){
     .split,.cap-grid,.def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
     .checklist{columns:1;}
@@ -211,7 +218,6 @@
 <nav class="jump-nav">
   <div class="jump-nav-inner">
     <a href="#video">Overview video</a>
-    <a href="#overview">Overview</a>
     <a href="#howitworks">How It Works</a>
     <a href="#distinction">Integrated vs. Embedded</a>
     <a href="#profitability">Built to Maximize Profit</a>
@@ -235,17 +241,6 @@
   </div>
   <p class="video-caption">Lorem ipsum dolor sit amet — a quick walkthrough of dolor, sit and amet, from tap to settled funds.</p>
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
-</section>
-
-<section class="wrap" id="overview">
-  <h2>What is hotel payment processing?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-  </ul>
 </section>
 
 <section class="wrap" id="howitworks">
@@ -454,6 +449,10 @@
   <h2>Frequently asked questions</h2>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
 
+  <div class="faq-item">
+    <h3>What is hotel payment processing? <span class="faq-mark">＋</span></h3>
+    <p>Hotel payment processing is the entire process by which a payment is made and funds are received, including payment by the guest, validating the payment, transmission through a payment gateway, authorization, confirmation and settlement.</p>
+  </div>
   <div class="faq-item">
     <h3>What is hotel payments software? <span class="faq-mark">＋</span></h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt.</p>
