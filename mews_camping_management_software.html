@@ -146,6 +146,9 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+
   @media (max-width:800px){
     .def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
     .tab-body{grid-template-columns:1fr;}
@@ -181,7 +184,6 @@
 <nav class="jump-nav">
   <div class="jump-nav-inner">
     <a href="#video">Overview video</a>
-    <a href="#overview">Overview</a>
     <a href="#whychoose">Why Choose Mews</a>
     <a href="#operations">Streamlined Operations</a>
     <a href="#revenue">Revenue Beyond Pitches</a>
@@ -202,22 +204,6 @@
   </div>
   <p class="video-caption">Lorem ipsum dolor sit amet — a quick walkthrough of dolor, sit and amet, from booking a pitch to checking in from a phone.</p>
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
-</section>
-
-<section class="wrap" id="overview">
-  <h2>What is camping management software?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor — a property management dolor built for campgrounds, glamping sites and outdoor hospitality providers</li>
-    <li>Books and assigns individual pitches or units, not just rooms — tent sites, RV hookups, cabins and dolor</li>
-    <li>Built around seasonal demand rather than year-round room inventory — one seasonal site or a growing portfolio, managed the same sit</li>
-    <li>Handles shared, on-site facilities and custom amenities that a room-based dolor doesn't</li>
-    <li>Works equally for a rustic campground or a high-end glamping dolor</li>
-  </ul>
-</section>
-
-<section class="wrap kw-question">
-  <h2>What is outdoor hospitality software?</h2>
-  <p>Lorem ipsum — a broader term covering camping and glamping management software together, built around pitch-level booking, seasonal management and on-site facilities, as distinct from PMS platforms built primarily for indoor hotel rooms.</p>
 </section>
 
 <section class="wrap" id="whychoose">
@@ -382,6 +368,14 @@
   <div class="bug-note">Note: the live Mews page's FAQ currently includes two questions about digital key door-lock compatibility and key sharing — these appear to be copied over from the separate Digital Key product page and aren't relevant to camping software. They're omitted here; worth flagging to fix on the live page.</div>
   <h2>Frequently asked questions</h2>
 
+  <div class="faq-item">
+    <h3>What is camping management software? <span class="faq-mark">＋</span></h3>
+    <p>Camping management software is a property management system built for campgrounds, glamping sites and outdoor hospitality providers. It books and assigns individual pitches or units, such as tent sites, RV hookups and cabins, and is built around seasonal demand and shared on-site facilities.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is outdoor hospitality software? <span class="faq-mark">＋</span></h3>
+    <p>Outdoor hospitality software is a broader term covering camping and glamping management software together, built around pitch-level booking, seasonal management and on-site facilities, as distinct from PMS platforms built primarily for indoor hotel rooms.</p>
+  </div>
   <div class="faq-item">
     <h3>What is glamping management software? <span class="faq-mark">＋</span></h3>
     <p>Lorem ipsum dolor sit — the same category of software as camping management software, with an emphasis on higher-end outdoor accommodation like domes, yurts and cabins.</p>
