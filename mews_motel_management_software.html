@@ -164,6 +164,9 @@
   .swatch-info b{font-size:13px;display:block;}
   .swatch-info span{font-size:11.5px;color:var(--grey);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+
   @media (max-width:800px){
     .def-grid,.palette-grid{grid-template-columns:1fr 1fr;}
     .checklist{columns:1;}
@@ -200,7 +203,6 @@
 <nav class="jump-nav">
   <div class="jump-nav-inner">
     <a href="#video">Overview video</a>
-    <a href="#overview">Overview</a>
     <a href="#speed">Speed &amp; Convenience</a>
     <a href="#reservations">Every Reservation</a>
     <a href="#bookings">Direct Bookings</a>
@@ -222,18 +224,6 @@
   </div>
   <p class="video-caption">Lorem ipsum dolor sit amet — a quick walkthrough of dolor, sit and amet, for the fastest turnovers and the latest arrivals.</p>
   <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
-</section>
-
-<section class="wrap" id="overview">
-  <h2>What is motel software?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod</li>
-    <li>Built for exterior-corridor, drive-up properties — guests go from car to room directly, so check-in can't depend on a lobby desk</li>
-    <li>Handles quick walk-in check-ins, flexible rate plans and high-turnover environments without compromising guest dolor</li>
-    <li>Tempor incididunt ut labore et dolore magna aliqua ut enim ad minim</li>
-    <li>Veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex</li>
-    <li>Priced and sized for the budget/economy tier, not the boutique-to-midscale range a small-hotel PMS targets</li>
-  </ul>
 </section>
 
 <section class="wrap" id="speed">
@@ -412,6 +402,10 @@
 <section class="wrap" id="faqs">
   <h2>Frequently asked questions</h2>
 
+  <div class="faq-item">
+    <h3>What is motel software? <span class="faq-mark">＋</span></h3>
+    <p>Motel software is a type of property management system (PMS) that manages a motel's day-to-day operations, including reservations, rate management, housekeeping and front desk tasks, built for quick walk-in check-ins and high-turnover stays.</p>
+  </div>
   <div class="faq-item">
     <h3>What is a motel PMS? <span class="faq-mark">＋</span></h3>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
