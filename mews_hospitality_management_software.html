@@ -32,6 +32,7 @@
   .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
   .btn-primary{background:var(--coral);color:#fff;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
   .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
   .stat{text-align:center;}
@@ -221,6 +222,10 @@
   .back-to-top.visible{display:flex;}
   .back-to-top:hover{background:var(--coral);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  section.kw-q{padding-top:32px;padding-bottom:32px;}
+
   @media (max-width:800px){
     .cap-grid,.palette-grid,.adv-grid,.prop-grid{grid-template-columns:1fr 1fr;}
     h1{font-size:24px;}
@@ -286,19 +291,15 @@
 <p class="video-caption">Maecenas sed diam eget risus.</p>
 <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
 </section>
-<section class="wrap" id="overview">
+<section class="wrap kw-q" id="overview">
 <h2>What is hospitality management software?</h2>
-<ul class="takeaways">
-<li>Officia deserunt mollit anim id est.</li>
-<li>Curabitur blandit tempus porttitor.</li>
-<li>Vestibulum id ligula porta felis.</li>
-<li>Cras mattis consectetur purus sit.</li>
-<li>Etiam porta sem malesuada magna.</li>
-</ul>
+<p>Hospitality management software (HMS) is designed to simplify and centralize daily operations for hoteliers. It automates core tasks such as room bookings, payments, inventory management, guest services and staff scheduling, freeing up time for teams to focus on true hospitality. Visit our full guide to see the key features.</p>
+<a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/hotel-management-software-features" target="_blank" rel="noopener">Read the full HMS guide →</a>
 </section>
 <section class="wrap kw-q" id="hms-def">
 <h2>What is a hospitality management system?</h2>
-<p>Praesent commodo cursus magna vel scelerisque nisl consectetur et, donec ullamcorper nulla non metus auctor fringilla euismod semper vestibulum id ligula porta felis, fusce dapibus tellus ac cursus commodo mauris condimentum nibh nec.</p>
+<p>A hospitality management system connects essential functions such as reservations, front-desk workflows, guest data, reporting and distribution. Depending on the system, it may also support payments, housekeeping and revenue management. Visit our full guide to see the advantages for your business.</p>
+<a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/advantages-of-hotel-management-system" target="_blank" rel="noopener">Read the full guide →</a>
 </section>
 <section class="wrap" id="capabilities">
 <h2>Everything included with Mews</h2>
@@ -473,16 +474,12 @@
 <p>Nulla pariatur, sunt in culpa.</p>
 </div>
 </section>
-<section class="wrap kw-q" id="platform-def">
-<h2>What is a hospitality management platform?</h2>
-<p>Officia deserunt mollit anim id est laborum et dolorum, vestibulum id ligula porta felis euismod semper aenean lacinia bibendum nulla sed, nullam quis risus eget urna mollis ornare vel eu leo cras mattis.</p>
-</section>
 <section class="wrap" id="comparison">
 <h2>Mews vs. legacy on-premise systems</h2>
 <p>Curabitur blandit tempus porttitor.</p>
 <div class="compare-table">
 <div class="compare-header">
-<div> </div>
+<div> </div>
 <div class="compare-col-mews">Mews (cloud-native)</div>
 <div class="compare-col-legacy">Legacy systems (on-premise)</div>
 </div>
@@ -640,6 +637,10 @@
 <div class="faq-item">
 <h3>How long does onboarding take? <span class="faq-mark">＋</span></h3>
 <p>Velit esse cillum dolore eu fugiat.</p>
+</div>
+<div class="faq-item">
+<h3>What is a hospitality management platform? <span class="faq-mark">＋</span></h3>
+<p>A hospitality management platform centralizes reservations, guest profiles, payments, channel management and property operations within a single cloud-native system.</p>
 </div>
 </section>
 <section class="cta-block">
