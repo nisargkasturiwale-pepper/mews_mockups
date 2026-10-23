@@ -34,6 +34,7 @@
   .cta-row{display:flex;gap:14px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;align-items:center;}
   .btn{padding:13px 26px;border-radius:6px;font-size:15px;font-weight:600;text-decoration:none;display:inline-block;border:none;cursor:pointer;font-family:inherit;}
   .btn-primary{background:var(--coral);color:#fff;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
   .btn-secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);}
   .btn-secondary.on-light{color:var(--navy);border-color:var(--mid-grey);}
   .stat-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.15);padding:28px 0;max-width:680px;margin:0 auto;}
@@ -224,6 +225,10 @@
   .back-to-top.visible{display:flex;}
   .back-to-top:hover{background:var(--coral);}
 
+  /* SECTION SPACING (fixes .wrap overriding section padding) */
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  section.kw-q{padding-top:32px;padding-bottom:32px;}
+
   @media (max-width:800px){
     .cap-grid,.def-grid,.palette-grid,.adv-grid,.prop-grid{grid-template-columns:1fr 1fr;}
     h1{font-size:24px;}
@@ -286,19 +291,15 @@
 <p class="video-caption">Lorem ipsum — a quick walkthrough of running reservations, rates and reporting across a portfolio from one system.</p>
 <p class="video-playing-note" id="videoNote">▶ In a live build, this would launch the embedded product walkthrough here.</p>
 </section>
-<section class="wrap" id="overview">
+<section class="wrap kw-q" id="overview">
 <h2>What is hotel management software?</h2>
-<ul class="takeaways">
-<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-<li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-<li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-<li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-<li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-</ul>
+<p>Hotel management software (HMS) is designed to simplify and centralize daily operations for hoteliers. It automates core tasks such as room bookings, payments, inventory management, guest services and staff scheduling, freeing up time for teams to focus on true hospitality. Visit our full guide to see the key features.</p>
+<a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/hotel-management-software-features" target="_blank" rel="noopener">Read the full HMS guide →</a>
 </section>
 <section class="wrap kw-q" id="hms-def">
 <h2>What is a cloud-based hotel management system?</h2>
-<p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
+<p>A cloud-based hotel management system gives hotel teams online access to the tools and information they use to run daily operations. Unlike an on-premises system installed on a local server, it is hosted by the provider and accessed through a secure internet connection. Visit our full guide to see the benefits for hotels.</p>
+<a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/13-reasons-cloud-pms" target="_blank" rel="noopener">Read the cloud PMS guide →</a>
 </section>
 <section class="wrap" id="capabilities">
 <h2>Automate the routine, focus on the guest</h2>
@@ -601,10 +602,6 @@
 </div>
 <p class="footnote">Dolor sit amet — the 89/91/92% figures reflect general hotelier-survey findings, not audited Mews-specific data; the ADR, ROI and error-reduction figures above are Mews' own, from an IDC-audited study.</p>
 </section>
-<section class="wrap kw-q" id="ops-software-def">
-<h2>What is hotel operations software?</h2>
-<p>Amet consectetur — the operational layer of hotel management software: housekeeping, maintenance and staff task management, connected to the same PMS.</p>
-</section>
 <section class="wrap" id="choosing">
 <h2>How to choose the best hotel management software for your property</h2>
 <div class="step"><div class="step-num">1</div><div><h3>Define your must-have features</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p></div></div>
@@ -653,6 +650,10 @@
 <div class="faq-item">
 <h3>Do I need separate tools for housekeeping, payments and reporting? <span class="faq-mark">＋</span></h3>
 <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae.</p>
+</div>
+<div class="faq-item">
+<h3>What is hotel operations software? <span class="faq-mark">＋</span></h3>
+<p>Hotel operations software is the operational layer of hotel management software: housekeeping, maintenance and staff task management, connected to the same PMS.</p>
 </div>
 </section>
 <section class="cta-block">
