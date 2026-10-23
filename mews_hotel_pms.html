@@ -89,12 +89,6 @@
 
   blockquote{background:var(--coral-light);border-left:4px solid var(--coral);padding:18px 22px;margin:0;font-size:15px;color:var(--navy);font-style:italic;}
   blockquote cite{display:block;margin-top:10px;font-size:13px;color:var(--grey);font-style:normal;}
-  .quote-carousel{position:relative;}
-  .quote-slide{display:none;animation:fadeIn .3s ease;}
-  .quote-slide.active{display:block;}
-  .quote-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
-  .quote-dot{width:8px;height:8px;border-radius:50%;background:var(--mid-grey);border:none;cursor:pointer;padding:0;}
-  .quote-dot.active{background:var(--coral);}
 
   .data-row{display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;}
   .data-card{flex:1;min-width:130px;background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px;text-align:center;}
@@ -219,22 +213,9 @@
   .def-card.open .def-mark{transform:rotate(45deg);}
   .def-card p{max-height:0;overflow:hidden;transition:max-height .25s ease,margin-top .25s ease;margin-top:0;}
   .def-card.open p{max-height:140px;margin-top:8px;}
-
-  /* BUYER CRITERIA GRID */
-  .criteria-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-  .criteria-card{background:var(--light-grey);border:1px solid var(--mid-grey);border-radius:8px;padding:18px 20px;}
-  .criteria-card h3{color:var(--navy);font-size:15px;margin-bottom:8px;}
-  .criteria-card p{margin:0;font-size:13.5px;}
-
-  /* COMPETITOR BENCHMARK TABLE */
-  .bench-table{width:100%;border-collapse:collapse;font-size:13px;}
-  .bench-table th,.bench-table td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--mid-grey);}
-  .bench-table th{color:var(--grey);font-size:11px;letter-spacing:.03em;text-transform:uppercase;font-weight:600;}
-  .bench-table td{color:var(--navy);}
-
-  /* STRUCTURED FAQ CATEGORIES */
-  .faq-category{font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--coral);font-weight:700;margin:28px 0 6px;}
-  .faq-category:first-child{margin-top:0;}
+  .btn-sm{padding:10px 20px;font-size:14px;}
+  section.wrap{padding-top:60px;padding-bottom:60px;}
+  #overview,#cloud-pms{padding-top:32px;padding-bottom:32px;}
 </style>
 </head>
 <body>
@@ -245,7 +226,7 @@
   <div class="wrap">
     <span class="award-badge">🏆 World's Best Hotel Property Management System 2026</span>
     <h1>The best hotel PMS for modern hotels</h1>
-    <p class="lead">Lorem ipsum — cloud-native, deeply integrated and built to scale from one property to a global group.</p>
+    <p class="lead">Lorem ipsum, dolor sit and amet with one powerful consectetur platform.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#">Book a demo</a>
       <a class="btn btn-secondary" href="#">See pricing</a>
@@ -274,12 +255,10 @@
   <div class="jump-nav-inner">
     <a href="#video">Overview video</a>
     <a href="#overview">Overview</a>
-    <a href="#buyer-criteria">Buyer Criteria</a>
     <a href="#operations">Operations</a>
     <a href="#guest-experiences">Guest Experiences</a>
     <a href="#upsells">Upsells</a>
     <a href="#vs-legacy">Vs. Legacy PMS</a>
-    <a href="#benchmark">Vs. Cloudbeds &amp; SiteMinder</a>
     <a href="#definitions">Related Products</a>
     <a href="#customer-proof">Customer Proof</a>
     <a href="#roi">ROI</a>
@@ -301,56 +280,24 @@
 
 <section class="wrap" id="overview">
   <h2>What is a property management system?</h2>
-  <ul class="takeaways">
-    <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do</li>
-    <li>Ut enim ad minim veniam, quis nostrud exercitation ullamco</li>
-    <li>Duis aute irure dolor in reprehenderit in voluptate velit</li>
-    <li>Excepteur sint occaecat cupidatat non proident, sunt in culpa</li>
-    <li>Sed ut perspiciatis unde omnis iste natus error sit</li>
-  </ul>
+  <p>A hotel PMS integrates key elements of a hotel back office and front desk into a single software system, covering reservations, check-in and check-out, payments and reporting. Visit our full guide to see how it works day to day.</p>
+  <a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/what-is-hotel-pms" target="_blank" rel="noopener">Read the full PMS guide &rarr;</a>
 </section>
 
 <section class="wrap" id="cloud-pms">
   <h2>What is a cloud PMS?</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
-</section>
-
-<section class="wrap" id="pms-software">
-  <h2>What is hotel PMS software?</h2>
-  <p>Incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
-</section>
-
-<section class="wrap" id="buyer-criteria">
-  <h2>What to weigh before you choose a PMS</h2>
-  <p>Lorem ipsum — four questions worth answering for yourself, whatever vendor you're evaluating.</p>
-  <div class="criteria-grid">
-    <div class="criteria-card">
-      <h3>Cloud vs. on-premise</h3>
-      <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do.</p>
-    </div>
-    <div class="criteria-card">
-      <h3>Integrations</h3>
-      <p>Eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-    </div>
-    <div class="criteria-card">
-      <h3>Migration</h3>
-      <p>Ut enim ad minim veniam quis nostrud exercitation ullamco.</p>
-    </div>
-    <div class="criteria-card">
-      <h3>Enterprise vs. independent</h3>
-      <p>Laboris nisi ut aliquip ex ea commodo consequat duis.</p>
-    </div>
-  </div>
+  <p>A cloud PMS gives hotel teams online access to the tools and information they use to run daily operations. Unlike an on-premises PMS installed on a local server, it is hosted by the provider and accessed through a secure internet connection. Visit our full guide to see the benefits for hotels.</p>
+  <a class="btn btn-primary btn-sm" href="https://www.mews.com/en/blog/13-reasons-cloud-pms" target="_blank" rel="noopener">Read the cloud PMS guide &rarr;</a>
 </section>
 
 <section class="wrap" id="operations">
   <h2>Automate the routine, focus on the guest</h2>
-  <p>Great hotel PMS software should disappear into the background, handling the routine so your team can focus on guests.</p>
+  <p>Great hotel pms software should disappear into the background, handling the routine so your team can focus on guests.</p>
   <ul class="feat-list" id="opsAccordion">
-    <li class="feat-item open"><h3 class="acc-toggle">Reservations &amp; timeline <span class="acc-mark">–</span></h3><ul><li>Lorem ipsum dolor sit amet consectetur adipiscing</li><li>Elit sed do eiusmod tempor incididunt ut</li><li>Labore et dolore magna aliqua ut enim</li></ul></li>
-    <li class="feat-item"><h3 class="acc-toggle">Business intelligence <span class="acc-mark">+</span></h3><ul><li>Ad minim veniam quis nostrud exercitation</li><li>Ullamco laboris nisi ut aliquip ex</li><li>Ea commodo consequat duis aute irure</li></ul></li>
-    <li class="feat-item"><h3 class="acc-toggle">Accounting &amp; billing <span class="acc-mark">+</span></h3><ul><li>Dolor in reprehenderit in voluptate velit</li><li>Esse cillum dolore eu fugiat nulla</li><li>Pariatur excepteur sint occaecat cupidatat non</li></ul></li>
-    <li class="feat-item"><h3 class="acc-toggle">Housekeeping <span class="acc-mark">+</span></h3><ul><li>Proident sunt in culpa qui officia</li><li>Deserunt mollit anim id est laborum</li><li>Sed ut perspiciatis unde omnis iste</li></ul></li>
+    <li class="feat-item open"><h3 class="acc-toggle">Reservations &amp; timeline <span class="acc-mark">–</span></h3><ul><li>Lorem ipsum unifies dolor in one workspace – saving hours, reducing sit</li><li>Smart amet window with key consectetur</li><li>Automated adipiscing keep bookings accurate</li></ul></li>
+    <li class="feat-item"><h3 class="acc-toggle">Business intelligence <span class="acc-mark">+</span></h3><ul><li>Automated elit to your inbox</li><li>10+ ready-to-use sed dashboards</li><li>AI do that highlight trends</li></ul></li>
+    <li class="feat-item"><h3 class="acc-toggle">Accounting &amp; billing <span class="acc-mark">+</span></h3><ul><li>Live eiusmod are always accurate</li><li>Daily tempor and clear audit trails</li><li>Smart incididunt sends every charge automatically</li></ul></li>
+    <li class="feat-item"><h3 class="acc-toggle">Housekeeping <span class="acc-mark">+</span></h3><ul><li>Real-time mobile ut app</li><li>Instant labore status updates</li><li>Smoother dolore handovers</li></ul></li>
   </ul>
   <div class="img-placeholder feature-shot">
     <span class="icon">🖥️</span>
@@ -369,25 +316,25 @@
   <div class="tab-panel active" data-panel="checkin">
     <h3>Frictionless digital journeys</h3>
     <ul>
-      <li>Lorem ipsum dolor sit amet consectetur adipiscing</li>
-      <li>Elit sed do eiusmod tempor incididunt ut</li>
-      <li>Labore et dolore magna aliqua ut enim</li>
+      <li>Let lorem check in and out digitally with mobile-first ipsum</li>
+      <li>Reduce dolor strain with self-service sit and amet keys</li>
+      <li>Reduce queues, save time and give consectetur more control over their stay</li>
     </ul>
   </div>
   <div class="tab-panel" data-panel="intelligence">
     <h3>Guest intelligence at your fingertips</h3>
     <ul>
-      <li>Ad minim veniam quis nostrud exercitation ullamco</li>
-      <li>Laboris nisi ut aliquip ex ea commodo</li>
-      <li>Consequat duis aute irure dolor in reprehenderit</li>
+      <li>Mews automatically detects and merges duplicate lorem profiles</li>
+      <li>AI-powered ipsum Tips guide personalized dolor</li>
+      <li>Loyalty integration turns first-time sit into repeat amet</li>
     </ul>
   </div>
   <div class="tab-panel" data-panel="payments">
     <h3>Payments that drive performance</h3>
     <ul>
-      <li>Voluptate velit esse cillum dolore eu fugiat</li>
-      <li>Nulla pariatur excepteur sint occaecat cupidatat non</li>
-      <li>Proident sunt in culpa qui officia deserunt</li>
+      <li>One lorem for every ipsum method, reducing friction</li>
+      <li>Boost revenue by letting dolor pay in their own currency</li>
+      <li>Secure sit across the property, from reservations to room service</li>
     </ul>
   </div>
 
@@ -415,18 +362,18 @@
 <section class="wrap" id="upsells">
   <h2>More ways to grow</h2>
   <div class="cap-grid">
-    <div class="cap-card" data-expand><h3>Turn browsers into bookers</h3><p>Lorem ipsum dolor sit amet consectetur adipiscing elit.</p><span class="more-toggle">+ more detail</span><div class="extra">Flexible engines for hourly, nightly or monthly stays.</div></div>
-    <div class="cap-card" data-expand><h3>Make upselling work harder</h3><p>Sed do eiusmod tempor incididunt ut labore et.</p><span class="more-toggle">+ more detail</span><div class="extra">Early check-ins, premium rooms, extras like bike rentals.</div></div>
-    <div class="cap-card" data-expand><h3>Monetize every space</h3><p>Dolore magna aliqua ut enim ad minim veniam.</p><span class="more-toggle">+ more detail</span><div class="extra">Meeting rooms, co-working desks, parking spaces.</div></div>
-    <div class="cap-card" data-expand><h3>Simplify large bookings</h3><p>Quis nostrud exercitation ullamco laboris nisi ut.</p><span class="more-toggle">+ more detail</span><div class="extra">Package rooms, catering and meeting spaces together.</div></div>
-    <div class="cap-card" data-expand><h3>Price every stay properly</h3><p>Aliquip ex ea commodo consequat duis aute irure.</p><span class="more-toggle">+ more detail</span><div class="extra">Forecasting up to two years ahead with Atomize RMS.</div></div>
-    <div class="cap-card" data-expand><h3>Easy switching</h3><p>Dolor in reprehenderit in voluptate velit esse cillum.</p><span class="more-toggle">+ more detail</span><div class="extra">Minimal-training onboarding via Mews University.</div></div>
+    <div class="cap-card" data-expand><h3>Turn browsers into bookers</h3><p>Intuitive lorem-friendly ipsum engine, reducing dolor reliance and driving sit.</p><span class="more-toggle">+ more detail</span><div class="extra">Lorem: flexible engines for hourly, nightly or monthly stays.</div></div>
+    <div class="cap-card" data-expand><h3>Make upselling work harder</h3><p>Embed lorem flows into ipsum, offering early dolor or premium sit.</p><span class="more-toggle">+ more detail</span><div class="extra">Ipsum: early check-ins, premium rooms, extras like bike rentals.</div></div>
+    <div class="cap-card" data-expand><h3>Monetize every space</h3><p>Monetize lorem and co-working ipsum, transforming dolor into recurring sit.</p><span class="more-toggle">+ more detail</span><div class="extra">Dolor: meeting rooms, co-working desks, parking spaces.</div></div>
+    <div class="cap-card" data-expand><h3>Simplify large bookings</h3><p>Manage multi-guest lorem in one workflow, packaging ipsum into tailored dolor.</p><span class="more-toggle">+ more detail</span><div class="extra">Sit: package rooms, catering and meeting spaces together.</div></div>
+    <div class="cap-card" data-expand><h3>Price every stay properly</h3><p>Set flexible lorem rules by ipsum, and go further with dolor, our AI-driven sit.</p><span class="more-toggle">+ more detail</span><div class="extra">Amet: forecasting up to two years ahead with Atomize RMS.</div></div>
+    <div class="cap-card" data-expand><h3>Easy switching</h3><p>Self-paced online lorem with Mews ipsum, plus easy onboarding for dolor.</p><span class="more-toggle">+ more detail</span><div class="extra">Consectetur: minimal-training onboarding via Mews University.</div></div>
   </div>
 </section>
 
 <section class="wrap" id="vs-legacy">
   <h2>Mews vs. legacy PMS</h2>
-  <p>Lorem ipsum — here's how a modern, cloud hotel PMS stacks up against an aging, on-premise hotel property management system.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing — here's how a modern, cloud hotel PMS stacks up against an aging, on-premise hotel property management system.</p>
   <div class="compare-table">
     <div class="compare-header">
       <div>&nbsp;</div>
@@ -435,46 +382,35 @@
     </div>
     <div class="compare-row">
       <div class="compare-label">Deployment</div>
-      <div class="compare-cell mews">Lorem ipsum dolor sit amet consectetur.</div>
-      <div class="compare-cell legacy">Adipiscing elit sed do eiusmod tempor.</div>
+      <div class="compare-cell mews">Cloud-native, lorem from any dolor</div>
+      <div class="compare-cell legacy">On-premise server, tied to one sit</div>
     </div>
     <div class="compare-row">
       <div class="compare-label">Updates</div>
-      <div class="compare-cell mews">Incididunt ut labore et dolore magna.</div>
-      <div class="compare-cell legacy">Aliqua ut enim ad minim veniam.</div>
+      <div class="compare-cell mews">Automatic ipsum, always up to date</div>
+      <div class="compare-cell legacy">Manual dolor, scheduled downtime</div>
     </div>
     <div class="compare-row">
       <div class="compare-label">Payments</div>
-      <div class="compare-cell mews">Quis nostrud exercitation ullamco laboris.</div>
-      <div class="compare-cell legacy">Nisi ut aliquip ex ea commodo.</div>
+      <div class="compare-cell mews">Embedded amet, one consectetur</div>
+      <div class="compare-cell legacy">Bolted-on adipiscing, separate elit</div>
     </div>
     <div class="compare-row">
       <div class="compare-label">Integrations</div>
-      <div class="compare-cell mews">Consequat duis aute irure dolor in.</div>
-      <div class="compare-cell legacy">Reprehenderit in voluptate velit esse cillum.</div>
+      <div class="compare-cell mews">1,000+ sed, open API</div>
+      <div class="compare-cell legacy">Limited do, costly custom eiusmod</div>
     </div>
     <div class="compare-row">
       <div class="compare-label">Guest experience</div>
-      <div class="compare-cell mews">Dolore eu fugiat nulla pariatur excepteur.</div>
-      <div class="compare-cell legacy">Sint occaecat cupidatat non proident sunt.</div>
+      <div class="compare-cell mews">Mobile-first tempor, self-service</div>
+      <div class="compare-cell legacy">Desk-bound incididunt, manual ut</div>
     </div>
     <div class="compare-row">
       <div class="compare-label">Onboarding</div>
-      <div class="compare-cell mews">In culpa qui officia deserunt mollit.</div>
-      <div class="compare-cell legacy">Anim id est laborum sed ut perspiciatis.</div>
+      <div class="compare-cell mews">Weeks, guided labore dolore</div>
+      <div class="compare-cell legacy">Months, heavy magna aliqua training</div>
     </div>
   </div>
-</section>
-
-<section class="wrap" id="benchmark">
-  <h2>How Mews compares: Cloudbeds and SiteMinder</h2>
-  <p>Lorem ipsum — these two get compared to Mews often, but they're not solving quite the same problem.</p>
-  <table class="bench-table">
-    <tr><th>Vendor</th><th>What they actually are</th><th>Where Mews differs</th></tr>
-    <tr><td>Cloudbeds</td><td>Lorem ipsum dolor sit amet consectetur adipiscing elit sed.</td><td>Do eiusmod tempor incididunt ut labore et dolore magna.</td></tr>
-    <tr><td>SiteMinder</td><td>Aliqua ut enim ad minim veniam quis nostrud exercitation.</td><td>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</td></tr>
-  </table>
-  <p class="footnote" style="font-size:12px;margin-top:12px;">Lorem ipsum — descriptions above reflect how each vendor positions itself publicly; ask any vendor for a feature-by-feature comparison based on your own requirements.</p>
 </section>
 
 <section class="wrap" id="definitions">
@@ -483,73 +419,56 @@
   <div class="def-grid" id="defGrid">
     <div class="def-card" data-reveal>
       <h3 class="def-toggle">Point-of-Sale (POS) <span class="def-mark">＋</span></h3>
-      <p>Lorem ipsum dolor sit amet — F&amp;B and retail charges post directly to the guest folio, no separate reconciliation needed.</p>
+      <p>Lorem ipsum dolor sit amet — F&amp;B and retail charges post directly to the guest folio, no separate consectetur needed.</p>
     </div>
     <div class="def-card" data-reveal>
       <h3 class="def-toggle">Revenue Management (RMS) <span class="def-mark">＋</span></h3>
-      <p>Ipsum dolor sit — dynamic pricing and demand forecasting, powered by Atomize — forecasting up to 24 months ahead.</p>
+      <p>Ipsum dolor sit pricing and amet, powered by consectetur — forecasting up to 24 months adipiscing.</p>
     </div>
     <div class="def-card" data-reveal>
       <h3 class="def-toggle">Embedded Payments <span class="def-mark">＋</span></h3>
-      <p>Dolor sit amet — tokenized cards and automated reconciliation, built into the same platform as the PMS.</p>
+      <p>Dolor sit amet tokenized cards and consectetur reconciliation, built into the same adipiscing as the PMS.</p>
     </div>
     <div class="def-card" data-reveal>
       <h3 class="def-toggle">Booking Engine <span class="def-mark">＋</span></h3>
-      <p>Sit amet — direct, commission-free reservations, reducing OTA reliance with a mobile-first booking flow.</p>
+      <p>Sit amet direct dolor reservations, reducing consectetur reliance with a mobile-first adipiscing flow.</p>
     </div>
     <div class="def-card" data-reveal>
       <h3 class="def-toggle">Housekeeping <span class="def-mark">＋</span></h3>
-      <p>Amet dolor — room status and task updates, synced in real time with the connected front desk.</p>
+      <p>Amet dolor room status and sit updates, synced in real time with the consectetur front desk.</p>
     </div>
     <div class="def-card" data-reveal>
       <h3 class="def-toggle">Guest Check-In <span class="def-mark">＋</span></h3>
-      <p>Dolor sit — mobile-first check-in and registration, with self-service kiosks and digital keys.</p>
+      <p>Dolor sit mobile-first check-in and amet, with self-service kiosks and consectetur digital keys.</p>
     </div>
   </div>
 </section>
 
 <section class="wrap">
   <h2>What features are most important in a modern PMS?</h2>
-  <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor.</p>
-  <p>Incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
-  <div class="cap-grid">
-    <div class="cap-card"><h3>Direct booking engine</h3><p>Lorem ipsum dolor sit amet consectetur.</p></div>
-    <div class="cap-card"><h3>Embedded payments</h3><p>Adipiscing elit sed do eiusmod tempor.</p></div>
-    <div class="cap-card"><h3>Connected housekeeping</h3><p>Incididunt ut labore et dolore magna.</p></div>
-    <div class="cap-card"><h3>Complete guest profiles</h3><p>Aliqua ut enim ad minim veniam quis.</p></div>
-    <div class="cap-card"><h3>Distribution connections</h3><p>Nostrud exercitation ullamco laboris nisi.</p></div>
-  </div>
+  <p>The lorem ipsum is changing quickly. Dolor expectations are rising, and sit for long amet is diminishing. Your consectetur should be easy to adipiscing and offer elit that let sed check themselves in. This is exactly what separates the best hotel PMS options from the rest.</p>
+  <p>Look for a lorem-native platform, accessible from any ipsum, on any dolor — one of the clearest signs of hotel property management systems built for the way hotels actually run today.</p>
+  <ul class="checklist">
+    <li>Lorem-friendly ipsum engine to reduce dolor fees</li>
+    <li>Embedded amet to remove consectetur</li>
+    <li>Adipiscing as part of one elit platform</li>
+    <li>Complete sed profiles for a better do</li>
+    <li>Fast, direct eiusmod with tempor channels</li>
+  </ul>
 </section>
 
 <section class="wrap" id="customer-proof">
   <h2>Testimonials</h2>
-  <p>Independent properties and large groups alike choose Mews as their PMS for hotels that need to move fast without sacrificing guest experience.</p>
+  <p>Independent properties and large groups alike choose Mews as their pms for hotels that need to move fast without sacrificing guest experience.</p>
   <div class="img-placeholder" style="height:140px;margin-bottom:18px;">
     <span class="icon">🏨</span>
     <span class="caption">Property photo — Leven Manchester</span>
     <span class="note">Placeholder — swap in a real property photo</span>
   </div>
-  <div class="quote-carousel" id="quoteCarousel">
-    <div class="quote-slide active">
-      <blockquote>
-        "We're really happy with Mews POS. It connects seamlessly with the rest of Mews and empowers our F&amp;B team to work faster and give guests a better dining experience."
-        <cite>— Kris Doyle, General Manager, Leven Manchester</cite>
-      </blockquote>
-    </div>
-    <div class="quote-slide">
-      <blockquote>
-        "Mews gives me valuable hours back each day. Without it, managing multiple properties and expanding into new cities would be nearly impossible."
-        <cite>— Álvaro Bautista, Director of Operations, Petit Hostel</cite>
-      </blockquote>
-    </div>
-    <div class="quote-slide">
-      <blockquote>
-        "We wanted to be able to maintain consistency between properties, rate groups, users and segments. That's why we were looking for a system that allowed us to grow without requiring more staff."
-        <cite>— Fredrik Ternsjö, Head of Revenue Distribution and Systems, Ligula</cite>
-      </blockquote>
-    </div>
-    <div class="quote-dots"></div>
-  </div>
+  <blockquote>
+    "We're really happy with Mews POS. It connects seamlessly with the rest of Mews and empowers our F&amp;B team to work faster and give guests a better dining experience."
+    <cite>— Kris Doyle, General Manager, Leven Manchester</cite>
+  </blockquote>
 </section>
 
 <section class="wrap" id="roi">
@@ -577,69 +496,41 @@
 
 <section class="wrap">
   <h2>What to look for when selecting a hotel PMS</h2>
-  <ul class="checklist">
-    <li>A cloud-native platform that scales with your portfolio</li>
-    <li>Embedded payments and revenue management, not bolted-on add-ons</li>
-    <li>Onboarding and support built for how fast you need to move</li>
-    <li>A system that feels invisible, not like extra work for your team</li>
-  </ul>
+  <p>Look for a lorem-native platform that scales with your ipsum. The best dolor go further with embedded sit — payments and amet built in, not bolted on. Ultimately, the right pms system hotel teams rely on every day should feel invisible, not like extra work.</p>
 </section>
 
 <section class="wrap" id="faqs">
   <h2>Frequently asked questions</h2>
 
-  <p class="faq-category">Cloud vs. on-premise</p>
-  <div class="faq-item">
-    <h3>Is cloud-based better than an on-premise PMS? <span class="faq-mark">＋</span></h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor.</p>
-  </div>
-  <div class="faq-item">
-    <h3>What happens if my internet goes down? <span class="faq-mark">＋</span></h3>
-    <p>Incididunt ut labore et dolore magna aliqua ut enim ad minim veniam.</p>
-  </div>
-
-  <p class="faq-category">Integrations</p>
   <div class="faq-item">
     <h3>Why are third-party integrations important with a PMS? <span class="faq-mark">＋</span></h3>
-    <p>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.</p>
+    <p>At Mews, we believe in building the best lorem ipsum. We offer one of the largest dolor of sit, letting you connect amet without additional fees.</p>
   </div>
   <div class="faq-item">
-    <h3>What if the tool I use isn't in the Marketplace? <span class="faq-mark">＋</span></h3>
-    <p>Commodo consequat duis aute irure dolor in reprehenderit in voluptate.</p>
-  </div>
-
-  <p class="faq-category">Migration</p>
-  <div class="faq-item">
-    <h3>How does switching PMS providers actually work? <span class="faq-mark">＋</span></h3>
-    <p>Velit esse cillum dolore eu fugiat nulla pariatur excepteur sint.</p>
+    <h3>What makes Mews PMS different? <span class="faq-mark">＋</span></h3>
+    <p>Mews is lorem-native, secure and modern. Our ipsum is so easy that staff get comfortable in a few dolor. We also offer a fully connected sit platform.</p>
   </div>
   <div class="faq-item">
-    <h3>How long does onboarding take? <span class="faq-mark">＋</span></h3>
-    <p>Occaecat cupidatat non proident sunt in culpa qui officia deserunt.</p>
-  </div>
-
-  <p class="faq-category">Enterprise vs. independent</p>
-  <div class="faq-item">
-    <h3>Does Mews work for a single independent hotel as well as a chain? <span class="faq-mark">＋</span></h3>
-    <p>Mollit anim id est laborum sed ut perspiciatis unde omnis iste.</p>
-  </div>
-  <div class="faq-item">
-    <h3>What makes Mews different from other hotel software? <span class="faq-mark">＋</span></h3>
-    <p>Natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam.</p>
+    <h3>What do you mean by "user disengagement"? <span class="faq-mark">＋</span></h3>
+    <p>We talk a lot at Mews about lorem ipsum. It sounds counterintuitive. Well, yes and no. Yes, we want you to use dolor. But we don't want sit staring at a screen.</p>
   </div>
   <div class="faq-item">
     <h3>What are the key functions of a hotel PMS? <span class="faq-mark">＋</span></h3>
-    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
+    <p>A lorem ipsum acts as the central hub for your dolor. Core functions include managing sit and amet — one connected consectetur from booking to departure.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What is hotel PMS software? <span class="faq-mark">＋</span></h3>
+    <p>PMS stands for property management system. In hospitality, it refers to software that helps hotels manage day-to-day operations such as reservations, check-in and check-out, payments, room availability and reporting.</p>
   </div>
 </section>
 
 <section class="cta-block">
   <div class="wrap">
     <h2>See Mews in action</h2>
-    <p>Book a personalized demo and see why Mews was named the world's best hotel PMS.</p>
+    <p>Book a lorem ipsum and see why dolor was named the sit amet.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="#">Book a demo</a>
-      <a class="btn btn-secondary" href="#">Talk to our enterprise team</a>
+      <a class="btn btn-secondary" href="#">Talk to sales</a>
     </div>
   </div>
 </section>
@@ -700,33 +591,6 @@
       document.querySelector(`.tab-panel[data-panel="${btn.dataset.tab}"]`).classList.add('active');
     });
   });
-
-  // --- Customer proof quote carousel ---
-  const quoteCarousel = document.getElementById('quoteCarousel');
-  const quoteSlides = quoteCarousel.querySelectorAll('.quote-slide');
-  const quoteDotsWrap = quoteCarousel.querySelector('.quote-dots');
-  let quoteCurrent = 0;
-  let quoteTimer;
-  quoteSlides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'quote-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Go to quote ' + (i + 1));
-    dot.addEventListener('click', () => { quoteGoTo(i); stopQuoteAuto(); startQuoteAuto(); });
-    quoteDotsWrap.appendChild(dot);
-  });
-  const quoteDots = quoteDotsWrap.querySelectorAll('.quote-dot');
-  function quoteGoTo(index){
-    quoteSlides[quoteCurrent].classList.remove('active');
-    quoteDots[quoteCurrent].classList.remove('active');
-    quoteCurrent = (index + quoteSlides.length) % quoteSlides.length;
-    quoteSlides[quoteCurrent].classList.add('active');
-    quoteDots[quoteCurrent].classList.add('active');
-  }
-  function startQuoteAuto(){ quoteTimer = setInterval(() => quoteGoTo(quoteCurrent + 1), 6000); }
-  function stopQuoteAuto(){ clearInterval(quoteTimer); }
-  quoteCarousel.addEventListener('mouseenter', stopQuoteAuto);
-  quoteCarousel.addEventListener('mouseleave', startQuoteAuto);
-  startQuoteAuto();
 
   // --- FAQ accordion ---
   document.querySelectorAll('.faq-item h3').forEach(h3 => {
