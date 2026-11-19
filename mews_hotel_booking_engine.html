@@ -274,9 +274,9 @@
     <a href="#overview">Overview</a>
     <a href="#why-direct">Direct booking vs. OTA</a>
     <a href="#data">The data</a>
+    <a href="#roi-calculator">ROI calculator</a>
     <a href="#embedded-vs-redirect">Embedded vs. redirect</a>
     <a href="#included">What's included</a>
-    <a href="#roi-calculator">ROI calculator</a>
     <a href="#proof">Customer proof</a>
     <a href="#look-for">What to look for</a>
     <a href="#vs-channel">Vs. channel manager</a>
@@ -369,8 +369,39 @@
   </div>
 </section>
 
+<!-- ROI CALCULATOR (moved back up under the data tiles, per CRO feedback) -->
+<section class="alt" id="roi-calculator">
+  <div class="wrap">
+    <h2>Direct booking ROI calculator</h2>
+    <p>Lorem ipsum dolor sit amet, drag the sliders to estimate what shifting bookings from OTAs to direct could be worth.</p>
+    <div class="calc-box">
+      <div class="calc-row">
+        <div class="calc-row-head"><label for="calcRooms">Direct-bookable room-nights per month</label><span class="calc-val" id="calcRoomsVal">400</span></div>
+        <input type="range" id="calcRooms" min="20" max="2000" step="10" value="400">
+      </div>
+      <div class="calc-row">
+        <div class="calc-row-head"><label for="calcAdr">Average nightly rate (ADR)</label><span class="calc-val" id="calcAdrVal">$200</span></div>
+        <input type="range" id="calcAdr" min="50" max="500" step="5" value="200">
+      </div>
+      <div class="calc-row">
+        <div class="calc-row-head"><label for="calcCommission">OTA commission rate</label><span class="calc-val" id="calcCommissionVal">18%</span></div>
+        <input type="range" id="calcCommission" min="10" max="30" step="1" value="18">
+      </div>
+      <div class="calc-row">
+        <div class="calc-row-head"><label for="calcShift">Share you could shift to direct</label><span class="calc-val" id="calcShiftVal">20%</span></div>
+        <input type="range" id="calcShift" min="5" max="50" step="1" value="20">
+      </div>
+      <div class="calc-output">
+        <div class="calc-output-lbl">Estimated annual commission savings</div>
+        <div class="calc-output-num" id="calcOutput">$34,560</div>
+        <div class="calc-output-sub">Illustrative estimate only. Actual savings depend on your OTA mix and contract terms.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- WHERE HOTELS LOSE THE DIRECT BOOKING (moved up, tied to Mews) -->
-<section class="alt">
+<section>
   <div class="wrap">
     <h2>Where hotels usually lose the direct booking</h2>
     <p>Lorem ipsum dolor sit amet, click a card to see how the Mews engine handles it.</p>
@@ -385,7 +416,7 @@
 </section>
 
 <!-- EMBEDDED VS REDIRECT -->
-<section id="embedded-vs-redirect">
+<section class="alt" id="embedded-vs-redirect">
   <div class="wrap">
     <h2>A hotel website booking engine that keeps guests on your site</h2>
     <p>Lorem ipsum: a web booking engine embedded in your site, toggle to compare.</p>
@@ -413,7 +444,7 @@
 </section>
 
 <!-- GROWTH ENGINE + RESTORED LIVE MODULES -->
-<section class="alt" id="included">
+<section id="included">
   <div class="wrap">
     <h2>Hotel booking engine? We prefer growth engine.</h2>
     <div class="feat-grid">
@@ -427,37 +458,6 @@
       <div class="feat-card"><h3>Improve their visit</h3><p>Consectetur adipiscing elit sed do eiusmod.</p><div class="tile-stat"><b>20%</b> of bookings include an upsell</div><a class="tile-link" href="https://www.mews.com/en/products/upsells">Explore upsells →</a></div>
       <div class="feat-card"><h3>Go bigger than rooms</h3><p>Sed do eiusmod tempor incididunt ut labore.</p><div class="tile-stat"><b>$97k</b> from bookable meeting rooms &amp; parking</div></div>
       <div class="feat-card"><h3>Make it yours</h3><p>Ut labore et dolore magna aliqua ut enim.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ROI CALCULATOR (moved after product sections) -->
-<section id="roi-calculator">
-  <div class="wrap">
-    <h2>Direct booking ROI calculator</h2>
-    <p>Lorem ipsum dolor sit amet, drag the sliders to estimate what shifting bookings from OTAs to direct could be worth.</p>
-    <div class="calc-box">
-      <div class="calc-row">
-        <div class="calc-row-head"><label for="calcRooms">Direct-bookable room-nights per month</label><span class="calc-val" id="calcRoomsVal">400</span></div>
-        <input type="range" id="calcRooms" min="20" max="2000" step="10" value="400">
-      </div>
-      <div class="calc-row">
-        <div class="calc-row-head"><label for="calcAdr">Average nightly rate (ADR)</label><span class="calc-val" id="calcAdrVal">$200</span></div>
-        <input type="range" id="calcAdr" min="50" max="500" step="5" value="200">
-      </div>
-      <div class="calc-row">
-        <div class="calc-row-head"><label for="calcCommission">OTA commission rate</label><span class="calc-val" id="calcCommissionVal">18%</span></div>
-        <input type="range" id="calcCommission" min="10" max="30" step="1" value="18">
-      </div>
-      <div class="calc-row">
-        <div class="calc-row-head"><label for="calcShift">Share you could shift to direct</label><span class="calc-val" id="calcShiftVal">20%</span></div>
-        <input type="range" id="calcShift" min="5" max="50" step="1" value="20">
-      </div>
-      <div class="calc-output">
-        <div class="calc-output-lbl">Estimated annual commission savings</div>
-        <div class="calc-output-num" id="calcOutput">$34,560</div>
-        <div class="calc-output-sub">Illustrative estimate only. Actual savings depend on your OTA mix and contract terms.</div>
-      </div>
     </div>
   </div>
 </section>
